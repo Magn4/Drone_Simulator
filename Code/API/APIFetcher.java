@@ -10,7 +10,7 @@ public class APIFetcher {
     public static void main(String[] args) {
         try {
             final String TOKEN = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
-            URL url = new URL("https://dronesim.facets-labs.com/api/dronedynamics/?format=json");
+            final URL url = new URL("https://dronesim.facets-labs.com/api/dronedynamics/?format=json");
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 

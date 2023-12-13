@@ -15,11 +15,9 @@ public class DroneGUI extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Create panels with titled borders for a more organized look
         JPanel dashboardPanel = createTitledPanel("Drone Dashboard");
         JPanel catalogPanel = createTitledPanel("Drone Catalog");
 
-        // Create a refresh button with a stylish appearance
         JButton refreshButton = createStyledButton("Refresh Data");
         refreshButton.addActionListener(new ActionListener() {
             @Override
@@ -28,18 +26,14 @@ public class DroneGUI extends JFrame {
             }
         });
 
-        // Arrange components using a layout manager (e.g., GridLayout)
         setLayout(new GridLayout(2, 1));
         add(dashboardPanel);
         add(catalogPanel);
 
-        // Add the refresh button to the content pane
         getContentPane().add(refreshButton, BorderLayout.SOUTH);
 
-        // Center the frame on the screen
         setLocationRelativeTo(null);
 
-        // You can further customize the GUI based on your requirements
     }
 
     private JPanel createTitledPanel(String title) {
@@ -74,8 +68,6 @@ public class DroneGUI extends JFrame {
     }
 
     private void refreshData() {
-        // TODO: Implement logic to fetch and update drone data from the API
-        // Update the droneDashboardTextArea and droneCatalogTable accordingly
         droneDashboardTextArea.setText("Updated drone data goes here");
     }
 

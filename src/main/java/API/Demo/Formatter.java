@@ -1,9 +1,9 @@
-package src.main.java.API;
+package src.main.java.API.Demo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class JsonFormatterUtil {
+public class Formatter {
     public static String beautifyJson(String json) {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

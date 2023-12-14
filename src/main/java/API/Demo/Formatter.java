@@ -1,4 +1,4 @@
-package API.Demo;
+package src.main.java.API.Demo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,5 +14,4 @@ public class Formatter {
             return json; // Return original JSON if formatting fails
         }
     }
-    
 }

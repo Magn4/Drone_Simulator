@@ -1,5 +1,4 @@
-package GUI.Demo;
-
+package Code.GUI.Demo;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -47,7 +46,6 @@ public class SimpleGUI implements ActionListener {
         }
 
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             count++;
             label.setText("Number of clicks: " + count);

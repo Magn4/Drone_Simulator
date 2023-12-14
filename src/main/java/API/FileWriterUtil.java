@@ -1,4 +1,4 @@
-package src.Main.API;
+package API;
 
 import java.io.FileWriter;
 import java.io.IOException;

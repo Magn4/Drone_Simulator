@@ -1,4 +1,4 @@
-package src.Main.API.Demo;
+package API.Demo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

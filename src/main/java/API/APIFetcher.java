@@ -1,4 +1,4 @@
-package src.Main.API;
+package API;
 
 import java.io.BufferedReader;
 import java.io.IOException;

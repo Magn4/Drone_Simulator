@@ -32,7 +32,7 @@ public class APIFetcher {
 
             System.out.println("Response Content: " + responseContent.toString());
 
-            String filePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/Code/API/Responses/response.json";
+            String filePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/response.json";
 
             FileWriterUtil.writeToFile(responseContent.toString(), filePath);
 

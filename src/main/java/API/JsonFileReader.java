@@ -9,7 +9,7 @@ import java.io.IOException;
 public class JsonFileReader {
     public static void main(String[] args) {
         // Specify the path to your JSON file
-        String jsonFilePath = "path/to/your/file.json";
+        String jsonFilePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/response.json";
 
         // Call the method to read and process the JSON file
         processJsonFile(jsonFilePath);

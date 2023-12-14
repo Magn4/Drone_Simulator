@@ -10,8 +10,11 @@ public class APIFetcher {
     public static void main(String[] args) {
         try {
             final String TOKEN = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
-            final URL url = new URL("https://dronesim.facets-labs.com/api/drones/?format=json");
+            
+            // Still need to add changable link, based on User request
+            // final URL url = new URL("https://dronesim.facets-labs.com/api/drones/?format=json");
 
+            final URL url = new URL("https://dronesim.facets-labs.com/api/dronetypes/67/?format=json");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             con.setRequestProperty("Authorization", TOKEN);

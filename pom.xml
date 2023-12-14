@@ -17,3 +17,7 @@
         </dependency>
     </dependencies>
 </project>
+<build>
+    <sourceDirectory>src/Code</sourceDirectory>
+    <!-- other build configurations -->
+</build>

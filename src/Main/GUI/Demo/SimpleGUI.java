@@ -1,4 +1,4 @@
-package Code.GUI.Demo;
+package src.Main.GUI.Demo;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;

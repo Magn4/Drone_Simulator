@@ -1,3 +1,9 @@
+/*
+ * Must add a variable which shows us the user choice of type of infos he wants to get.
+ * Must add the possibiity of changing the API fetcher URL based on the users choice
+ * 
+ */
+
 package API;
 
 import java.io.BufferedReader;

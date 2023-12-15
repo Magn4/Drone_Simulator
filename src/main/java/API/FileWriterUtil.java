@@ -1,3 +1,6 @@
+/*
+ * I must add the possibility of having more than one result file.
+ */
 package API;
 
 import java.io.FileWriter;

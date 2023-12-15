@@ -1,3 +1,13 @@
+/*
+ * We will need to add an if statement, depending of what type of informations we got from the API 
+ * back. Because the JSON infos given back are different in every case and that will require us to 
+ * extract different type of infos in every case.
+ * Another case is when the user chooses to get infos about a precise drone or infos about all the
+ * drones because of the various number of variables. In the case of one drones info getting fetched
+ * there will be only one value per variable. Like one Id, one Speed. But in the case of getting more
+ * There will be multiple ids. Am example can be like this: Drone1.id = 51 , Drone2.id =  60 and so on
+ */
+
 package API;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -6,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-public class JsonFileReader {
+public class JsonFormater {
     public static void main(String[] args) {
         // Specify the path to your JSON file
         String jsonFilePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/response.json";

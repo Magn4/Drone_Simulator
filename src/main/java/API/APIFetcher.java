@@ -1,7 +1,7 @@
 /*
  * Must add a variable which shows us the user choice of type of infos he wants to get.
  * Must add the possibiity of changing the API fetcher URL based on the users choice
- * 
+ * Must chan
  */
 
 package API;
@@ -17,10 +17,14 @@ public class APIFetcher {
         try {
             final String TOKEN = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
             
-            // Still need to add changable link, based on User request
+            // Still need to add changable link, based on User request 
+        // Done.
             // final URL url = new URL("https://dronesim.facets-labs.com/api/drones/?format=json");
 
-            final URL url = new URL("https://dronesim.facets-labs.com/api/dronetypes/67/?format=json");
+            String URLext = "dronetypes/?format=json";
+            String Path = "DroneTypeList.json";
+
+            final URL url = new URL("https://dronesim.facets-labs.com/api/" + URLext);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             con.setRequestProperty("Authorization", TOKEN);
@@ -38,13 +42,18 @@ public class APIFetcher {
             }
 
             reader.close();
-
-            System.out.println("Response Content: " + responseContent.toString());
-
-            String filePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/response.json";
-
+           
+            System.out.println("\n\n" + "Response Content: " + responseContent.toString());
+            
+            // System.out.println("\n\n" + "Changes have been writen to: " + Path + "\n\n");
+            // String filePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/" + Path;
+            
+            String filePath = "src/main/java/API/Responses/" + Path;
+           
+            System.out.println("\n\n");
             FileWriterUtil.writeToFile(responseContent.toString(), filePath);
-
+            System.out.println("\n\n");
+            
             con.disconnect();
 
         } catch (IOException e) {
@@ -52,3 +61,4 @@ public class APIFetcher {
         }
     }
 }
+

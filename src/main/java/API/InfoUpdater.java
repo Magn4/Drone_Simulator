@@ -7,7 +7,7 @@
 
 package API;
 
-public class LatestInfoGetter {
+public class InfoUpdater {
 
     FileWriterUtil.writeToFile(responseContent.toString(), filePath);
 }

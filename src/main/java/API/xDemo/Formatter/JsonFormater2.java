@@ -3,7 +3,7 @@
  * 1. Need to add a try catch case with a value x that starts from 0 and keeps getting up intill it gets
  * to the number of users to be able to give every user his values
  */
-package API;
+package API.xDemo.Formatter;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +15,7 @@ public class JsonFormater2 {
     public static void main(String[] args) {
 
         // Specify the path to your JSON file
-        String jsonFilePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/response.json";
+        String jsonFilePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Data/Response.json";
 
         // Call the method to read and process the JSON file
         processJsonFile(jsonFilePath, 1);
@@ -25,12 +25,13 @@ public class JsonFormater2 {
         try {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        
-        JsonNode rootNode = objectMapper.readTree(new File(filePath));
+
+        // JsonNode rootNode = objectMapper.readTree(new File(filePath));
         
         switch (InfoType) {
             case 1:
-                
+               
+            /* 
                 // Extract values from the JsonNode and assign them to variables
                 int id = rootNode.get("id").asInt();
                 String manufacturer = rootNode.get("manufacturer").asText();
@@ -41,7 +42,7 @@ public class JsonFormater2 {
                 int controlRange = rootNode.get("control_range").asInt();
                 int maxCarriage = rootNode.get("max_carriage").asInt();
                 break;
-        
+        */
             default:
             System.out.println("Error");
                 break;

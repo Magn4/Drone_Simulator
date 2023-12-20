@@ -8,5 +8,11 @@
 package Controlers;
 
 public class MainControler {
-    
+    int i = 4;
+    public static void main(String[] args) { 
+       
+        formatchange(i); 
+        
+    }
+
 }

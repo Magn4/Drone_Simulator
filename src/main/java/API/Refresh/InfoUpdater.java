@@ -5,9 +5,9 @@
 * that still needs to be done).
 */
 
-package API;
+package API.Refresh;
 
 public class InfoUpdater {
 
-    FileWriterUtil.writeToFile(responseContent.toString(), filePath);
+   // FileWriterUtil.writeToFile(responseContent.toString(), filePath);
 }

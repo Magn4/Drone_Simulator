@@ -1,7 +1,7 @@
 /*
  * I must add the possibility of having more than one result file.
  */
-package API;
+package API.Fetcher;
 
 import java.io.FileWriter;
 import java.io.IOException;

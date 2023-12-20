@@ -9,5 +9,5 @@ package API.Refresh;
 
 public class InfoUpdater {
 
-    FileWriterUtil.writeToFile(responseContent.toString(), filePath);
+   // FileWriterUtil.writeToFile(responseContent.toString(), filePath);
 }

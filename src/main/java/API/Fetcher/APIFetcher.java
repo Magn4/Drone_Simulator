@@ -4,7 +4,7 @@
  * Must chan
  */
 
-package API;
+package API.Fetcher;
 
 import java.io.BufferedReader;
 import java.io.IOException;

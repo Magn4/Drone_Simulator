@@ -5,7 +5,7 @@
 * that still needs to be done).
 */
 
-package API;
+package API.Refresh;
 
 public class InfoUpdater {
 

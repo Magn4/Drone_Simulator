@@ -1,7 +1,9 @@
-package API.Formatter;
+package Formatter;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Formatter.DemoYTB.Drones;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,10 +28,10 @@ public class Demo {
         DroneTypeListWrapper wrapper = mapper.readValue(new File(jsonFilePath), DroneTypeListWrapper.class);
 
         // Access the array of IDs from the wrapper
-        IDs[] ids = wrapper.getResults();
+        Drones[] ids = wrapper.getResults();
 
         // Print the array of IDs
-        for (IDs id : ids) {
+        for (Drones id : ids) {
             System.out.println(id);
         }
     }

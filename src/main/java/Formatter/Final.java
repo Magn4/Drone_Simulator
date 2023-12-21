@@ -1,10 +1,8 @@
-package API.Formatter;
-
-import API.Formatter.Car;
-import API.Formatter.Demo;
-
+package Formatter;
 
 import java.io.IOException;
+
+import Formatter.Formatte.Car;
 
 import static org.junit.Assert.*;
 

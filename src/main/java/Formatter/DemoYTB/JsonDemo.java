@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class JsonDemo {
             ObjectMapper mapper = new ObjectMapper();
 
             String jsonFileName = "DroneTypeList.json";
-            String jsonFilePath = "src/main/java/API/Data/" + jsonFileName;
+            String jsonFilePath = "src/main/java/Data/" + jsonFileName;
 
             JsonNode root = mapper.readTree(new File(jsonFilePath));
 
@@ -25,25 +26,35 @@ public class JsonDemo {
                 System.out.println("Is this node an Array? " + ResultsNode.isArray());
 
                 // Create a list to store Drone objects
-                List<Drone> droneList = new ArrayList<>();
+                List<Drones> droneList = new ArrayList<>();
 
                 int number = 0;
                 for (JsonNode node : ResultsNode) {
                     number++;
-                    String droneId = node.path("Id").asText();
-                    String typeName = node.path("typename").asText();
-                    System.out.println("type : " + droneId);
-                    System.out.println("ref : " + typeName);
-
-                    // Create a new Drone object and add it to the list
-                    Drone drone = new Drone(number, droneId, typeName);
+                    int id = node.path("id").asInt();
+                    String manufacturer = node.path("manufacturer").asText();
+                    String typename = node.path("typename").asText();
+                    int weight = node.path("weight").asInt();
+                    int max_speed = node.path("max_speed").asInt();
+                    int battery_capacity = node.path("battery_capacity").asInt();
+                    int control_range = node.path("control_range").asInt();
+                    int max_carriage = node.path("max_carriage").asInt();
+                /*  
+                * System.out.println("type : " + id);
+                * System.out.println("ref : " + typeName);
+                * int number, int id, String manufacturer, String typename, int weight, int max_speed, int battery_capacity, int control_range, int max_carriage
+                * Create a new Drone object and add it to the list 
+                */
+                    Drones drone = new Drones(number, id, manufacturer, typename, weight, max_speed, battery_capacity, control_range, max_carriage);
                     droneList.add(drone);
                 }
 
-                // Now you can access your drones using the list
-                for (Drone drone : droneList) {
+                // Showcase of how to infos from the List of Drones.
+                
+                for (Drones drone : droneList) {
+                    System.out.println("\n\n");
                     System.out.println("Drone " + drone.getNumber() + ": " +
-                            "Type = " + drone.getDroneId() + ", Ref = " + drone.getTypeName());
+                            "ID = " + drone.getId() + ", Manufacturer = " + drone.getManufacturer() + ", Type Name = " + drone.getTypename() + ", Weight = " + drone.getWeight() + ", Max Speed = " + drone.getMax_speed() + ", Battery Capacity = " + drone.getBattery_capacity() + ", Control Range = " + drone.getControl_range() + ", Max Carriage = " + drone.getMax_carriage());
                 }
             }
         } catch (JsonGenerationException e) {
@@ -55,33 +66,33 @@ public class JsonDemo {
         }
     }
 }
-
+/* 
 class Drone {
     private int number;
-    private String droneId;
-    private String typeName;
+    private int id;
+    private String typename;
 
-    public Drone(int number, String droneId, String typeName) {
+    public Drone(int number, int id, String typeName) {
         this.number = number;
-        this.droneId = droneId;
-        this.typeName = typeName;
+        this.id = id;
+        this.typename = typename;
     }
 
     public int getNumber() {
         return number;
     }
 
-    public String getDroneId() {
-        return droneId;
+    public int getId() {
+        return id;
     }
 
     public String getTypeName() {
-        return typeName;
+        return typename;
     }
 }
 
 
-
+*/
     
         /*
         long id = root.path("id").asLong();

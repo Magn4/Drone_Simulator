@@ -2,6 +2,7 @@
 package Formatter.DemoYTB;
 
 public class Drones {
+    private int number;
     private int id;
     private String manufacturer;
     private String typename;
@@ -17,7 +18,8 @@ public class Drones {
         super();
     }
 
-    public Drones(int id, String manufacturer, String typename, int weight, int max_speed, int battery_capacity, int control_range, int max_carriage) {
+    public Drones(int number, int id, String manufacturer, String typename, int weight, int max_speed, int battery_capacity, int control_range, int max_carriage) {
+        this.number = number;
         this.id = id;
         this.manufacturer = manufacturer;
         this.typename = typename;
@@ -28,6 +30,13 @@ public class Drones {
         this.max_carriage = max_carriage;
     }
 
+    public int getNumber() {
+        return number;
+    }
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    
     public int getId() {
         return id;
     }

@@ -12,7 +12,7 @@ public class Drones {
     private int control_range;
     private int max_carriage;
 
-    // Add getters and setters for each field
+    // Still need to add getters and setters for each field
 
     public Drones() {
         super();

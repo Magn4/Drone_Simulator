@@ -13,6 +13,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class APIFetcher {
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             final String TOKEN = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";

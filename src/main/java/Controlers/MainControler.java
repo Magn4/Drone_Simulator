@@ -7,11 +7,14 @@
  */
 package Controlers;
 
+import API.Fetcher.APIFetcher;
+
 public class MainControler {
-    int i = 4;
     public static void main(String[] args) { 
-       
-        formatchange(i); 
+       String UrlExt = "51/dynamics/?limit=1&offset=10&format=json";
+       String FileExt = "Test.json";
+        
+       APIFetcher.FetchAPI(UrlExt,FileExt);
         
     }
 

@@ -16,7 +16,7 @@ public class JsonDemo {
             System.out.println("\n\n");
             ObjectMapper mapper = new ObjectMapper();
 
-            String jsonFileName = "DroneTypeList.json";
+            String jsonFileName = "Test.json";
             String jsonFilePath = "src/main/java/Data/" + jsonFileName;
 
             JsonNode root = mapper.readTree(new File(jsonFilePath));
@@ -39,18 +39,15 @@ public class JsonDemo {
                     int battery_capacity = node.path("battery_capacity").asInt();
                     int control_range = node.path("control_range").asInt();
                     int max_carriage = node.path("max_carriage").asInt();
-                /*  
-                * System.out.println("type : " + id);
-                * System.out.println("ref : " + typeName);
-                * int number, int id, String manufacturer, String typename, int weight, int max_speed, int battery_capacity, int control_range, int max_carriage
-                * Create a new Drone object and add it to the list 
-                */
+
                     Drones drone = new Drones(number, id, manufacturer, typename, weight, max_speed, battery_capacity, control_range, max_carriage);
                     droneList.add(drone);
                 }
+                System.out.println("\n\n");
+                System.out.println(droneList.get(3).getId());
+                System.out.println("\n\n");
 
-                // Showcase of how to infos from the List of Drones.
-                
+
                 for (Drones drone : droneList) {
                     System.out.println("\n\n");
                     System.out.println("Drone " + drone.getNumber() + ": " +

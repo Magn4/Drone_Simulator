@@ -2,9 +2,6 @@
 
 package Formatter;
 
-import java.io.File;
-
-
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -18,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JsonDemo {
+public class JsonFormatter {
     public static <T> List<T> ReadDroneList(/*String JsonFileName,*/ int Type, String JsonData) {
 
         List<T> droneList = new ArrayList<>();
@@ -29,7 +26,6 @@ public class JsonDemo {
             // String jsonFilePath = "src/main/java/Data/" + JsonFileName;
             JsonNode root = mapper.readTree(JsonData);
             JsonNode ResultsNode = root.path("results");
-
 
             switch (Type) {
                 case 1:
@@ -128,18 +124,3 @@ public class JsonDemo {
         return droneList;
     }
 }
-
-
-
-       /*for (Drones drone : droneList) {
-                    System.out.println("\n\n");
-                    System.out.println("Drone " + drone.getNumber() + ": " +
-                            "ID = " + drone.getId() + 
-                            ", Manufacturer = " + drone.getManufacturer() + 
-                            ", Type Name = " + drone.getTypename() + 
-                            ", Weight = " + drone.getWeight() + 
-                            ", Max Speed = " + drone.getMax_speed() + 
-                            ", Battery Capacity = " + drone.getBattery_capacity() + 
-                            ", Control Range = " + drone.getControl_range() + 
-                            ", Max Carriage = " + drone.getMax_carriage());
-                }*/

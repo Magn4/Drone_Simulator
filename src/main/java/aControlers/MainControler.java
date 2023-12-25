@@ -8,9 +8,9 @@
 
 package aControlers;
 
-import Formatter.JsonDemo;
-import Formatter.Drones.DroneType1;
-import Formatter.Drones.DroneType2;
+import Formatter.JsonFormatter;
+// import Formatter.Drones.DroneType1;
+// import Formatter.Drones.DroneType2;
 import Formatter.Drones.DroneType3;
 
 import API.Fetcher.APIFetcher;
@@ -25,8 +25,8 @@ public class MainControler {
        // String UrlExt = "dronedynamics/?limit=10&offset=10&format=json";
     
       //  String UrlExt = "dronetypes/?format=json";
-       String UrlExt2 = "drones/?format=json";
-       String UrlExt3 = "dronedynamics/?format=json";
+       // String UrlExt2 = "drones/?format=json";
+       // String UrlExt3 = "dronedynamics/?format=json";
        String FileExt = "Test.json";
         
        String result = APIFetcher.FetchAPI(UrlExt,FileExt);
@@ -36,7 +36,7 @@ public class MainControler {
     
        // String JsonFileName = "Test.json";
     
-       List<DroneType3> droneList = JsonDemo.ReadDroneList( 3, result);
+       List<DroneType3> droneList = JsonFormatter.ReadDroneList( 3, result);
        // Type 1: Drone Type List
        // Type 2: Drone List
        // Type 3: Drone Dynamics

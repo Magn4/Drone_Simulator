@@ -8,7 +8,7 @@
  * There will be multiple ids. Am example can be like this: Drone1.id = 51 , Drone2.id =  60 and so on
  */
 
-package Formatter;
+package Formatter.Demox;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

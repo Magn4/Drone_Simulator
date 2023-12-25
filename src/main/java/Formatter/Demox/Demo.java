@@ -1,11 +1,9 @@
-package Formatter;
+package Formatter.Demox;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Formatter.DemoYTB.Drones;
-
-import java.io.File;
+// import java.io.File;
 import java.io.IOException;
 
 public class Demo {
@@ -25,14 +23,14 @@ public class Demo {
         mapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
 
         // Read the JSON data from the file and map it to a wrapper class containing the array
-        DroneTypeListWrapper wrapper = mapper.readValue(new File(jsonFilePath), DroneTypeListWrapper.class);
+        // DroneTypeListWrapper wrapper = mapper.readValue(new File(jsonFilePath), DroneTypeListWrapper.class);
 
         // Access the array of IDs from the wrapper
-        Drones[] ids = wrapper.getResults();
+       // Drones[] ids = wrapper.getResults();
 
         // Print the array of IDs
-        for (Drones id : ids) {
-            System.out.println(id);
-        }
+        //for (Drones id : ids) {
+       //     System.out.println(id);
+        //}
     }
 }

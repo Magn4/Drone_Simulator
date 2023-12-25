@@ -1,7 +1,7 @@
 
-package Formatter.DemoYTB;
+package Formatter.Drones;
 
-public class Drones {
+public class DroneType1 {
     private int number;
     private int id;
     private String manufacturer;
@@ -14,11 +14,11 @@ public class Drones {
 
     // Still need to add getters and setters for each field
 
-    public Drones() {
+    public DroneType1() {
         super();
     }
 
-    public Drones(int number, int id, String manufacturer, String typename, int weight, int max_speed, int battery_capacity, int control_range, int max_carriage) {
+    public DroneType1(int number, int id, String manufacturer, String typename, int weight, int max_speed, int battery_capacity, int control_range, int max_carriage) {
         this.number = number;
         this.id = id;
         this.manufacturer = manufacturer;

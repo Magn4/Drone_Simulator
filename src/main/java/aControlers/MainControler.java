@@ -5,6 +5,7 @@
  * 2. After a User choses a drone he wants to get infos of, this class will start the loop on the 
  * precise regulation.
  */
+
 package aControlers;
 
 import Formatter.JsonDemo;
@@ -18,7 +19,7 @@ import java.util.List;
 public class MainControler {
     public static void main(String[] args) { 
        // String UrlExt = "51/dynamics/?limit=1&offset=10&format=json";
-       String UrlExt = "dronetypes/?format=json";
+       String UrlExt = "dronedynamics/?limit=10&offset=10&format=json";
        String FileExt = "Test.json";
         
        String result = APIFetcher.FetchAPI(UrlExt,FileExt);

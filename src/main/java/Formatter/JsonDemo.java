@@ -1,3 +1,5 @@
+ // Need to study Generics in Java to solve this problem 
+
 package Formatter;
 
 import java.io.File;
@@ -12,6 +14,7 @@ import Formatter.Drones.DroneType2;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class JsonDemo {
     public static List<DroneType1> ReadDroneList(String JsonFileName, int Type) {

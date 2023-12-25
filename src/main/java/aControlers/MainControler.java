@@ -10,6 +10,9 @@ package aControlers;
 
 import Formatter.JsonDemo;
 import Formatter.Drones.DroneType1;
+import Formatter.Drones.DroneType2;
+import Formatter.Drones.DroneType3;
+
 import API.Fetcher.APIFetcher;
 
 
@@ -18,22 +21,38 @@ import java.util.List;
 
 public class MainControler {
     public static void main(String[] args) { 
-       // String UrlExt = "51/dynamics/?limit=1&offset=10&format=json";
-       String UrlExt = "dronedynamics/?limit=10&offset=10&format=json";
+        String UrlExt = "51/dynamics/?limit=1&format=json";
+       // String UrlExt = "dronedynamics/?limit=10&offset=10&format=json";
+    
+      //  String UrlExt = "dronetypes/?format=json";
+       String UrlExt2 = "drones/?format=json";
+       String UrlExt3 = "dronedynamics/?format=json";
        String FileExt = "Test.json";
         
        String result = APIFetcher.FetchAPI(UrlExt,FileExt);
        // System.out.println(ReadDroneList(Test.json).get(3).getId());
     
-       // System.out.println(result);
+        System.out.println(result);
     
-       String JsonFileName = "Test.json";
+       // String JsonFileName = "Test.json";
     
-       List<DroneType1> droneList = JsonDemo.ReadDroneList(JsonFileName, 2);
+       List<DroneType3> droneList = JsonDemo.ReadDroneList( 3, result);
+       // Type 1: Drone Type List
+       // Type 2: Drone List
+       // Type 3: Drone Dynamics
+ 
+    
+
+    
+       System.out.println("Drone ID: " + droneList.get(0).getStatus());
+
 
        if (droneList != null && droneList.size() > 3) {
-        System.out.println("Battery capacity of the 4th drone: " + droneList.get(5).getBattery_capacity());
-        System.out.println("\n\n");
+        for (int i = 0; i < droneList.size(); i++) {
+            System.out.println("Drone ID: " + droneList.get(i).getNumber());
+            System.out.println("Status of the drone: " + droneList.get(i).getStatus());
+            System.out.println("\n");
+        }
     } else {
         System.out.println("Error reading drone list or the list is empty.");
     }

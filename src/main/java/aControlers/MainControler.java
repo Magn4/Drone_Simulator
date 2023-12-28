@@ -40,12 +40,8 @@ public class MainControler {
        // Type 1: Drone Type List
        // Type 2: Drone List
        // Type 3: Drone Dynamics
- 
-    
-
     
        System.out.println("Drone ID: " + droneList.get(0).getStatus());
-
 
        if (droneList != null && droneList.size() > 3) {
         for (int i = 0; i < droneList.size(); i++) {

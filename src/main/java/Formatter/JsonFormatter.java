@@ -16,7 +16,7 @@ import java.util.List;
 
 
 public class JsonFormatter {
-    public static <T> List<T> ReadDroneList(/*String JsonFileName,*/ int Type, String JsonData) {
+    public static <T> List<T> ReadDroneList(int Type, String JsonData) {
 
         List<T> droneList = new ArrayList<>();
 

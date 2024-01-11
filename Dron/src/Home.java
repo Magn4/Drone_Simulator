@@ -1,3 +1,4 @@
+package 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -93,7 +94,8 @@ public class Home {
 		label3.setVerticalTextPosition(JLabel.BOTTOM); //set text TOP, CENTER,BOTTOM of image icon
 		
 		JPanel drone4P = new JPanel();
-		drone4P.setBackground(new Color(90, 120, 220));
+		drone4P.setBackground(new Color(90, 120, 220))
+
 		drone4P.setBounds(300, 400, 200, 150);
 		
 		

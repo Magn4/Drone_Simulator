@@ -100,7 +100,7 @@ public class Demo extends JFrame {
                     }
                 }
             } else {
-                infoTextArea.setText("Error: Failed to fetch API data.");
+                infoTextArea.setText("Error: Failed to fetch API data. Check if your VPN is Connected!");
             }
         }
     }

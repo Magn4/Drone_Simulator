@@ -1,6 +1,15 @@
+package GUI.Dron.src; 
+
+import Formatter.Drones.DroneType1;
+import Formatter.Drones.DroneType2;
+import Formatter.Drones.DroneType3;
+import API.Fetcher.APIFetcher;
+import Formatter.JsonFormatter;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -35,7 +44,19 @@ public class Home {
 		
 		
 		// Panel of drone 1
-		JLabel label1 = new JLabel("INFO : Drone 1");
+
+		String result = APIFetcher.FetchAPI("dronetypes/73/?format=json", "Test.json");
+
+		List<DroneType1> droneType1List = JsonFormatter.ReadDroneList(1, result);
+
+
+		DroneType1 droneType1 = droneType1List.get(0);
+		
+		System.out.println(droneType1.getId());
+		String test = droneType1.getManufacturer();
+		JLabel label1 = new JLabel(test);
+		
+		
 		label1.setIcon(icon);
 		//label.setVerticalAlignment(JLabel.TOP);
 		//label.setHorizontalAlignment(JLabel.RIGHT);

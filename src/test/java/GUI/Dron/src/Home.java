@@ -42,7 +42,7 @@ public class Home {
 	
 	private static JPanel createMainPanel() {
 		
-		JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
         mainPanel.setPreferredSize(new java.awt.Dimension(480, 800)); 
 

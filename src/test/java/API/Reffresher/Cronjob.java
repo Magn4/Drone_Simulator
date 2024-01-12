@@ -2,19 +2,19 @@
 without the need for manual button clicks */
 
 
-package API.Refresh;
+package API.Reffresher;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class CronJob {
+public class Cronjob {
 
     private InfoUpdater infoUpdater;
     private Refresher refresher;
     //Refresh every 10min
     private static final int REFRESH_RATE = 10 * 60 * 1000; 
 
-    public CronJob(InfoUpdater infoUpdater, Refresher refresher) {
+    public Cronjob(InfoUpdater infoUpdater, Refresher refresher) {
         this.infoUpdater = infoUpdater;
     }
 
@@ -36,7 +36,7 @@ public class CronJob {
         Refresher refresher = new Refresher(infoUpdater);
 
         // Create an instance of CronJob & start automatic refresh
-        CronJob cronJob = new CronJob(infoUpdater, refresher);
+        Cronjob cronJob = new Cronjob(infoUpdater, refresher);
         cronJob.startAutomaticRefresh();
     }
 

@@ -1,4 +1,5 @@
 package GUI.Demo;
+
 import Formatter.Drones.DroneType1;
 import Formatter.Drones.DroneType2;
 import Formatter.Drones.DroneType3;
@@ -100,7 +101,7 @@ public class Demo extends JFrame {
                     }
                 }
             } else {
-                infoTextArea.setText("Error: Failed to fetch API data.");
+                infoTextArea.setText("Error: Failed to fetch API data. Check if your VPN is Connected!");
             }
         }
     }

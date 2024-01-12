@@ -7,7 +7,7 @@
 /* It reads data from a local JSON file, fetches data from an API endpoint, compares 
 the two datasets, updates the local JSON file if changes are detected, and displays updates.  */
 
-package API.Refresh;
+package API.Reffresher;
 
 
 import com.fasterxml.jackson.databind.JsonNode;

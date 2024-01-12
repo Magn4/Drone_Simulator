@@ -1,11 +1,4 @@
 package GUI.Dron.src; 
-
-import Formatter.Drones.DroneType1;
-import Formatter.Drones.DroneType2;
-import Formatter.Drones.DroneType3;
-import API.Fetcher.APIFetcher;
-import Formatter.JsonFormatter;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -19,6 +12,39 @@ import javax.swing.JPanel;
 public class Home {
 	
 	public static void main(String[] args) {
+		SwingUtilities.invokeLater(() -> {
+			
+			JFrame frame = new JFrame("Home");
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			//frame.setSize(1500,700);
+			frame.setSize(500, 500);
+			
+			
+			
+			// Create main panel :
+			JPanel mainPanel = createMainPanel();
+			
+			// Create JScrollPane  :
+			JScrollPane scrollPane = new JScrollPane(mainPanel);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+            
+            // add  JScrollPane 
+            frame.add(scrollPane);
+
+            frame.setVisible(true);
+            
+		});
+	}
+
+	
+	private static JPanel createMainPanel() {
+		
+		JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		mainPanel.setLayout(null);
+        mainPanel.setPreferredSize(new java.awt.Dimension(480, 800)); 
+
+		
 		
 		back backB = new back();
 		move moveB = new move();
@@ -43,6 +69,39 @@ public class Home {
 		ImageIcon icon = new ImageIcon("C:/Users/Nisri/Downloads/UAS.3Semester/Object-Oriented Programming in Java/Java lernen/Dron/src/big-drone.png");
 		
 		
+		for(int i=1 ; i<=9 ; i++) {
+			int k = 200;
+				for(int j=300 ; j<=900 ; j+= 300) {
+					if(j==900) {
+						j = 300;
+						k+= 200;
+					}
+					
+					
+					JLabel label = new JLabel("INFO : Drone " +i);
+					label.setIcon(icon);
+					//label.setVerticalAlignment(JLabel.TOP);
+					//label.setHorizontalAlignment(JLabel.RIGHT);
+					label.setBounds(100, 50, 300, 300);
+					label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT ,CENTER, RIGHT of image icon
+					label.setVerticalTextPosition(JLabel.BOTTOM); //set text TOP, CENTER,BOTTOM of image icon
+
+					JPanel droneP = new JPanel();
+					droneP.setBackground(new Color(90, 120, 220));
+					droneP.setBounds(j , k , 200, 150);
+					
+					droneP.add(label);
+					mainPanel.add(droneP);
+
+					
+					
+				}
+			
+			}
+		
+		
+		
+		/*
 		// Panel of drone 1
 
 		String result = APIFetcher.FetchAPI("dronetypes/73/?format=json", "Test.json");
@@ -94,7 +153,7 @@ public class Home {
 		//label.setHorizontalAlignment(JLabel.RIGHT);
 		label3.setBounds(100, 50, 300, 300);
 		label3.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT ,CENTER, RIGHT of image icon
-		label3.setVerticalTextPosition(JLabel.BOTTOM); //set text TOP, CENTER,BOTTOM of image icon
+		label3.setVerticalTextPosition(JLabel.BOTTOM); //set text TOP,a CENTER,BOTTOM of image icon
 		
 		JPanel drone3P = new JPanel();
 		drone3P.setBackground(new Color(90, 120, 220));
@@ -201,8 +260,8 @@ public class Home {
 		
 		JPanel drone9P = new JPanel();
 		drone9P.setBackground(new Color(90, 120, 220));
-		drone9P.setBounds(900, 900, 200, 150);
-
+		drone9P.setBounds(900, 600, 200, 150);
+			*/
 		
 
 		
@@ -217,21 +276,18 @@ public class Home {
 		
 		
 		
-		JFrame frame = new JFrame("Home");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(null);
 
-		frame.add(backB.getBackButton());
-		frame.add(moveB.getMoveButton());
-		frame.add(refreshB.getRefreshButton());
-		frame.add(startP.getStartPanel());
-		frame.add(catalogP.getCatalogPanel());
-		frame.add(dynamicsP.getDynamicsPanel());
-		frame.add(historicalP.getHistoricalPanel());
-		frame.add(topPanel);
-		frame.add(sidePanel);
+		mainPanel.add(backB.getBackButton());
+		mainPanel.add(moveB.getMoveButton());
+		mainPanel.add(refreshB.getRefreshButton());
+		mainPanel.add(startP.getStartPanel());
+		mainPanel.add(catalogP.getCatalogPanel());
+		mainPanel.add(dynamicsP.getDynamicsPanel());
+		mainPanel.add(historicalP.getHistoricalPanel());
+		mainPanel.add(topPanel);
+		mainPanel.add(sidePanel);
 		drone1P.add(label1);
-		frame.add(drone1P);
+		mainPanel.add(drone1P);
 		drone2P.add(label2);
 		frame.add(drone2P);
 		drone3P.add(label3);
@@ -251,6 +307,7 @@ public class Home {
 
 
 
+		return mainPanel ;
 
 		//frame.setSize(1500,700);
 		frame.setSize(500, 500);
@@ -259,3 +316,4 @@ public class Home {
 	}
 
 }
+

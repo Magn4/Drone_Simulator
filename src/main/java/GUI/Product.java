@@ -1,4 +1,4 @@
-package API.Catalog;
+package GUI;
 
 public class Product {
 

@@ -1,13 +1,14 @@
-package GUI.Dron.src; 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
-import java.util.List;
+import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JLabel;   
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 
 public class Home {
 	
@@ -26,7 +27,7 @@ public class Home {
 			
 			// Create JScrollPane  :
 			JScrollPane scrollPane = new JScrollPane(mainPanel);
-            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
             
             // add  JScrollPane 
@@ -40,9 +41,9 @@ public class Home {
 	
 	private static JPanel createMainPanel() {
 		
-		JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-        mainPanel.setPreferredSize(new java.awt.Dimension(480, 800)); 
+        mainPanel.setPreferredSize(new java.awt.Dimension(480, 1600)); 
 
 		
 		
@@ -57,7 +58,7 @@ public class Home {
 		
 		JPanel sidePanel = new JPanel() ;
 		sidePanel.setBackground(new Color(90, 120, 220));
-		sidePanel.setBounds(0, 80, 200, 800);
+		sidePanel.setBounds(0, 80, 200, 1600);
 		
 		
 		JPanel topPanel = new JPanel() ;
@@ -68,54 +69,31 @@ public class Home {
 		
 		ImageIcon icon = new ImageIcon("C:/Users/Nisri/Downloads/UAS.3Semester/Object-Oriented Programming in Java/Java lernen/Dron/src/big-drone.png");
 		
-		
-		for(int i=1 ; i<=9 ; i++) {
-			int k = 200;
-				for(int j=300 ; j<=900 ; j+= 300) {
-					if(j==900) {
-						j = 300;
-						k+= 200;
-					}
-					
-					
-					JLabel label = new JLabel("INFO : Drone " +i);
-					label.setIcon(icon);
-					//label.setVerticalAlignment(JLabel.TOP);
-					//label.setHorizontalAlignment(JLabel.RIGHT);
-					label.setBounds(100, 50, 300, 300);
-					label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT ,CENTER, RIGHT of image icon
-					label.setVerticalTextPosition(JLabel.BOTTOM); //set text TOP, CENTER,BOTTOM of image icon
-
-					JPanel droneP = new JPanel();
-					droneP.setBackground(new Color(90, 120, 220));
-					droneP.setBounds(j , k , 200, 150);
-					
-					droneP.add(label);
-					mainPanel.add(droneP);
-
-					
-					
+		int n = 7;
+		int y = 200;
+		for(int i=1 ; i<= n; i++) {
+			for(int x=300 ; x<=900 ; x+= 300) {
+				JLabel label = new JLabel("INFO : Drone " +i);
+				label.setIcon(icon);
+				//label.setVerticalAlignment(JLabel.TOP);
+				//label.setHorizontalAlignment(JLabel.RIGHT);
+				label.setBounds(x, y, 300, 300);			
+				label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT ,CENTER, RIGHT of image icon
+				label.setVerticalTextPosition(JLabel.BOTTOM); //set text TOP, CENTER,BOTTOM of image icon
+				JPanel droneP = new JPanel();
+				droneP.setBackground(new Color(90, 120, 220));
+				droneP.setBounds(x , y , 250, 150);
+				droneP.add(label);
+				mainPanel.add(droneP);
 				}
-			
+				y+= 200;
 			}
 		
 		
 		
-		/*
+		/* 
 		// Panel of drone 1
-
-		String result = APIFetcher.FetchAPI("dronetypes/73/?format=json", "Test.json");
-
-		List<DroneType1> droneType1List = JsonFormatter.ReadDroneList(1, result);
-
-
-		DroneType1 droneType1 = droneType1List.get(0);
-		
-		System.out.println(droneType1.getId());
-		String test = droneType1.getManufacturer();
-		JLabel label1 = new JLabel(test);
-		
-		
+		JLabel label1 = new JLabel("INFO : Drone 1");
 		label1.setIcon(icon);
 		//label.setVerticalAlignment(JLabel.TOP);
 		//label.setHorizontalAlignment(JLabel.RIGHT);
@@ -261,11 +239,11 @@ public class Home {
 		JPanel drone9P = new JPanel();
 		drone9P.setBackground(new Color(90, 120, 220));
 		drone9P.setBounds(900, 600, 200, 150);
-			*/
+			
 		
 
 		
-
+/* */
 		
 		
 		
@@ -286,34 +264,31 @@ public class Home {
 		mainPanel.add(historicalP.getHistoricalPanel());
 		mainPanel.add(topPanel);
 		mainPanel.add(sidePanel);
-		drone1P.add(label1);
+		/*drone1P.add(label1);
 		mainPanel.add(drone1P);
 		drone2P.add(label2);
-		frame.add(drone2P);
+		mainPanel.add(drone2P);
 		drone3P.add(label3);
-		frame.add(drone3P);
+		mainPanel.add(drone3P);
 		drone4P.add(label4);
-		frame.add(drone4P);
+		mainPanel.add(drone4P);
 		drone5P.add(label5);
-		frame.add(drone5P);
+		mainPanel.add(drone5P);
 		drone6P.add(label6);
-		frame.add(drone6P);
+		mainPanel.add(drone6P);
 		drone7P.add(label7);
-		frame.add(drone7P);
+		mainPanel.add(drone7P);
 		drone8P.add(label8);
-		frame.add(drone8P);
+		mainPanel.add(drone8P);
 		drone9P.add(label9);
-		frame.add(drone9P);
+		mainPanel.add(drone9P);
 
-
-
+/* */
 		return mainPanel ;
 
-		//frame.setSize(1500,700);
-		frame.setSize(500, 500);
-		frame.setVisible(true);
 		
 	}
 
 }
+
 

@@ -1,3 +1,5 @@
+package GUI.Dron.src;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
@@ -29,7 +31,7 @@ public class historical extends JPanel implements ActionListener{
 		historicalL.setForeground(Color.WHITE);
 
 		
-		ImageIcon icon4 = new ImageIcon("C:/Users/Nisri/Downloads/UAS.3Semester/Object-Oriented Programming in Java/Java lernen/Dron/src/kalender.png");
+		ImageIcon icon4 = new ImageIcon("src/test/java/GUI/Dron/src/kalender.png");
 		historicalB = new JButton();
 		//historical.setBounds(0, 0, 0, 0);
 		historicalB.setFocusable(false);

@@ -1,3 +1,5 @@
+package GUI.Dron.src;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
@@ -30,7 +32,7 @@ public class start extends JPanel implements ActionListener{
 		startL.setForeground(Color.WHITE);
 
 		
-		ImageIcon icon4 = new ImageIcon("C:/Users/Nisri/Downloads/UAS.3Semester/Object-Oriented Programming in Java/Java lernen/Dron/src/home.png");
+		ImageIcon icon4 = new ImageIcon("src/test/java/GUI/Dron/src/home.png");
 		startB = new JButton();
 		//startB.setBounds(50, 50, 50, 50);
 		startB.setFocusable(false);

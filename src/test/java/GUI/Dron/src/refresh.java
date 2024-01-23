@@ -1,3 +1,5 @@
+package GUI.Dron.src;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -12,7 +14,7 @@ public class refresh extends JButton implements ActionListener{
 	
 	refresh(){
 		
-		ImageIcon icon3 = new ImageIcon("C:/Users/Nisri/Downloads/UAS.3Semester/Object-Oriented Programming in Java/Java lernen/Dron/src/refresh.png");
+		ImageIcon icon3 = new ImageIcon("src/test/java/GUI/Dron/src/refresh.png");
 		refresh = new JButton();
 		refresh.setBounds(120, 0, 50, 50);
 		refresh.setIcon(icon3);

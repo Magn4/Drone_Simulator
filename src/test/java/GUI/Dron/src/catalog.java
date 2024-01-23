@@ -1,3 +1,4 @@
+package GUI.Dron.src;
 
 	import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -29,7 +30,7 @@ import javax.swing.JPanel;
 			
 			
 			
-			ImageIcon icon5 = new ImageIcon("C:/Users/Nisri/Downloads/UAS.3Semester/Object-Oriented Programming in Java/Java lernen/Dron/src/list.png");
+			ImageIcon icon5 = new ImageIcon("src/test/java/GUI/Dron/src/list.png");
 			catalogB = new JButton();
 			catalogB.setBounds(10, 300, 50, 50);
 			catalogB.setFocusable(false);

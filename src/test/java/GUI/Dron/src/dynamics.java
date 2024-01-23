@@ -1,3 +1,5 @@
+package GUI.Dron.src;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
@@ -29,7 +31,7 @@ public class dynamics extends JPanel implements ActionListener{
 		dynamicsL.setForeground(Color.WHITE);
 
 		
-		ImageIcon icon4 = new ImageIcon("C:/Users/Nisri/Downloads/UAS.3Semester/Object-Oriented Programming in Java/Java lernen/Dron/src/drone.png");
+		ImageIcon icon4 = new ImageIcon("src/test/java/GUI/Dron/src/drone.png");
 		dynamicsB = new JButton();
 		//dynamics.setBounds(0, 0, 0, 0);
 		dynamicsB.setFocusable(false);

@@ -15,6 +15,19 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
 
+import Formatter.Drones.DroneType3;
+import API.Fetcher.APIFetcher;
+import Formatter.JsonFormatter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+
 
 public class flightDynamics {
 	
@@ -88,15 +101,28 @@ public class flightDynamics {
 			};*/
 		
 		
-		String[] columns = {"ID", "Timestamp", "Drone", "Speed", "Alignment Roll", "Control Range", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
+			String result = APIFetcher.FetchAPI("dronedynamics/?limit=25&format=json", "Test.json");
 
-		Object[][] data = new Object[36030][columns.length];
+			List<DroneType3> droneTypeList = JsonFormatter.ReadDroneList(3, result);
 
-		for (int i = 0; i < 36030; i++) {
+			// droneType1List.get(z).getId()
+
+		String[] columns = {"ID", "Timestamp", "Speed", "Alignment Roll", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
+
+		Object[][] data = new Object[25][columns.length];
+
+
+
+		for (int i = 0; i < 25; i++) {
 		    data[i] = new Object[]{
-		    		String.valueOf(i + 1), 
-		            "Dec. 26, 2023, 6:32 p.m.", "Drone: PoD8-2031-B53F1D (created: 2023-12-27 08:07:00.701950+00:00)",
+		    		String.valueOf(i), 
+					droneTypeList.get(i).getTimestamp(), droneTypeList.get(i).getSpeed(),
+					droneTypeList.get(i).getAlign_roll(), droneTypeList.get(i).getAlign_yaw(), droneTypeList.get(i).getLongitude(),
+					droneTypeList.get(i).getLatitude(), droneTypeList.get(i).getBattery_status(), droneTypeList.get(i).getLast_seen(),
+					droneTypeList.get(i).getStatus()
+		            /* "Dec. 26, 2023, 6:32 p.m.", "Drone: PoD8-2031-B53F1D (created: 2023-12-27 08:07:00.701950+00:00)",
 		            "0", "0.00", "0.00", "42.00", "8.678137129", "50.107668121", "0", "Dec. 26, 2023, 6:07 p.m.", "OF"
+					*/
 		    };
 		}
 

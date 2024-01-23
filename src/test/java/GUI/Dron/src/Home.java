@@ -14,7 +14,13 @@ import javax.swing.SwingUtilities;
 
 import Formatter.Drones.DroneType1;
 import Formatter.Drones.DroneType2;
+import Formatter.Drones.DroneType3;
+import API.Fetcher.APIFetcher;
+import Formatter.JsonFormatter;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,30 +82,49 @@ public class Home {
 		
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");
 		
+
+		String result1 = APIFetcher.FetchAPI("drones/?format=json", "Test.json");
+		String result2 = APIFetcher.FetchAPI("dronedynamics/?format=json", "Test.json");
+		String result3 = APIFetcher.FetchAPI("dronetypes/?format=json", "Test.json");
+
+		List<DroneType1> droneType1List = JsonFormatter.ReadDroneList(1, result1);
+		List<DroneType2> droneType2List = JsonFormatter.ReadDroneList(2, result2);
+		List<DroneType3> droneType3List = JsonFormatter.ReadDroneList(3, result3);
+
+		DroneType1 droneType1 = droneType1List.get(0);
+		DroneType2 droneType2 = droneType2List.get(0);
+		DroneType3 droneType3 = droneType3List.get(0);
+	
 		
+/* 
+		System.out.println(result);
+*/
+
 		int n = 35;
 		int m = n % 3;
 		n = n/3;
+
 		System.out.println("This is n:" + n);
+
 		int y = 200;
 		int j = 1;
 		for(int i=1 ; i<= n; i++) {
 			int x = 300;
 			
 			for(int z=0 ; z<=2 ; z++) {
-				JLabel label = new JLabel("INFO : Drone " + j);
+				JLabel label = new JLabel("INFO : Drone " + j  + " ID: " + "\n" + droneType1List.get(z).getId());
 				label.setForeground(Color.WHITE);
-
+				
 				label.setIcon(icon);
-			
+				
 				label.setBounds(x, y, 300, 300);			
 				label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT ,CENTER, RIGHT of image icon
 				label.setVerticalTextPosition(JLabel.BOTTOM); //set text TOP, CENTER,BOTTOM of image icon
 				
 				JPanel droneP = new JPanel();
-
+				
 				droneP.setBackground(new Color(79, 58, 114));
-			
+				
 				droneP.setBounds(x , y , 250, 150);
 				droneP.add(label);
 				mainPanel.add(droneP);
@@ -108,14 +133,12 @@ public class Home {
 				}
 				x = 300;
 				y+= 200;
-				
 
-				
 			}
 			if (m != 0) {
 				int x = 300;
 				for(int z=0 ; z<m ; z++) {
-					JLabel label = new JLabel("INFO : Drone " + j);
+					JLabel label = new JLabel("INFO : Drone " + j /*+ " ID: " + droneType1.getId()*/);
 					label.setForeground(Color.WHITE);
 	
 					label.setIcon(icon);
@@ -147,8 +170,6 @@ public class Home {
 		mainPanel.add(sidePanel);
 		
 		return mainPanel ;
-
-
 		
 	}
 

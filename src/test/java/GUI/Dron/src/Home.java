@@ -147,6 +147,7 @@ public class Home {
 		mainPanel.add(sidePanel);
 		
 		return mainPanel ;
+		
 
 		
 	}

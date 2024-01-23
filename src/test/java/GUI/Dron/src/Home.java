@@ -77,7 +77,7 @@ public class Home {
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");
 		
 		
-		int n = 32;
+		int n = 35;
 		int m = n % 3;
 		n = n/3;
 		System.out.println("This is n:" + n);
@@ -147,7 +147,7 @@ public class Home {
 		mainPanel.add(sidePanel);
 		
 		return mainPanel ;
-		
+
 
 		
 	}

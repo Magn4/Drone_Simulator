@@ -144,13 +144,6 @@ public class flightDynamics {
 				
 				
 				
-				
-				
-				
-				
-				
-				
-				
 		mainPanel.add(backB.getBackButton());
 		mainPanel.add(moveB.getMoveButton());
 		mainPanel.add(refreshB.getRefreshButton());

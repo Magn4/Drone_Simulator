@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import Formatter.Drones.Drone;
+
 public class APIFetcher {
 
     public static String FetchAPI(String URLext, String Path) {
@@ -24,8 +26,7 @@ public class APIFetcher {
 
             // String URLext = "51/dynamics";
             // String Path = "Test.json";
-
-            final URL url = new URL("https://dronesim.facets-labs.com/api/" + URLext);
+            final URL url = new URL(/* "https://dronesim.facets-labs.com/api/" + */URLext);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             con.setRequestProperty("Authorization", TOKEN);
@@ -63,6 +64,11 @@ public class APIFetcher {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static String FetchAPI(Drone uRL, String path) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'FetchAPI'");
     }
 }
 

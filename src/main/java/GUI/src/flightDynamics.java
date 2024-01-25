@@ -1,32 +1,26 @@
-package GUI.Dron.src;
+package GUI.src;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
-import javax.swing.ImageIcon;
+import java.awt.Dimension;
+
+
 import javax.swing.JFrame;
-import javax.swing.JLabel;   
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
 
-import Formatter.Drones.DroneType3;
+import Formatter.Drones.Drone;
+import Formatter.Drones.DroneDynamics;
 import API.Fetcher.APIFetcher;
 import Formatter.JsonFormatter;
 
-import java.util.ArrayList;
+
+
 import java.util.List;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-
-
 
 
 public class flightDynamics {
@@ -65,7 +59,6 @@ public class flightDynamics {
         mainPanel.setPreferredSize(new java.awt.Dimension(480, 5000)); 
 
 		
-		
 		back backB = new back();
 		move moveB = new move();
 		refresh refreshB = new refresh();
@@ -99,11 +92,11 @@ public class flightDynamics {
 			{
 					{"86832", "Dec. 26, 2023, 6:32 p.m.", "Drone: PoD8-2031-B53F1D (created: 2023-12-27 08:07:00.701950+00:00)", "0", "0.00", "0.00", "42.00", "8.678137129", "50.107668121", "0", "Dec. 26, 2023, 6:07 p.m.", "OF"},
 			};*/
-		
-		
-			String result = APIFetcher.FetchAPI("dronedynamics/?limit=25&format=json", "Test.json");
 
-			List<DroneType3> droneTypeList = JsonFormatter.ReadDroneList(3, result);
+			String result = APIFetcher.FetchAPI("https://dronesim.facets-labs.com/api/dronedynamics/?limit=25&format=json", "Test.json");
+
+			List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
+
 
 			// droneType1List.get(z).getId()
 
@@ -111,11 +104,18 @@ public class flightDynamics {
 
 		Object[][] data = new Object[25][columns.length];
 
-
-
 		for (int i = 0; i < 25; i++) {
-		    data[i] = new Object[]{
-		    		String.valueOf(i), 
+			String URL = droneTypeList.get(i).getDrone();
+
+			System.out.println("This is the URL "+URL);
+				String result4 = APIFetcher.FetchAPI( URL,"Test.json" );
+				List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result4);
+				System.out.println("This is the Secound link "+ droneTypeList2.get(0).getDronetype());
+
+				int ID = droneTypeList2.get(0).getId();
+				
+		   		 data[i] = new Object[]{ 
+					ID,
 					droneTypeList.get(i).getTimestamp(), droneTypeList.get(i).getSpeed(),
 					droneTypeList.get(i).getAlign_roll(), droneTypeList.get(i).getAlign_yaw(), droneTypeList.get(i).getLongitude(),
 					droneTypeList.get(i).getLatitude(), droneTypeList.get(i).getBattery_status(), droneTypeList.get(i).getLast_seen(),
@@ -124,6 +124,21 @@ public class flightDynamics {
 		            "0", "0.00", "0.00", "42.00", "8.678137129", "50.107668121", "0", "Dec. 26, 2023, 6:07 p.m.", "OF"
 					*/
 		    };
+		/* } else {
+			// Handle the case when droneTypeList2 is empty (decide what to do)
+			System.out.println("DroneType2 list is empty for URL: " + URL);
+			// You might want to set some default values or log a message, etc.
+			data[i] = new Object[]{
+				droneTypeList2.get(1).getId()
+				String.valueOf(i), 
+				droneTypeList.get(i).getTimestamp(), droneTypeList.get(i).getSpeed(),
+				droneTypeList.get(i).getAlign_roll(), droneTypeList.get(i).getAlign_yaw(), droneTypeList.get(i).getLongitude(),
+				droneTypeList.get(i).getLatitude(), droneTypeList.get(i).getBattery_status(), droneTypeList.get(i).getLast_seen(),
+				droneTypeList.get(i).getStatus()
+			};
+			
+		}
+	*/
 		}
 
 		
@@ -133,24 +148,7 @@ public class flightDynamics {
 		scroll.setPreferredSize(new Dimension(900, 2000));
 		tableP.add(scroll);
 		
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+		
 		mainPanel.add(backB.getBackButton());
 		mainPanel.add(moveB.getMoveButton());
 		mainPanel.add(refreshB.getRefreshButton());
@@ -167,4 +165,5 @@ public class flightDynamics {
 	}
 
 }
+
 

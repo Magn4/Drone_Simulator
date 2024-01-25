@@ -1,4 +1,4 @@
-package GUI.src;
+package GUI.src.MainPages;
 
 import java.awt.Color;
 
@@ -10,8 +10,6 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
 import Formatter.Drones.DroneType;
-
-
 import API.Fetcher.APIFetcher;
 import Formatter.JsonFormatter;
 

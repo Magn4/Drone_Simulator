@@ -1,4 +1,4 @@
-package GUI.src;
+package GUI.src.MainPages;
 
 
 import java.awt.Color;

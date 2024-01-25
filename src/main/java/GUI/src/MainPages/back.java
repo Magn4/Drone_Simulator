@@ -1,4 +1,4 @@
-package GUI.src;
+package GUI.src.MainPages;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +13,7 @@ public class back extends JButton implements ActionListener{
 	
 	back(){
 		
-		ImageIcon icon1 = new ImageIcon("src/test/java/GUI/Dron/src/pfeil-links.png");
+		ImageIcon icon1 = new ImageIcon("src/main/java/GUI/src/Resources/pfeil-links.png");
 		back = new JButton();
 		back.setBounds(0, 0, 50, 50);
 		back.setIcon(icon1);

@@ -1,5 +1,6 @@
 package Formatter;
 
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,7 +26,7 @@ public class JsonFormatter {
                         int number = 0;
                         for (JsonNode node : resultsNode) {
                             number++;
-                            T drone = (T) createDroneTypeFromJsonNode(node, number, mapper);
+                            T drone = (T) DroneTypeFromJsonNode(node, number, mapper);
                             droneList.add(drone);
                         }
                     }
@@ -36,7 +37,7 @@ public class JsonFormatter {
                         int number = 0;
                         for (JsonNode node : resultsNode) {
                             number++;
-                            T drone = (T) createDroneFromJsonNode(node, number, mapper);
+                            T drone = (T) DroneFromJsonNode(node, number, mapper);
                             droneList.add(drone);
                         }
                     }
@@ -47,19 +48,19 @@ public class JsonFormatter {
                         int number = 0;
                         for (JsonNode node : resultsNode) {
                             number++;
-                            T drone = (T) createDroneDynamicsFromJsonNode(node, number, mapper);
+                            T drone = (T) DroneDynamicsFromJsonNode(node, number, mapper);
                             droneList.add(drone);
                         }
                     }
                     break;
 
                 case 4:
-                    T drone = (T) createDroneFromJsonData(jsonData, mapper);
+                    T drone = (T) DroneFromJsonData(jsonData, mapper);
                     droneList.add(drone);
                     break;
 
                 case 5:
-                    T droneType = (T) createDroneTypeFromJsonData(jsonData, mapper);
+                    T droneType = (T) DroneTypeFromJsonData(jsonData, mapper);
                     droneList.add(droneType);
                     break;
 
@@ -73,18 +74,9 @@ public class JsonFormatter {
         return droneList;
     }
 
-    private static Drone createDroneFromJsonNode(JsonNode node, int number, ObjectMapper mapper) {
-        int id = node.path("id").asInt();
-        String dronetype = node.path("dronetype").asText();
-        String serialnumber = node.path("serialnumber").asText();
-        int carriage_weight = node.path("carriage_weight").asInt();
-        String carriage_type = node.path("carriage_type").asText();
-        String created = node.path("created").asText();
+    
 
-        return new Drone(number, id, dronetype, serialnumber, carriage_weight, carriage_type, created);
-    }
-
-    private static DroneDynamics createDroneDynamicsFromJsonNode(JsonNode node, int number, ObjectMapper mapper) {
+    private static DroneDynamics DroneDynamicsFromJsonNode(JsonNode node, int number, ObjectMapper mapper) {
         String droneURL = node.path("drone").asText();
         String timestamp = node.path("timestamp").asText();
         int speed = node.path("speed").asInt();
@@ -101,7 +93,7 @@ public class JsonFormatter {
         return new DroneDynamics(number, droneURL, timestamp, speed, align_roll, align_pitch, align_yaw, longitude, latitude, battery_status, last_seen, status);
     }
 
-    private static Drone createDroneFromJsonData(String jsonData, ObjectMapper mapper) {
+    private static Drone DroneFromJsonData(String jsonData, ObjectMapper mapper) {
         try {
             JsonNode jsonNode = mapper.readTree(jsonData);
             return mapper.treeToValue(jsonNode, Drone.class);
@@ -111,7 +103,7 @@ public class JsonFormatter {
         }
     }
 
-    private static DroneType createDroneTypeFromJsonData(String jsonData, ObjectMapper mapper) {
+    private static DroneType DroneTypeFromJsonData(String jsonData, ObjectMapper mapper) {
         try {
             JsonNode jsonNode = mapper.readTree(jsonData);
             return mapper.treeToValue(jsonNode, DroneType.class);
@@ -121,7 +113,7 @@ public class JsonFormatter {
         }
     }
 
-    private static DroneType createDroneTypeFromJsonNode(JsonNode node, int number, ObjectMapper mapper) {
+    private static DroneType DroneTypeFromJsonNode(JsonNode node, int number, ObjectMapper mapper) {
         int id = node.path("id").asInt();
         String manufacturer = node.path("manufacturer").asText();
         String typename = node.path("typename").asText();

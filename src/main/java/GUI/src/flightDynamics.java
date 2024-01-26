@@ -31,7 +31,7 @@ public class flightDynamics {
 			JFrame frame = new JFrame("Home");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//frame.setSize(1500,700);
-			frame.setSize(500, 500);
+			frame.setSize(1500, 1500);
 			
 			
 			
@@ -56,7 +56,7 @@ public class flightDynamics {
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-        mainPanel.setPreferredSize(new java.awt.Dimension(480, 5000)); 
+        mainPanel.setPreferredSize(new java.awt.Dimension(480, 800)); 
 
 		
 		back backB = new back();
@@ -70,12 +70,12 @@ public class flightDynamics {
 		
 		JPanel sidePanel = new JPanel() ;
 		sidePanel.setBackground(new Color(54, 33, 89));
-		sidePanel.setBounds(0, 80, 200, 5000);
+		sidePanel.setBounds(0, 80, 200, 800);
 		
 		
 		JPanel topPanel = new JPanel() ;
 		topPanel.setBackground(new Color(54, 33, 89));
-		topPanel.setBounds(0, 0, 1300, 80);
+		topPanel.setBounds(0, 0, 2000, 80);
 		
 		// Panel von tabelle :
 		/*JLabel label8 = new JLabel("INFO : Drone 8");
@@ -85,7 +85,7 @@ public class flightDynamics {
 		
 		JPanel tableP = new JPanel();
 		tableP.setBackground(new Color(154, 133, 189));
-		tableP.setBounds(270, 200, 900, 5000);
+		tableP.setBounds(270, 200, 900, 500);
 
 		/*String[] columns = {"ID", "Timestamp", "Drone", "Speed", "Alignment Roll", "Control Range", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
 		Object[][] data = 
@@ -145,7 +145,7 @@ public class flightDynamics {
 		JTable table = new JTable(data, columns);
 		//table.setRowSelectionAllowed(true);
 		JScrollPane scroll = new JScrollPane(table);
-		scroll.setPreferredSize(new Dimension(900, 2000));
+		scroll.setPreferredSize(new Dimension(900, 800));
 		tableP.add(scroll);
 		
 		

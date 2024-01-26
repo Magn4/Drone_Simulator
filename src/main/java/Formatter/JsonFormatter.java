@@ -37,7 +37,7 @@ public class JsonFormatter {
                         int number = 0;
                         for (JsonNode node : resultsNode) {
                             number++;
-                            T drone = (T) DroneFromJsonNode(node, number, mapper);
+                            T drone = (T) test.DroneFromJsonNode(node, number, mapper);
                             droneList.add(drone);
                         }
                     }

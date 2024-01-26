@@ -1,9 +1,7 @@
-//the main
-
-package GUI.Demo;
+package GUI.src.MainPages;
 
 import API.Fetcher.APIFetcher;
-import Formatter.Drones.DroneType1;
+import Formatter.Drones.DroneType;
 import Formatter.JsonFormatter;
 
 import javax.swing.*;
@@ -135,9 +133,9 @@ public class DroneCatalog extends JFrame {
         if (result != null) {
             listModel.clear();
             if (droneComboBox.getSelectedItem().equals("Drone Type")) {
-                List<DroneType1> droneType1List = JsonFormatter.ReadDroneList(1, result);
-                droneType1List.sort(Comparator.comparingInt(DroneType1::getId));
-                for (DroneType1 droneType1 : droneType1List) {
+                List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result);
+                droneType1List.sort(Comparator.comparingInt(DroneType::getId));
+                for (DroneType droneType1 : droneType1List) {
                     listModel.addElement("Drone ID: " + droneType1.getId());
                 }
                 if (!droneType1List.isEmpty()) {
@@ -156,7 +154,7 @@ public class DroneCatalog extends JFrame {
 
         String result = APIFetcher.FetchAPI(urlExtension, fileExtension);
         if (result != null && droneComboBox.getSelectedItem().equals("Drone Type")) {
-            List<DroneType1> droneType1List = JsonFormatter.ReadDroneList(1, result);
+            List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result);
             displayDroneInfo(droneType1List.get(selectedIndex));
         } else {
             infoTextArea.setText("Error: Failed to fetch API data.");
@@ -164,7 +162,7 @@ public class DroneCatalog extends JFrame {
     
     }
 
-    private void displayDroneInfo(DroneType1 droneType1) {
+    private void displayDroneInfo(DroneType droneType1) {
         StringBuilder infoText = new StringBuilder();
         infoText.append("Drone ID: ").append(droneType1.getId()).append("\n");
         infoText.append("Manufacturer: ").append(droneType1.getManufacturer()).append("\n");

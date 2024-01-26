@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import Formatter.Drones.Drone;
+
 
 public class APIFetcher {
 
@@ -34,8 +34,8 @@ public class APIFetcher {
             // con.setRequestProperty("Content-Type", "application/json");
             con.setRequestMethod("GET");
 
-            int responseCode = con.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
+           // int responseCode = con.getResponseCode();
+            //System.out.println("Response Code: " + responseCode);
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
             StringBuilder responseContent = new StringBuilder();
@@ -56,7 +56,7 @@ public class APIFetcher {
            
             //System.out.println("\n\n");
             FileWriterUtil.writeToFile(responseContent.toString(), filePath);
-            System.out.println("\n\n");
+            //System.out.println("\n\n");
             con.disconnect();
             return responseContent.toString();
 
@@ -64,11 +64,6 @@ public class APIFetcher {
             e.printStackTrace();
             return null;
         }
-    }
-
-    public static String FetchAPI(Drone uRL, String path) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'FetchAPI'");
     }
 }
 

@@ -16,10 +16,12 @@ import API.Fetcher.APIFetcher;
 import Formatter.JsonFormatter;
 
 public class flightDynamics {
+    private static JFrame frame;
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Flight Dynamics");
+            frame = new JFrame("Flight Dynamics");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(1500, 1500);
 
@@ -112,5 +114,11 @@ public class flightDynamics {
         tableP.add(scroll);
 
         return tableP;
+    }
+
+    public static void dispose() {
+		if(frame != null){
+			frame.dispose();
+		}
     }
 }

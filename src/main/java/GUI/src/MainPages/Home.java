@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import Formatter.Drones.DroneType;
 import API.Fetcher.APIFetcher;
 import Formatter.JsonFormatter;
+import API.Fetcher.URL_Maker;
 
 
 import java.util.List;
@@ -76,22 +77,12 @@ public class Home {
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");
 		
 
-		String result1 = APIFetcher.FetchAPI("https://dronesim.facets-labs.com/api/drones/?limit=25&format=json", "Test.json");
-		// String result2 = APIFetcher.FetchAPI("https://dronesim.facets-labs.com/api/dronedynamics/?format=json", "Test.json");
-		// String result3 = APIFetcher.FetchAPI("https://dronesim.facets-labs.com/api/dronetypes/?format=json", "Test.json");
-
+		String URL = URL_Maker.getUrlExtension("Drones", null, "25");
+		String result1 = APIFetcher.FetchAPI(URL, "Test.json");
+		
 		List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result1);
 		// List<Drone> droneType2List = JsonFormatter.ReadDroneList(2, result2);
 		// List<DroneDynamics> droneType3List = JsonFormatter.ReadDroneList(3, result3);
-
-	
-
-
-	
-/* 
-		System.out.println(result);
-*/
-
 
 
 

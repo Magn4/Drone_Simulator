@@ -44,6 +44,15 @@ public class Catalogue extends JFrame {
         for (int i = 71; i <= 95; i++) {
             droneComboBox.addItem(i);
         }
+        getInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+  
+              displayDroneInfo();
+
+
+            }
+        });
     }
 
 
@@ -58,8 +67,6 @@ public class Catalogue extends JFrame {
 
         return dronesList;
     }
-
-
 
 
 

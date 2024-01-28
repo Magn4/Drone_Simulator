@@ -139,7 +139,7 @@ public class historicalAnalysis extends JFrame{
                     listModel.addElement("Drone ID: " + droneType.getId());
                 }
                 if (!DroneDynamicsList.isEmpty()) {
-                    displayDroneInfo(DroneDynamicsList.get(0));
+                    // displayDroneInfo(DroneDynamicsList.get(0));
                 }
             }
         } else {
@@ -155,7 +155,7 @@ public class historicalAnalysis extends JFrame{
         String result = APIFetcher.FetchAPI(urlExtension, fileExtension);
         if (result != null && minuteComboBox.getSelectedItem().equals("Drone Dynamics List")) {
             List<DroneType> DroneDynamicsList = JsonFormatter.ReadDroneList(1, result);
-            displayDroneInfo(DroneDynamicsList.get(selectedIndex));
+           // displayDroneInfo(DroneDynamicsList.get(selectedIndex));
         } else {
             infoTextArea.setText("Error: Failed to fetch API data.");
         }

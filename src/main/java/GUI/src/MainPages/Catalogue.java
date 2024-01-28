@@ -1,7 +1,9 @@
 package GUI.src.MainPages;
 
 import API.Fetcher.APIFetcher;
+import API.Fetcher.URL_Maker;
 import Formatter.Drones.DroneType;
+import Formatter.Drones.Drone;
 import Formatter.JsonFormatter;
 
 import javax.swing.*;
@@ -29,6 +31,10 @@ public class Catalogue extends JFrame {
         setVisible(true);
     }
 
+    private int getDroneId() {
+        return (int) droneComboBox.getSelectedItem();
+    }
+
     private void initComponents() {
         getInfoButton = new JButton("Get Info");
         infoTextArea = new JTextArea();
@@ -39,6 +45,23 @@ public class Catalogue extends JFrame {
             droneComboBox.addItem(i);
         }
     }
+
+
+    private List<DroneType> getDronesList() {
+
+    
+        String urlExtension = URL_Maker.getUrlExtension("Drones", null, "20");
+        String fileExtension = "Test.json";
+
+        String result = APIFetcher.FetchAPI(urlExtension, fileExtension);
+        List<DroneType> dronesList = JsonFormatter.ReadDroneList(1, result);
+
+        return dronesList;
+    }
+
+
+
+
 
     private void addComponents() {
         setLayout(new BorderLayout());
@@ -99,21 +122,24 @@ public class Catalogue extends JFrame {
     
         return button;
     }
+
+    private void displayDroneInfo() {
+
+        List<DroneType> droneList = getDronesList();
+
     
-    private void displayDroneInfo(DroneType droneType) {
         StringBuilder infoText = new StringBuilder();
-        infoText.append("Drone ID: ").append(droneType.getId()).append("\n");
-        infoText.append("Manufacturer: ").append(droneType.getManufacturer()).append("\n");
-        infoText.append("Type Name: ").append(droneType.getTypename()).append("\n");
-        infoText.append("Weight: ").append(droneType.getWeight()).append("\n");
-        infoText.append("Max Speed: ").append(droneType.getMax_speed()).append("\n");
-        infoText.append("Battery Capacity: ").append(droneType.getBattery_capacity()).append("\n");
-        infoText.append("Control Range: ").append(droneType.getControl_range()).append("\n");
-        infoText.append("Max Carriage: ").append(droneType.getMax_carriage()).append("\n");
+        infoText.append("Drone ID: ").append(droneList.get(0).getId()).append("\n");
+        infoText.append("Manufacturer: ").append(droneList.get(0).getManufacturer()).append("\n");
+        infoText.append("Type Name: ").append(droneList.get(0).getTypename()).append("\n");
+        infoText.append("Weight: ").append(droneList.get(0).getWeight()).append("\n");
+        infoText.append("Max Speed: ").append(droneList.get(0).getMax_speed()).append("\n");
+        infoText.append("Battery Capacity: ").append(droneList.get(0).getBattery_capacity()).append("\n");
+        infoText.append("Control Range: ").append(droneList.get(0).getControl_range()).append("\n");
+        infoText.append("Max Carriage: ").append(droneList.get(0).getMax_carriage()).append("\n");
 
         infoTextArea.setText(infoText.toString());
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Catalogue::new);

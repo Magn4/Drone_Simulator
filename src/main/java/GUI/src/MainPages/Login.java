@@ -25,6 +25,8 @@ public class Login extends JFrame {
     private void initComponents() {
         tokenField = new JTextField(10);
         loginButton = new JButton("Login");
+        tokenField.setFont(new Font("Arial", Font.PLAIN, 12));
+        
 
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -49,41 +51,44 @@ public class Login extends JFrame {
     private JPanel createInputPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(4, 4, 4, 4);
+        gbc.insets = new Insets(8, 8, 8, 8);
 
         JPanel innerPanel = new JPanel(new GridBagLayout());
         innerPanel.setBackground(new Color(230, 212, 194)); 
-
+    
         JLabel enterTokenLabel = new JLabel("Enter Token:");
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.WEST; // Align label to the left
         innerPanel.add(enterTokenLabel, gbc);
-
-        gbc.gridx = 3;
+    
+        gbc.gridx = 1;
         gbc.gridy = 0;
-        gbc.gridwidth = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0; 
+        tokenField.setPreferredSize(new Dimension(200,30));
         innerPanel.add(tokenField, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 4;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+    
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0.0; // Reset weight
+        loginButton.setPreferredSize(new Dimension(90, 30));
         innerPanel.add(loginButton, gbc);
-
+    
         innerPanel.setPreferredSize(new Dimension(600, 250));
-
-        panel.add(innerPanel, gbc);
-
+        panel.add(innerPanel,gbc);
+    
         return panel;
     }
-
+    
     private void onLoginButtonClick() {
         String enteredToken = tokenField.getText();
-        if (!enteredToken.isEmpty()) {
-            // Add login logic here
-            JOptionPane.showMessageDialog(this, "Login Successful!");
+        String Token= "6ffe7e815e07b6ede78cade7617454eeb944d168";
+        if (enteredToken.equals(Token)) {
+            dispose();
+            Home.main(new String[0]);
+          //  JOptionPane.showMessageDialog(this, "Login Successful!");
         } else {
             JOptionPane.showMessageDialog(this, "Please enter a valid token.");
         }
@@ -93,3 +98,4 @@ public class Login extends JFrame {
         SwingUtilities.invokeLater(Login::new);
     }
 }
+  

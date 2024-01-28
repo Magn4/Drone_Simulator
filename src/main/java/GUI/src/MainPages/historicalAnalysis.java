@@ -1,7 +1,9 @@
 package GUI.src.MainPages;
 
 import API.Fetcher.APIFetcher;
+import Formatter.Drones.DroneDynamics;
 import Formatter.Drones.DroneType;
+//import Formatter.Drones.DroneDynamics;
 import Formatter.JsonFormatter;
 
 import javax.swing.*;
@@ -11,18 +13,18 @@ import java.awt.event.ActionListener;
 import java.util.Comparator;
 import java.util.List;
 
-public class DroneCatalog extends JFrame {
+public class historicalAnalysis extends JFrame{
 
     private JComboBox<Integer> droneComboBox;
-    private JButton catalogButton;
-    private JButton getInfoButton;
-    private JList<String> droneList;
+   // private JButton catalogButton;
+    private JButton refreshButton;
+    private JList<String>droneList;
     private DefaultListModel<String> listModel;
     private JTextArea infoTextArea;
 
-    public DroneCatalog() {
-        setTitle("Drone Information");
-        setSize(800, 600);
+    public historicalAnalysis(){
+        setTitle("HistoricalAnalysis");
+        setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
@@ -30,30 +32,29 @@ public class DroneCatalog extends JFrame {
 
         setLocationRelativeTo(null);
         setVisible(true);
-    }
 
+    }
     private void initComponents() {
-        catalogButton = new JButton("Drone Catalog");
-        getInfoButton = new JButton("Get Info");
+        //catalogButton = new JButton("Drone Catalog");
+        refreshButton = new JButton("refresh");
         listModel = new DefaultListModel<>();
         droneList = new JList<>(listModel);
         infoTextArea = new JTextArea();
         infoTextArea.setEditable(false);
 
-        catalogButton.addActionListener(new ActionListener() {
+        /*catalogButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                onCatalogButtonClick();
+                onHistoricalAnalysisButtonClick();
             }
-        });
+        });*/
 
-        getInfoButton.addActionListener(new ActionListener() {
+        refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                onGetInfoButtonClick();
+                onRefreshButtonClick();
             }
         });
-
         droneList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         droneList.addListSelectionListener(e -> {
             int selectedIndex = droneList.getSelectedIndex();
@@ -65,11 +66,10 @@ public class DroneCatalog extends JFrame {
         // Populate droneComboBox with drone IDs
         droneComboBox = new JComboBox<>();
         // Add drone IDs (adjust as needed)
-        for (int i = 71; i <= 95; i++) {
+        for (int i = 0; i <= 5; i++) {
             droneComboBox.addItem(i);
         }
     }
-
     private void addComponents() {
         setLayout(new BorderLayout());
     
@@ -86,11 +86,11 @@ public class DroneCatalog extends JFrame {
         topPanel.setBackground(Color.decode("#008e9b"));
         topPanel.setPreferredSize(new Dimension(getWidth(),60));
 
-        JLabel chooseDroneLabel = new JLabel("Choose Drone ID:");
+        JLabel chooseDroneLabel = new JLabel("Choose Drone min:");
         chooseDroneLabel.setForeground(Color.WHITE); // Set text color
         topPanel.add(chooseDroneLabel);
         topPanel.add(droneComboBox);
-        topPanel.add(getInfoButton);
+        topPanel.add(refreshButton);
     
         add(leftPanel, BorderLayout.WEST);
         add(topPanel, BorderLayout.NORTH);
@@ -118,13 +118,13 @@ public class DroneCatalog extends JFrame {
         return button;
     }
     
-    private void onCatalogButtonClick() {
-        // Add logic for "Drone Catalog" button
-        // This can be used for navigating to the catalog or any other specific action
-        System.out.println("Drone Catalog button clicked");
+    private void onHistoricalAnalysisButtonClick() {
+        // Add logic for the button
+        // This can be used for navigating to the dynamics or any other specific action
+        System.out.println("Historical Analysis button clicked");
     }
     
-    private void onGetInfoButtonClick() {
+    private void onRefreshButtonClick() {
         int selectedDroneId = (int) droneComboBox.getSelectedItem();
         String urlExtension = getUrlExtension("Drone Type");
         String fileExtension = "Test.json";
@@ -133,13 +133,13 @@ public class DroneCatalog extends JFrame {
         if (result != null) {
             listModel.clear();
             if (droneComboBox.getSelectedItem().equals("Drone Type")) {
-                List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result);
-                droneType1List.sort(Comparator.comparingInt(DroneType::getId));
-                for (DroneType droneType1 : droneType1List) {
-                    listModel.addElement("Drone ID: " + droneType1.getId());
+                List<DroneType> DroneDynamicsList = JsonFormatter.ReadDroneList(1, result);
+                DroneDynamicsList.sort(Comparator.comparingInt(DroneType::getId));
+                for (DroneType droneType : DroneDynamicsList) {
+                    listModel.addElement("Drone ID: " + droneType.getId());
                 }
-                if (!droneType1List.isEmpty()) {
-                    displayDroneInfo(droneType1List.get(0));
+                if (!DroneDynamicsList.isEmpty()) {
+                    displayDroneInfo(DroneDynamicsList.get(0));
                 }
             }
         } else {
@@ -149,45 +149,39 @@ public class DroneCatalog extends JFrame {
 
     private void displayDroneInfo(int selectedIndex) {
         int selectedDroneId = (int) droneComboBox.getSelectedItem();
-        String urlExtension = getUrlExtension("Drone Type");
+        String urlExtension = getUrlExtension("Drone Dynamics");
         String fileExtension = "Test.json";
 
         String result = APIFetcher.FetchAPI(urlExtension, fileExtension);
-        if (result != null && droneComboBox.getSelectedItem().equals("Drone Type")) {
-            List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result);
-            displayDroneInfo(droneType1List.get(selectedIndex));
+        if (result != null && droneComboBox.getSelectedItem().equals("Drone Dynamics List")) {
+            List<DroneType> DroneDynamicsList = JsonFormatter.ReadDroneList(1, result);
+            displayDroneInfo(DroneDynamicsList.get(selectedIndex));
         } else {
             infoTextArea.setText("Error: Failed to fetch API data.");
         }
     
     }
 
-    private void displayDroneInfo(DroneType droneType1) {
+    private void displayDroneInfo(DroneDynamics droneDynamics) {
         StringBuilder infoText = new StringBuilder();
-        infoText.append("Drone ID: ").append(droneType1.getId()).append("\n");
-        infoText.append("Manufacturer: ").append(droneType1.getManufacturer()).append("\n");
-        infoText.append("Type Name: ").append(droneType1.getTypename()).append("\n");
-        infoText.append("Weight: ").append(droneType1.getWeight()).append("\n");
-        infoText.append("Max Speed: ").append(droneType1.getMax_speed()).append("\n");
-        infoText.append("Battery Capacity: ").append(droneType1.getBattery_capacity()).append("\n");
-        infoText.append("Control Range: ").append(droneType1.getControl_range()).append("\n");
-        infoText.append("Max Carriage: ").append(droneType1.getMax_carriage()).append("\n");
+       
 
         infoTextArea.setText(infoText.toString());
     }
 
     private String getUrlExtension(String selectedDrone) {
         switch (selectedDrone) {
-            case "Drone Type":
-                return "dronetypes/?format=json&limit=30";
+            case "Drone Historical":
+                return "http://dronesim.facets-labs.com/api/dronedynamics/?limit=10&offset=10";
             default:
                 return "";
         }
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(DroneCatalog::new);
+        SwingUtilities.invokeLater(historicalAnalysis::new);
     }
 }
 
+    
 

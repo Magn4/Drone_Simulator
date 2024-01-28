@@ -47,7 +47,7 @@ public class Catalogue extends JFrame {
     
         leftPanel.add(createMenuButton("Home"));
         leftPanel.add(createMenuButton("Drone Catalog"));
-        leftPanel.add(createMenuButton("Flight Dynamics"));
+        leftPanel.add(createMenuButton("Flight dynamics"));
         leftPanel.add(createMenuButton("Historical Analysis"));
         leftPanel.setPreferredSize(new Dimension(170, getHeight()));
     
@@ -80,6 +80,22 @@ public class Catalogue extends JFrame {
     
         // Remove border
         //button.setBorderPainted(false);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (buttonText.equals("Home")) {
+                    
+                    dispose();
+                    new Home();
+                    Home.main(null);
+
+                } else if (buttonText.equals("Flight dynamics")) {
+
+                    dispose();
+                    flightDynamics.main(null);
+                }
+            }
+        });
     
         return button;
     }

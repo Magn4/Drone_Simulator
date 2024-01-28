@@ -17,12 +17,14 @@ import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
 
 public class flightDynamics {
+    private static JFrame frame;
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Home");
+            frame = new JFrame("Flight Dynamics");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(500, 500);
+            frame.setSize(1500, 1500);
 
             // Create main panel:
             JPanel mainPanel = createMainPanel();
@@ -41,7 +43,7 @@ public class flightDynamics {
     private static JPanel createMainPanel() {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
-        mainPanel.setPreferredSize(new Dimension(480, 5000));
+        mainPanel.setPreferredSize(new Dimension(480, 800));
 
         // Create buttons and panels
      
@@ -56,11 +58,11 @@ public class flightDynamics {
 
         JPanel sidePanel = new JPanel();
         sidePanel.setBackground(new Color(54, 33, 89));
-        sidePanel.setBounds(0, 80, 200, 5000);
+        sidePanel.setBounds(0, 80, 200, 800);
 
         JPanel topPanel = new JPanel();
         topPanel.setBackground(new Color(54, 33, 89));
-        topPanel.setBounds(0, 0, 1300, 80);
+        topPanel.setBounds(0, 0, 2000, 80);
 
         JPanel tableP = createTablePanel();
 
@@ -82,7 +84,7 @@ public class flightDynamics {
     private static JPanel createTablePanel() {
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(270, 200, 900, 5000);
+        tableP.setBounds(270, 200, 900, 500);
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", null, "25");
@@ -115,5 +117,11 @@ public class flightDynamics {
         tableP.add(scroll);
 
         return tableP;
+    }
+
+    public static void dispose() {
+		if(frame != null){
+			frame.dispose();
+		}
     }
 }

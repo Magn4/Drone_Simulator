@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 
 public class dynamics extends JPanel implements ActionListener{
@@ -16,7 +17,7 @@ public class dynamics extends JPanel implements ActionListener{
 	private JLabel dynamicsL;
 	private JPanel dynamicsP;
 	
-	dynamics(){
+	public dynamics(){
 		
 		dynamicsP = new JPanel();
 		dynamicsP.setBounds(0, 350, 200, 70);
@@ -50,8 +51,22 @@ public class dynamics extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("dynamics button clicked ! ");
-		
-	}
+		flightDynamics.main(null);
+
+
+		 new Thread(() -> {
+        try {
+            // Warte für 3 Sekunden (3000 Millisekunden)
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+
+		Home.dispose();
+
+
+	}).start();
+}
 
 	public JPanel getDynamicsPanel() {
 		return dynamicsP;

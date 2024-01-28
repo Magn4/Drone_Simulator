@@ -14,12 +14,15 @@ import Formatter.Drones.Drone;
 import Formatter.Drones.DroneDynamics;
 import API.Fetcher.APIFetcher;
 import Formatter.JsonFormatter;
+import API.Fetcher.URL_Maker;
 
 public class flightDynamics {
+    private static JFrame frame;
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Home");
+            frame = new JFrame("Flight Dynamics");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(1500, 1500);
 
@@ -83,7 +86,9 @@ public class flightDynamics {
         tableP.setBackground(new Color(154, 133, 189));
         tableP.setBounds(270, 200, 900, 500);
 
-        String result = APIFetcher.FetchAPI("https://dronesim.facets-labs.com/api/dronedynamics/?limit=25&format=json", "Test.json");
+
+        String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", null, "25");
+        String result = APIFetcher.FetchAPI(URL1, "Test.json");
 
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
 
@@ -112,5 +117,11 @@ public class flightDynamics {
         tableP.add(scroll);
 
         return tableP;
+    }
+
+    public static void dispose() {
+		if(frame != null){
+			frame.dispose();
+		}
     }
 }

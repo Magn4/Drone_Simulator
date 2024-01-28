@@ -3,6 +3,7 @@ package GUI.src.MainPages;
 import API.Fetcher.APIFetcher;
 import Formatter.Drones.DroneType;
 import Formatter.JsonFormatter;
+import API.Fetcher.URL_Maker;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,19 +41,8 @@ public class DroneCatalog extends JFrame {
         infoTextArea = new JTextArea();
         infoTextArea.setEditable(false);
 
-        catalogButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                onCatalogButtonClick();
-            }
-        });
-
-        getInfoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                onGetInfoButtonClick();
-            }
-        });
+        catalogButton.addActionListener(e -> onCatalogButtonClick());
+        getInfoButton.addActionListener(e -> onGetInfoButtonClick());
 
         droneList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         droneList.addListSelectionListener(e -> {
@@ -62,9 +52,7 @@ public class DroneCatalog extends JFrame {
             }
         });
 
-        // Populate droneComboBox with drone IDs
         droneComboBox = new JComboBox<>();
-        // Add drone IDs (adjust as needed)
         for (int i = 71; i <= 95; i++) {
             droneComboBox.addItem(i);
         }
@@ -72,75 +60,76 @@ public class DroneCatalog extends JFrame {
 
     private void addComponents() {
         setLayout(new BorderLayout());
-    
+
         JPanel leftPanel = new JPanel(new GridLayout(0, 1));
-    
-        // Create and add buttons to the leftPanel
         leftPanel.add(createMenuButton("Home"));
         leftPanel.add(createMenuButton("Drone Catalog"));
         leftPanel.add(createMenuButton("Flight Dynamics"));
         leftPanel.add(createMenuButton("Historical Analysis"));
         leftPanel.setPreferredSize(new Dimension(170, getHeight()));
-    
+
         JPanel topPanel = new JPanel(new FlowLayout());
         topPanel.setBackground(Color.decode("#008e9b"));
         topPanel.setPreferredSize(new Dimension(getWidth(),60));
 
         JLabel chooseDroneLabel = new JLabel("Choose Drone ID:");
-        chooseDroneLabel.setForeground(Color.WHITE); // Set text color
+        chooseDroneLabel.setForeground(Color.WHITE);
         topPanel.add(chooseDroneLabel);
         topPanel.add(droneComboBox);
         topPanel.add(getInfoButton);
-    
+
         add(leftPanel, BorderLayout.WEST);
         add(topPanel, BorderLayout.NORTH);
         add(new JScrollPane(droneList), BorderLayout.CENTER);
         add(new JScrollPane(infoTextArea), BorderLayout.EAST);
     }
-    
+
     private JButton createMenuButton(String buttonText) {
         JButton button = new JButton(buttonText);
         button.setFocusPainted(false);
         button.setBackground(Color.decode("#008e9b"));
         button.setForeground(Color.WHITE);
-        
-    
-        // Add some padding
-        int topPadding = 10;
-        int leftPadding = 20;
-        int bottomPadding = 10;
-        int rightPadding = 20;
-        button.setBorder(BorderFactory.createEmptyBorder(topPadding, leftPadding, bottomPadding, rightPadding));
-    
-        // Remove border
+
+        int padding = 10;
+        button.setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
         button.setBorderPainted(false);
-    
+
         return button;
     }
-    
+
     private void onCatalogButtonClick() {
-        // Add logic for "Drone Catalog" button
-        // This can be used for navigating to the catalog or any other specific action
         System.out.println("Drone Catalog button clicked");
+        // Add logic for navigating to the catalog or any specific action
     }
-    
+
     private void onGetInfoButtonClick() {
-        int selectedDroneId = (int) droneComboBox.getSelectedItem();
-        String urlExtension = getUrlExtension("Drone Type");
+        int selectedDroneId = droneComboBox.getItemAt(droneComboBox.getSelectedIndex());
+
+        String urlExtension = URL_Maker.getUrlExtension("Drone Type", null, "25");
         String fileExtension = "Test.json";
 
         String result = APIFetcher.FetchAPI(urlExtension, fileExtension);
-        if (result != null) {
+
+        if (result != null && droneComboBox.getSelectedItem() instanceof Integer) {
+            List<DroneType> droneTypeList = JsonFormatter.ReadDroneList(1, result);
+            droneTypeList.sort(Comparator.comparingInt(DroneType::getId));
+
             listModel.clear();
-            if (droneComboBox.getSelectedItem().equals("Drone Type")) {
-                List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result);
-                droneType1List.sort(Comparator.comparingInt(DroneType::getId));
-                for (DroneType droneType1 : droneType1List) {
-                    listModel.addElement("Drone ID: " + droneType1.getId());
-                }
-                if (!droneType1List.isEmpty()) {
-                    displayDroneInfo(droneType1List.get(0));
-                }
+            for (DroneType droneType : droneTypeList) {
+                listModel.addElement("Drone ID: " + droneType.getId());
+                StringBuilder infoText = new StringBuilder();
+                infoText.append("Drone ID: ").append(droneType.getId()).append("\n");
+                infoText.append("Manufacturer: ").append(droneType.getManufacturer()).append("\n");
+                infoText.append("Type Name: ").append(droneType.getTypename()).append("\n");
+                infoText.append("Weight: ").append(droneType.getWeight()).append("\n");
+                infoText.append("Max Speed: ").append(droneType.getMax_speed()).append("\n");
+                infoText.append("Battery Capacity: ").append(droneType.getBattery_capacity()).append("\n");
+                infoText.append("Control Range: ").append(droneType.getControl_range()).append("\n");
+                infoText.append("Max Carriage: ").append(droneType.getMax_carriage()).append("\n");
+            }
+
+            if (!droneTypeList.isEmpty()) {
+                displayDroneInfo(droneTypeList.get(0));
             }
         } else {
             infoTextArea.setText("Error: Failed to fetch API data.");
@@ -148,46 +137,34 @@ public class DroneCatalog extends JFrame {
     }
 
     private void displayDroneInfo(int selectedIndex) {
-        int selectedDroneId = (int) droneComboBox.getSelectedItem();
-        String urlExtension = getUrlExtension("Drone Type");
+        int selectedDroneId = droneComboBox.getItemAt(droneComboBox.getSelectedIndex());
+        String urlExtension = URL_Maker.getUrlExtension("Drone Type",null, "25");
         String fileExtension = "Test.json";
 
         String result = APIFetcher.FetchAPI(urlExtension, fileExtension);
-        if (result != null && droneComboBox.getSelectedItem().equals("Drone Type")) {
-            List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result);
-            displayDroneInfo(droneType1List.get(selectedIndex));
+        if (result != null && droneComboBox.getSelectedItem() instanceof Integer) {
+            List<DroneType> droneTypeList = JsonFormatter.ReadDroneList(1, result);
+            displayDroneInfo(droneTypeList.get(selectedIndex));
         } else {
             infoTextArea.setText("Error: Failed to fetch API data.");
         }
-    
     }
 
-    private void displayDroneInfo(DroneType droneType1) {
+    private void displayDroneInfo(DroneType droneType) {
         StringBuilder infoText = new StringBuilder();
-        infoText.append("Drone ID: ").append(droneType1.getId()).append("\n");
-        infoText.append("Manufacturer: ").append(droneType1.getManufacturer()).append("\n");
-        infoText.append("Type Name: ").append(droneType1.getTypename()).append("\n");
-        infoText.append("Weight: ").append(droneType1.getWeight()).append("\n");
-        infoText.append("Max Speed: ").append(droneType1.getMax_speed()).append("\n");
-        infoText.append("Battery Capacity: ").append(droneType1.getBattery_capacity()).append("\n");
-        infoText.append("Control Range: ").append(droneType1.getControl_range()).append("\n");
-        infoText.append("Max Carriage: ").append(droneType1.getMax_carriage()).append("\n");
+        infoText.append("Drone ID: ").append(droneType.getId()).append("\n");
+        infoText.append("Manufacturer: ").append(droneType.getManufacturer()).append("\n");
+        infoText.append("Type Name: ").append(droneType.getTypename()).append("\n");
+        infoText.append("Weight: ").append(droneType.getWeight()).append("\n");
+        infoText.append("Max Speed: ").append(droneType.getMax_speed()).append("\n");
+        infoText.append("Battery Capacity: ").append(droneType.getBattery_capacity()).append("\n");
+        infoText.append("Control Range: ").append(droneType.getControl_range()).append("\n");
+        infoText.append("Max Carriage: ").append(droneType.getMax_carriage()).append("\n");
 
         infoTextArea.setText(infoText.toString());
-    }
-
-    private String getUrlExtension(String selectedDrone) {
-        switch (selectedDrone) {
-            case "Drone Type":
-                return "dronetypes/?format=json&limit=30";
-            default:
-                return "";
-        }
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(DroneCatalog::new);
     }
 }
-
-

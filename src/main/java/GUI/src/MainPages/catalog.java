@@ -49,6 +49,7 @@ import javax.swing.JPanel;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("catalog button clicked ! ");
+			new Catalogue();
 			
 		}
 

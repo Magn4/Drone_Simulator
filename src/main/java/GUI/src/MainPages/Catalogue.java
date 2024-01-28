@@ -20,7 +20,7 @@ public class Catalogue extends JFrame {
     private JTextArea infoTextArea;
 
     public Catalogue() {
-        setTitle("Drone Information");
+        setTitle("Drone Catalog");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -123,6 +123,10 @@ public class Catalogue extends JFrame {
 
                     dispose();
                     flightDynamics.main(null);
+                }
+                else if (buttonText.equals("Historical Analysis")){
+                    dispose();
+                    new historicalAnalysis();
                 }
             }
         });

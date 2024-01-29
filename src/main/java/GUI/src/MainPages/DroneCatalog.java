@@ -69,8 +69,8 @@ public class DroneCatalog extends JFrame {
         leftPanel.setPreferredSize(new Dimension(170, getHeight()));
 
         JPanel topPanel = new JPanel(new FlowLayout());
-        topPanel.setBackground(new Color(54, 33, 89));
-        topPanel.setPreferredSize(new Dimension(getWidth(), 60));
+        topPanel.setBackground(Color.decode("#008e9b"));
+        topPanel.setPreferredSize(new Dimension(getWidth(),60));
 
         JLabel chooseDroneLabel = new JLabel("Choose Drone ID:");
         chooseDroneLabel.setForeground(Color.WHITE);
@@ -87,7 +87,7 @@ public class DroneCatalog extends JFrame {
     private JButton createMenuButton(String buttonText) {
         JButton button = new JButton(buttonText);
         button.setFocusPainted(false);
-        button.setBackground(new Color(54, 33, 89));
+        button.setBackground(Color.decode("#008e9b"));
         button.setForeground(Color.WHITE);
 
         int padding = 10;

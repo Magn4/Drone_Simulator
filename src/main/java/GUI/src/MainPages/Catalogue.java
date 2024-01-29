@@ -19,7 +19,7 @@ public class Catalogue extends JFrame {
     private List<DroneType> dronesList;
 
     public Catalogue() {
-        setTitle("Drone Information");
+        setTitle("Drone Catalog");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -40,7 +40,15 @@ public class Catalogue extends JFrame {
         for (int i = 71; i <= 90; i++) {
             droneComboBox.addItem(i);
         }
-        getInfoButton.addActionListener(e -> displayDroneInfo());
+        getInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+  
+              displayDroneInfo();
+
+
+            }
+        });
     }
 
     private void setDroneList() {
@@ -51,6 +59,10 @@ public class Catalogue extends JFrame {
         dronesList = JsonFormatter.ReadDroneList(1, result);
         dronesList.sort((o1, o2) -> o1.getId() - o2.getId());
     }
+
+
+
+
 
     private void addComponents() {
         setLayout(new BorderLayout());
@@ -104,6 +116,10 @@ public class Catalogue extends JFrame {
             dispose();
             flightDynamics.main(null);
         }
+                else if (buttonText.equals("Historical Analysis")){
+                    dispose();
+                    new historicalAnalysis();
+                }
     }
 
     private void displayDroneInfo() {

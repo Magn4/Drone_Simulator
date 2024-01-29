@@ -87,7 +87,7 @@ public class flightDynamics {
         tableP.setBounds(270, 200, 900, 500);
 
 
-        String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", null, "25");
+        String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
         String result = APIFetcher.FetchAPI(URL1, "Test.json");
 
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);

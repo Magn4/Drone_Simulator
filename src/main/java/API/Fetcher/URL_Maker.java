@@ -3,7 +3,7 @@ package API.Fetcher;
 public class URL_Maker {
     
 
-public static String getUrlExtension(String Type, String Offset, String Limit) {
+public static String getUrlExtension(String Type, int Offset, int Limit) {
     String URL = "https://dronesim.facets-labs.com/api/";
     switch (Type) {
         case "Drone Type":
@@ -20,11 +20,11 @@ public static String getUrlExtension(String Type, String Offset, String Limit) {
     };
    //  dronedynamics/?limit=25&format=json
 
-    if (Offset != null){
+    if (Offset != 0){
         URL = URL + "&offset=" + Offset;
     };
 
-    if (Limit != null){
+    if (Limit != 0){
         URL = URL + "&limit=" + Limit;
     }
     System.out.println("This is the Generated URL: "+URL);

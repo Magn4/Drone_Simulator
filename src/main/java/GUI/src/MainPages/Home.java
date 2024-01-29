@@ -79,7 +79,7 @@ public class Home {
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");
 		
 
-		String URL = URL_Maker.getUrlExtension("Drones", null, "25");
+		String URL = URL_Maker.getUrlExtension("Drones", 0, 25);
 		String result1 = APIFetcher.FetchAPI(URL, "Test.json");
 		
 		List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result1);

@@ -1,77 +1,60 @@
 package GUI.src.MainPages;
 
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 
-public class dynamics extends JPanel implements ActionListener{
+public class dynamics extends JButton implements ActionListener{
 	
-	private JButton dynamicsB;
-	private JLabel dynamicsL;
-	private JPanel dynamicsP;
+	private JButton dynamicsButton;
 	
-	public dynamics(){
-		
-		dynamicsP = new JPanel();
-		dynamicsP.setBounds(0, 350, 200, 70);
-		dynamicsP.setBackground(new Color(54, 33, 89));
+	dynamics(){		
+		ImageIcon icon6 = new ImageIcon("src/main/java/GUI/src/Resources/drone.png");
+		dynamicsButton = new JButton();
+		dynamicsButton.setBounds(0, 350, 200, 50);
 
-		
-		
-		dynamicsL = new JLabel();
-		dynamicsL.setText("Flight dynamics    ");
-		dynamicsL.setForeground(Color.WHITE);
-
-		
-		ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/drone.png");
-		dynamicsB = new JButton();
-		//dynamics.setBounds(0, 0, 0, 0);
-		dynamicsB.setFocusable(false);
-
-		dynamicsB.setIcon(icon4);
-		dynamicsB.addActionListener(this);
-		dynamicsB.setBackground(new Color(54, 33, 89));
-        dynamicsB.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
-
-		
-		dynamicsP.add(dynamicsB);
-		dynamicsP.add(dynamicsL);
-		//dynamicsP.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		
+		dynamicsButton.setFocusable(false);
+		dynamicsButton.setIcon(icon6);
+		dynamicsButton.setText("  Flight Dynamics   ");
+		dynamicsButton.setForeground(Color.WHITE);
+		dynamicsButton.setHorizontalTextPosition(JButton.RIGHT);
+		dynamicsButton.setIconTextGap(20);;
+		dynamicsButton.addActionListener(this);
+		dynamicsButton.setBackground(new Color(54, 33, 89));
+        dynamicsButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("dynamics button clicked ! ");
+		System.out.println("started button clicked ! ");
 		flightDynamics.main(null);
 
 
-		 new Thread(() -> {
-        try {
-            // Warte für 3 Sekunden (3000 Millisekunden)
-            Thread.sleep(3000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+		new Thread(() -> {
+	   try {
+		   // Warte für 3 Sekunden (3000 Millisekunden)
+		   Thread.sleep(1000);
+	   } catch (InterruptedException ex) {
+		   ex.printStackTrace();
+	   }
 
-		Home.dispose();
+	   Home.dispose();
 
 
-	}).start();
-}
+   }).start();
 
-	public JPanel getDynamicsPanel() {
-		return dynamicsP;
+	}
+
+	public JButton getdynamicsButton() {
+		return dynamicsButton;
 	}
 
 
 }
-

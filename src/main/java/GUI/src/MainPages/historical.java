@@ -1,64 +1,62 @@
 package GUI.src.MainPages;
 
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
-public class historical extends JPanel implements ActionListener{
+public class historical extends JButton implements ActionListener{
 	
-	private JButton historicalB;
-	private JLabel historicalL;
-	private JPanel historicalP;
+	private JButton historicalButton;
 	
-	historical(){
-		
-		historicalP = new JPanel();
-		historicalP.setBounds(0, 450, 200, 70);
-		historicalP.setBackground(new Color(54, 33, 89));
-
-		
-		
-		historicalL = new JLabel();
-		historicalL.setText("Historical analysis");
-		historicalL.setForeground(Color.WHITE);
-
-		
-		ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/kalender.png");
-		historicalB = new JButton();
-		//historical.setBounds(0, 0, 0, 0);
-		historicalB.setFocusable(false);
-
-		historicalB.setIcon(icon4);
-		historicalB.addActionListener(this);
-		historicalB.setBackground(new Color(54, 33, 89));
-        historicalB.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
-
-
-		
-		historicalP.add(historicalB);
-		historicalP.add(historicalL);
-		//historicalP.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		
+	historical(){		
+		ImageIcon icon7 = new ImageIcon("src/main/java/GUI/src/Resources/kalender.png");
+		historicalButton = new JButton();
+		historicalButton.setBounds(0, 450, 200, 50);
+		historicalButton.setFocusable(false);
+		historicalButton.setIcon(icon7);
+		historicalButton.setText("Historical Analysis ");
+		historicalButton.setForeground(Color.WHITE);
+		historicalButton.setHorizontalTextPosition(JButton.RIGHT);
+		historicalButton.setIconTextGap(20);;
+		historicalButton.addActionListener(this);
+		historicalButton.setBackground(new Color(54, 33, 89));
+        historicalButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("historicaled button clicked ! ");
-		
+		System.out.println("started button clicked ! ");
+		Home.main(null);
+
+
+		new Thread(() -> {
+	   try {
+		   // Warte für 3 Sekunden (3000 Millisekunden)
+		   Thread.sleep(1000);
+	   } catch (InterruptedException ex) {
+		   ex.printStackTrace();
+	   }
+
+	   flightDynamics.dispose();
+
+
+   }).start();
+
 	}
 
-	public JPanel getHistoricalPanel() {
-		return historicalP;
+	public JButton gethistoricalButton() {
+		return historicalButton;
 	}
 
 
 }
+
 
 

@@ -48,13 +48,13 @@ public class flightDynamics {
         // Create buttons and panels
      
 
-		back backB = new back();
-		move moveB = new move();
-		refresh refreshB = new refresh();
-		start startP = new start();
-		catalog catalogP = new catalog();
-		dynamics dynamicsP = new dynamics();
-		historical historicalP = new historical();
+		back backButton = new back();
+		move moveButton = new move();
+		refresh refreshButton = new refresh();
+		start startButton = new start();
+		catalog catalogButton = new catalog();
+		dynamics dynamicsButton = new dynamics();
+		historical historicalButton = new historical();
 
         JPanel sidePanel = new JPanel();
         sidePanel.setBackground(new Color(54, 33, 89));
@@ -67,15 +67,15 @@ public class flightDynamics {
         JPanel tableP = createTablePanel();
 
         // Add components to mainPanel
-        mainPanel.add(backB.getBackButton());
-        mainPanel.add(moveB.getMoveButton());
-        mainPanel.add(refreshB.getRefreshButton());
-        mainPanel.add(startP.getStartPanel());
-        mainPanel.add(catalogP.getCatalogPanel());
-        mainPanel.add(dynamicsP.getDynamicsPanel());
-        mainPanel.add(historicalP.getHistoricalPanel());
-        mainPanel.add(topPanel);
-        mainPanel.add(sidePanel);
+		mainPanel.add(backButton.getBackButton());
+		mainPanel.add(moveButton.getMoveButton());
+		mainPanel.add(refreshButton.getRefreshButton());
+        mainPanel.add(startButton.getStartButton());
+		mainPanel.add(catalogButton.getCatalogButton());
+		mainPanel.add(dynamicsButton.getdynamicsButton());
+		mainPanel.add(historicalButton.gethistoricalButton());
+		mainPanel.add(topPanel);
+		mainPanel.add(sidePanel);
         mainPanel.add(tableP);
 
         return mainPanel;

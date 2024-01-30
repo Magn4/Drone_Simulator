@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
 public class Catalogue extends JFrame {
 
     private JComboBox<Integer> droneComboBox;
@@ -67,26 +68,50 @@ public class Catalogue extends JFrame {
     private void addComponents() {
         setLayout(new BorderLayout());
 
-        JPanel leftPanel = new JPanel(new GridLayout(0, 1));
+		JPanel sidePanel = new JPanel() ;
+		sidePanel.setBackground(new Color(54, 33, 89));
+		sidePanel.setBounds(0, 80, 200, 2000);
 
-        leftPanel.add(createMenuButton("Home"));
+        back backButton = new back();
+		move moveButton = new move();
+		refresh refreshButton = new refresh();
+		start startButton = new start();
+		catalog catalogButton = new catalog();
+		dynamics dynamicsButton = new dynamics();
+		historical historicalButton = new historical();
+
+
+        /*leftPanel.add(createMenuButton("Home"));
         leftPanel.add(createMenuButton("Drone Catalog"));
         leftPanel.add(createMenuButton("Flight dynamics"));
         leftPanel.add(createMenuButton("Historical Analysis"));
-        leftPanel.setPreferredSize(new Dimension(170, getHeight()));
+        leftPanel.setPreferredSize(new Dimension(170, getHeight()));*/
 
-        JPanel topPanel = new JPanel(new FlowLayout());
+        /*JPanel topPanel = new JPanel(new FlowLayout());
         topPanel.setBackground(Color.decode("#008e9b"));
-        topPanel.setPreferredSize(new Dimension(getWidth(), 60));
+        topPanel.setPreferredSize(new Dimension(getWidth(), 60));*/
+
+        JPanel topPanel = new JPanel() ;
+		topPanel.setBackground(new Color(54, 33, 89));
+		topPanel.setBounds(0, 0, 2000, 80);
+
 
         JLabel chooseDroneLabel = new JLabel("Choose Drone ID:");
         chooseDroneLabel.setForeground(Color.WHITE);
         topPanel.add(chooseDroneLabel);
         topPanel.add(droneComboBox);
         topPanel.add(getInfoButton);
+        add(backButton.getBackButton());
+		add(moveButton.getMoveButton());
+		add(refreshButton.getRefreshButton());
+		add(startButton.getStartButton());
+		add(catalogButton.getCatalogButton());
+		add(dynamicsButton.getdynamicsButton());
+		add(historicalButton.gethistoricalButton());
 
-        add(leftPanel, BorderLayout.WEST);
-        add(topPanel, BorderLayout.NORTH);
+
+        add(sidePanel);
+        add(topPanel);
         add(new JScrollPane(infoTextArea), BorderLayout.CENTER);
     }
 
@@ -126,7 +151,7 @@ public class Catalogue extends JFrame {
         int i = (int) droneComboBox.getSelectedItem();
 
         StringBuilder infoText = new StringBuilder();
-        infoText.append("Drone ID: ").append(dronesList.get(i - 71).getId()).append("\n");
+        infoText.append("\t\t\t Drone ID: ").append(dronesList.get(i - 71).getId()).append("\n");
         infoText.append("Manufacturer: ").append(dronesList.get(i - 71).getManufacturer()).append("\n");
         infoText.append("Type Name: ").append(dronesList.get(i - 71).getTypename()).append("\n");
         infoText.append("Weight: ").append(dronesList.get(i - 71).getWeight()).append("\n");

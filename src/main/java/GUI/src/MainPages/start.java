@@ -8,45 +8,25 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
-public class start extends JPanel implements ActionListener{
+public class start extends JButton implements ActionListener{
 	
-	private JButton startB;
-	private JLabel startL;
-	private JPanel startP;
+	private JButton startButton;
 	
-	start(){
-		
-		startP = new JPanel();
-		startP.setBounds(0, 150, 200, 50);
-		startP.setBackground(new Color(54, 33, 89));
-
-		
-		
-		startL = new JLabel();
-		startL.setText("Home               ");
-		startL.setForeground(Color.WHITE);
-
-		
+	start(){		
 		ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/home.png");
-		startB = new JButton();
-		//startB.setBounds(50, 50, 50, 50);
-		startB.setFocusable(false);
-		startB.setIcon(icon4);
-		startB.addActionListener(this);
-		startB.setBackground(new Color(54, 33, 89));
-        startB.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
-
-
-		
-		
-		startP.add(startB);
-		startP.add(startL);
-		//startP.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		
+		startButton = new JButton();
+		startButton.setBounds(0, 150, 200, 50);
+		startButton.setFocusable(false);
+		startButton.setIcon(icon4);
+		startButton.setText("  Drone Dashboard ");
+		startButton.setForeground(Color.WHITE);
+		startButton.setHorizontalTextPosition(JButton.RIGHT);
+		startButton.setIconTextGap(20);;
+		startButton.addActionListener(this);
+		startButton.setBackground(new Color(54, 33, 89));
+        startButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}
 
@@ -56,23 +36,25 @@ public class start extends JPanel implements ActionListener{
 		Home.main(null);
 
 
-		new Thread(() -> {
-	   try {
-		   // Warte für 3 Sekunden (3000 Millisekunden)
-		   Thread.sleep(1000);
-	   } catch (InterruptedException ex) {
-		   ex.printStackTrace();
-	   }
-
-	   flightDynamics.dispose();
-
-
-   }).start();
+		new Thread(() -> extracted()).start();
 
 	}
 
-	public JPanel getStartPanel() {
-		return startP;
+	/**
+	 * 
+	 */
+	private void extracted() {
+		try {
+			   // Warte für 3 Sekunden (3000 Millisekunden)
+			   Thread.sleep(1000);
+		   } catch (InterruptedException ex) {
+			   ex.printStackTrace();
+		   }
+		flightDynamics.dispose();
+	}
+
+	public JButton getStartButton() {
+		return startButton;
 	}
 
 

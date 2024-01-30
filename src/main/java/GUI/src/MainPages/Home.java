@@ -57,13 +57,13 @@ public class Home {
 
 		
 		
-		back backB = new back();
-		move moveB = new move();
-		refresh refreshB = new refresh();
-		start startP = new start();
-		catalog catalogP = new catalog();
-		dynamics dynamicsP = new dynamics();
-		historical historicalP = new historical();
+		back backButton = new back();
+		move moveButton = new move();
+		refresh refreshButton = new refresh();
+		start startButton = new start();
+		catalog catalogButton = new catalog();
+		dynamics dynamicsButton = new dynamics();
+		historical historicalButton = new historical();
 		
 		
 		JPanel sidePanel = new JPanel() ;
@@ -100,7 +100,14 @@ public class Home {
 			int x = 300;
 			
 			for(int z=0 ; z<=2 ; z++) {
-				JLabel label = new JLabel("INFO : Drone " + j  + " ID: " + "\n" + droneType1List.get(j-1).getId());
+				JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
+				"<br>" +
+				"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
+				"<br>" +
+				"<br>Manufacturer: " +  droneType1List.get(j-1).getManufacturer() +
+				"<br>" +
+				"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
+				);
 				label.setForeground(Color.WHITE);
 				
 				label.setIcon(icon);
@@ -126,7 +133,14 @@ public class Home {
 			if (m != 0) {
 				int x = 300;
 				for(int z=0 ; z<m ; z++) {
-					JLabel label = new JLabel("INFO : Drone " + j + " ID: " + droneType1List.get(j-1).getId());
+					JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
+					"<br>" +
+					"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
+					"<br>" +
+					"<br>Manufacturer: " +  droneType1List.get(j-1).getManufacturer() +
+					"<br>" +
+					"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
+					);
 					label.setForeground(Color.WHITE);
 	
 					label.setIcon(icon);
@@ -147,13 +161,13 @@ public class Home {
 					}
 		}
 	
-		mainPanel.add(backB.getBackButton());
-		mainPanel.add(moveB.getMoveButton());
-		mainPanel.add(refreshB.getRefreshButton());
-		mainPanel.add(startP.getStartPanel());
-		mainPanel.add(catalogP.getCatalogPanel());
-		mainPanel.add(dynamicsP.getDynamicsPanel());
-		mainPanel.add(historicalP.getHistoricalPanel());
+		mainPanel.add(backButton.getBackButton());
+		mainPanel.add(moveButton.getMoveButton());
+		mainPanel.add(refreshButton.getRefreshButton());
+		mainPanel.add(startButton.getStartButton());
+		mainPanel.add(catalogButton.getCatalogButton());
+		mainPanel.add(dynamicsButton.getdynamicsButton());
+		mainPanel.add(historicalButton.gethistoricalButton());
 		mainPanel.add(topPanel);
 		mainPanel.add(sidePanel);
 		

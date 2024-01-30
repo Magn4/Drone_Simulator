@@ -254,7 +254,7 @@ public class historicalAnalysis extends JFrame {
         JScrollPane scroll = new JScrollPane(table);
         scroll.setPreferredSize(new Dimension(1020, 2000));
         table.setEnabled(false);
-       /*  table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
+        table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
         table.getColumnModel().getColumn(0).setPreferredWidth(5);
         table.getColumnModel().getColumn(1).setPreferredWidth(200);
         table.getColumnModel().getColumn(2).setPreferredWidth(30);
@@ -265,7 +265,7 @@ public class historicalAnalysis extends JFrame {
         table.getColumnModel().getColumn(7).setPreferredWidth(70);
         table.getColumnModel().getColumn(8).setPreferredWidth(200);
         table.getColumnModel().getColumn(9).setPreferredWidth(20);
-*/
+
         tableP.add(scroll);
     
         return tableP; 

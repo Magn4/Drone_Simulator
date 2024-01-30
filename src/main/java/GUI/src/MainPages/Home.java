@@ -28,7 +28,7 @@ public class Home {
 			frame = new JFrame("Home");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//frame.setSize(1500,700);
-			frame.setSize(1500, 1500);
+			frame.setSize(1800, 1500);
 			
 			
 			
@@ -68,12 +68,12 @@ public class Home {
 		
 		JPanel sidePanel = new JPanel() ;
 		sidePanel.setBackground(new Color(54, 33, 89));
-		sidePanel.setBounds(0, 80, 200, 2000);
+		sidePanel.setBounds(0, 80, 220, 2000);
 		
 		
 		JPanel topPanel = new JPanel() ;
 		topPanel.setBackground(new Color(54, 33, 89));
-		topPanel.setBounds(0, 0, 2000, 80);
+		topPanel.setBounds(0, 0, 2000, 100);
 		
 		
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");

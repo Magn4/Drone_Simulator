@@ -32,9 +32,8 @@ public class historical extends JButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-			
-		System.out.println("started button clicked ! ");
-		Home.main(null);
+		System.out.println("historical button clicked ! ");
+		historicalAnalysis.main(null);
 
 
 		new Thread(() -> {
@@ -46,6 +45,7 @@ public class historical extends JButton implements ActionListener{
 	   }
 
 	   flightDynamics.dispose();
+	   Home.dispose();
 
 
    }).start();
@@ -54,14 +54,11 @@ public class historical extends JButton implements ActionListener{
 		
 	}
 
-	public JButton gethistoricalButton() {
+	public JButton getHistoricalButton() {
 		return historicalButton;
-	// public JPanel getHistoricalPanel() {
-	// 	return historicalP;
 	}
 
 
 }
-
 
 

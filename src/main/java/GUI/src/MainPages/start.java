@@ -36,21 +36,20 @@ public class start extends JButton implements ActionListener{
 		Home.main(null);
 
 
-		new Thread(() -> extracted()).start();
+		new Thread(() -> {
+	   try {
+		   // Warte für 3 Sekunden (3000 Millisekunden)
+		   Thread.sleep(1000);
+	   } catch (InterruptedException ex) {
+		   ex.printStackTrace();
+	   }
 
-	}
+	   flightDynamics.dispose();
 
-	/**
-	 * 
-	 */
-	private void extracted() {
-		try {
-			   // Warte für 3 Sekunden (3000 Millisekunden)
-			   Thread.sleep(1000);
-		   } catch (InterruptedException ex) {
-			   ex.printStackTrace();
-		   }
-		flightDynamics.dispose();
+
+
+   }).start();
+
 	}
 
 	public JButton getStartButton() {
@@ -59,6 +58,7 @@ public class start extends JButton implements ActionListener{
 
 
 }
+
 
 
 

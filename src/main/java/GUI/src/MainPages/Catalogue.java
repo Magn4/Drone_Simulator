@@ -112,7 +112,7 @@ public class Catalogue extends JFrame {
 		add(startButton.getStartButton());
 		add(catalogButton.getCatalogButton());
 		add(dynamicsButton.getdynamicsButton());
-		add(historicalButton.gethistoricalButton());
+		add(historicalButton.getHistoricalButton());
 
 
         add(sidePanel);

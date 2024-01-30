@@ -16,7 +16,7 @@ public class Catalogue extends JFrame {
 
     private JComboBox<Integer> droneComboBox;
     private JButton getInfoButton;
-    private JTextArea infoTextArea;
+    private JLabel infoTextArea;
     private List<DroneType> dronesList;
 
     public Catalogue() {
@@ -33,8 +33,8 @@ public class Catalogue extends JFrame {
 
     private void initComponents() {
         getInfoButton = new JButton("Get Info");
-        infoTextArea = new JTextArea();
-        infoTextArea.setEditable(false);
+        infoTextArea = new JLabel();
+        //infoTextArea.setEditable(false);
         setDroneList();
 
         droneComboBox = new JComboBox<>();
@@ -80,6 +80,11 @@ public class Catalogue extends JFrame {
 		dynamics dynamicsButton = new dynamics();
 		historical historicalButton = new historical();
 
+        JPanel mainPanel = new JPanel() ;
+		mainPanel.setBackground(new Color(54, 33, 89));
+		mainPanel.setBounds(500, 200, 200, 200);
+
+
 
         /*leftPanel.add(createMenuButton("Home"));
         leftPanel.add(createMenuButton("Drone Catalog"));
@@ -112,6 +117,7 @@ public class Catalogue extends JFrame {
 
         add(sidePanel);
         add(topPanel);
+        add(mainPanel);
         add(new JScrollPane(infoTextArea), BorderLayout.CENTER);
     }
 
@@ -160,7 +166,12 @@ public class Catalogue extends JFrame {
         infoText.append("Control Range: ").append(dronesList.get(i - 71).getControl_range()).append("\n");
         infoText.append("Max Carriage: ").append(dronesList.get(i - 71).getMax_carriage()).append("\n");
 
+
+
+
+        
         infoTextArea.setText(infoText.toString());
+        infoTextArea.setBounds(500, 200, 200, 200);
     }
 
     public static void main(String[] args) {

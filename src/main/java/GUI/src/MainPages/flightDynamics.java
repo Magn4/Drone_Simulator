@@ -84,7 +84,7 @@ public class flightDynamics {
     private static JPanel createTablePanel() {
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(270, 200, 900, 500);
+        tableP.setBounds(230, 200, 1020, 500);
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
@@ -113,7 +113,20 @@ public class flightDynamics {
 
         JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setPreferredSize(new Dimension(900, 2000));
+        scroll.setPreferredSize(new Dimension(1020, 2000));
+        table.setEnabled(false);
+        table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
+        table.getColumnModel().getColumn(0).setPreferredWidth(5);
+        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table.getColumnModel().getColumn(2).setPreferredWidth(30);
+        table.getColumnModel().getColumn(3).setPreferredWidth(70);
+        table.getColumnModel().getColumn(4).setPreferredWidth(70);
+        table.getColumnModel().getColumn(5).setPreferredWidth(70);
+        table.getColumnModel().getColumn(6).setPreferredWidth(70);
+        table.getColumnModel().getColumn(7).setPreferredWidth(70);
+        table.getColumnModel().getColumn(8).setPreferredWidth(200);
+        table.getColumnModel().getColumn(9).setPreferredWidth(20);
+
         tableP.add(scroll);
 
         return tableP;

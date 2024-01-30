@@ -3,6 +3,7 @@ package GUI.src.MainPages;
 import javax.swing.*;
 
 import API.Fetcher.APIFetcher;
+import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
 import Formatter.JsonFormatter;
 import Formatter.Drones.Drone;
@@ -159,6 +160,10 @@ public class historicalAnalysis extends JFrame {
 
         infoTextArea.removeAll();
 
+        
+        FileWriterUtil.writeToFile("Data is being Fetched from this time: " + formattedDateTime, "HistoricalAnalysis.md");
+
+
         JPanel mainPanel = new JPanel();
         
         mainPanel.setLayout(null);
@@ -178,7 +183,7 @@ public class historicalAnalysis extends JFrame {
         int offset = time * 25;
 
         String URL1 = getURL(offset);
-        String result = APIFetcher.FetchAPI(URL1, "Test.json");
+        String result = APIFetcher.FetchAPI(URL1);
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
         return droneTypeList;
 
@@ -199,7 +204,7 @@ public class historicalAnalysis extends JFrame {
 
        for (int i = 0; i < 25; i++) {
             String URL = droneTypeList.get(i).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL, "Test.json");
+            String result2 = APIFetcher.FetchAPI(URL);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
 			System.out.println("• ");

@@ -80,7 +80,7 @@ public class Home {
 		
 
 		String URL = URL_Maker.getUrlExtension("Drones", 0, 25);
-		String result1 = APIFetcher.FetchAPI(URL, "Test.json");
+		String result1 = APIFetcher.FetchAPI(URL);
 		
 		List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result1);
 		// List<Drone> droneType2List = JsonFormatter.ReadDroneList(2, result2);

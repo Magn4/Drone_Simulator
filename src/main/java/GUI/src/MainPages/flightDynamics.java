@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 import Formatter.Drones.Drone;
 import Formatter.Drones.DroneDynamics;
 import API.Fetcher.APIFetcher;
+import API.Fetcher.FileWriterUtil;
 import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
 
@@ -88,7 +89,10 @@ public class flightDynamics {
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
-        String result = APIFetcher.FetchAPI(URL1, "Test.json");
+        String result = APIFetcher.FetchAPI(URL1);
+        
+        FileWriterUtil.writeToFile("Data is being Fetched from: " + URL1, "URLs.md");
+
 
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
 
@@ -97,7 +101,7 @@ public class flightDynamics {
 
         for (int i = 0; i < 25; i++) {
             String URL = droneTypeList.get(i).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL, "Test.json");
+            String result2 = APIFetcher.FetchAPI(URL);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
 			System.out.println("• ");

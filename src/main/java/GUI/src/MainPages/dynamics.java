@@ -58,5 +58,3 @@ public class dynamics extends JButton implements ActionListener{
 
 
 }
-
-

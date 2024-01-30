@@ -26,7 +26,7 @@ public class historicalAnalysis extends JFrame {
     private JButton laterButton;
     private JButton earlier5MinButton;
     private JButton later5MinButton;
-    private JTextArea infoTextArea;
+    private JLabel infoTextArea;
     private LocalDateTime dateTime;
     private int time;
     // private int offset;
@@ -35,7 +35,7 @@ public class historicalAnalysis extends JFrame {
 
     public historicalAnalysis() {
         setTitle("Historical Analysis");
-        setSize(800, 600);
+        setSize(1500, 1500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
@@ -54,8 +54,8 @@ public class historicalAnalysis extends JFrame {
         laterButton = new JButton(">");
         earlier5MinButton = new JButton("<<");
         later5MinButton = new JButton(">>");
-        infoTextArea = new JTextArea();
-        infoTextArea.setEditable(false);
+        
+        infoTextArea = new JLabel();
         dateTime = LocalDateTime.of(2023, 12, 26, 9, 7, 0, 618782);
         time = 0;
         offset = time*25;
@@ -105,32 +105,61 @@ public class historicalAnalysis extends JFrame {
     private void addComponents() {
         setLayout(new BorderLayout());
 
-        JPanel leftPanel = new JPanel(new GridLayout(0, 1));
+		JPanel sidePanel = new JPanel() ;
+		sidePanel.setBackground(new Color(54, 33, 89));
+		sidePanel.setBounds(0, 80, 200, 2000);
 
-        leftPanel.add(createMenuButton("Home"));
-        leftPanel.add(createMenuButton("Drone Catalog"));
-        leftPanel.add(createMenuButton("Flight Dynamics"));
-        leftPanel.add(createMenuButton("Historical Analysis"));
-        leftPanel.setPreferredSize(new Dimension(170, getHeight()));
 
-        JPanel topPanel = new JPanel(new FlowLayout());
-        topPanel.setBackground(Color.decode("#008e9b"));
-        topPanel.setPreferredSize(new Dimension(getWidth(), 60));
+		JPanel topPanel = new JPanel() ;
+		topPanel.setBackground(new Color(54, 33, 89));
+		topPanel.setBounds(0, 0, 2000, 80);
+
+
+
+                JPanel infosP = new JPanel();
+        infosP.setBounds(200, 50, 200, 200);
+        infosP.setBackground(new Color(54, 33, 89));
+
+
+        back backButton = new back();
+		move moveButton = new move();
+		refresh refreshButton = new refresh();
+		start startButton = new start();
+		catalog catalogButton = new catalog();
+		dynamics dynamicsButton = new dynamics();
+		historical historicalButton = new historical();
+
+
+
+
+
+
 
         topPanel.add(earlier5MinButton);
         topPanel.add(earlierButton);
         topPanel.add(laterButton);
         topPanel.add(later5MinButton);
 
-        add(leftPanel, BorderLayout.WEST);
-        add(topPanel, BorderLayout.NORTH);
-        add(new JScrollPane(infoTextArea), BorderLayout.CENTER);
+
+        add(backButton.getBackButton());
+		add(moveButton.getMoveButton());
+		add(refreshButton.getRefreshButton());
+		add(startButton.getStartButton());
+		add(catalogButton.getCatalogButton());
+		add(dynamicsButton.getdynamicsButton());
+		add(historicalButton.gethistoricalButton());
+
+
+
+        add(sidePanel);
+        add(topPanel);
+        add(infoTextArea);
 
         updateInfoTextArea(0); // Update infoTextArea initially
     }
 
 
-    private JButton createMenuButton(String buttonText) {
+   /*  private JButton createMenuButton(String buttonText) {
         JButton button = new JButton(buttonText);
         button.setFocusPainted(false);
         button.setBackground(Color.decode("#008e9b"));
@@ -145,7 +174,7 @@ public class historicalAnalysis extends JFrame {
         button.setBorderPainted(false);
 
         return button;
-    }
+    }*/
 
     private void updateInfoTextArea(int time) {
         
@@ -156,11 +185,12 @@ public class historicalAnalysis extends JFrame {
         String formattedDateTime = dateTime.format(formatter);
         // Update the infoTextArea with the formatted time
         infoTextArea.setText("Displaying data for: " + formattedDateTime);
-
+        //infoTextArea.setBounds(0, 0, 400, 20);
         infoTextArea.removeAll();
-
+        JLabel infos = new JLabel();
+        infos.setText("Displaying data for: " + formattedDateTime);
         JPanel mainPanel = new JPanel();
-        
+        mainPanel.add(infos);
         mainPanel.setLayout(null);
         mainPanel.setPreferredSize(new Dimension(480, 800));
 
@@ -188,7 +218,7 @@ public class historicalAnalysis extends JFrame {
 
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(270, 200, 900, 500);
+        tableP.setBounds(230, 200, 1020, 500);
 
         List <DroneDynamics> droneTypeList = getList();
 
@@ -217,13 +247,26 @@ public class historicalAnalysis extends JFrame {
         }
         JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setPreferredSize(new Dimension(900, 2000));
+        scroll.setPreferredSize(new Dimension(1020, 2000));
+        table.setEnabled(false);
+        table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
+        table.getColumnModel().getColumn(0).setPreferredWidth(5);
+        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table.getColumnModel().getColumn(2).setPreferredWidth(30);
+        table.getColumnModel().getColumn(3).setPreferredWidth(70);
+        table.getColumnModel().getColumn(4).setPreferredWidth(70);
+        table.getColumnModel().getColumn(5).setPreferredWidth(70);
+        table.getColumnModel().getColumn(6).setPreferredWidth(70);
+        table.getColumnModel().getColumn(7).setPreferredWidth(70);
+        table.getColumnModel().getColumn(8).setPreferredWidth(200);
+        table.getColumnModel().getColumn(9).setPreferredWidth(20);
+
         tableP.add(scroll);
     
         return tableP; 
        
     }
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(historicalAnalysis::new);
     }

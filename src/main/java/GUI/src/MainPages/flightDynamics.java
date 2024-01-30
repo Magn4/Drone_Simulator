@@ -49,13 +49,13 @@ public class flightDynamics {
         // Create buttons and panels
      
 
-		back backB = new back();
-		move moveB = new move();
-		refresh refreshB = new refresh();
-		start startP = new start();
-		catalog catalogP = new catalog();
-		dynamics dynamicsP = new dynamics();
-		historical historicalP = new historical();
+		back backButton = new back();
+		move moveButton = new move();
+		refresh refreshButton = new refresh();
+		start startButton = new start();
+		catalog catalogButton = new catalog();
+		dynamics dynamicsButton = new dynamics();
+		historical historicalButton = new historical();
 
         JPanel sidePanel = new JPanel();
         sidePanel.setBackground(new Color(54, 33, 89));
@@ -68,15 +68,15 @@ public class flightDynamics {
         JPanel tableP = createTablePanel();
 
         // Add components to mainPanel
-        mainPanel.add(backB.getBackButton());
-        mainPanel.add(moveB.getMoveButton());
-        mainPanel.add(refreshB.getRefreshButton());
-        mainPanel.add(startP.getStartPanel());
-        mainPanel.add(catalogP.getCatalogPanel());
-        mainPanel.add(dynamicsP.getDynamicsPanel());
-        mainPanel.add(historicalP.getHistoricalPanel());
-        mainPanel.add(topPanel);
-        mainPanel.add(sidePanel);
+		mainPanel.add(backButton.getBackButton());
+		mainPanel.add(moveButton.getMoveButton());
+		mainPanel.add(refreshButton.getRefreshButton());
+        mainPanel.add(startButton.getStartButton());
+		mainPanel.add(catalogButton.getCatalogButton());
+		mainPanel.add(dynamicsButton.getdynamicsButton());
+		mainPanel.add(historicalButton.gethistoricalButton());
+		mainPanel.add(topPanel);
+		mainPanel.add(sidePanel);
         mainPanel.add(tableP);
 
         return mainPanel;
@@ -85,7 +85,7 @@ public class flightDynamics {
     private static JPanel createTablePanel() {
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(270, 200, 900, 500);
+        tableP.setBounds(230, 200, 1020, 500);
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
@@ -117,7 +117,20 @@ public class flightDynamics {
 
         JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setPreferredSize(new Dimension(900, 2000));
+        scroll.setPreferredSize(new Dimension(1020, 2000));
+        table.setEnabled(false);
+        table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
+        table.getColumnModel().getColumn(0).setPreferredWidth(5);
+        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table.getColumnModel().getColumn(2).setPreferredWidth(30);
+        table.getColumnModel().getColumn(3).setPreferredWidth(70);
+        table.getColumnModel().getColumn(4).setPreferredWidth(70);
+        table.getColumnModel().getColumn(5).setPreferredWidth(70);
+        table.getColumnModel().getColumn(6).setPreferredWidth(70);
+        table.getColumnModel().getColumn(7).setPreferredWidth(70);
+        table.getColumnModel().getColumn(8).setPreferredWidth(200);
+        table.getColumnModel().getColumn(9).setPreferredWidth(20);
+
         tableP.add(scroll);
 
         return tableP;

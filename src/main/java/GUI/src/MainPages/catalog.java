@@ -1,64 +1,76 @@
 package GUI.src.MainPages;
 
-	import java.awt.Color;
+
+import java.awt.Color;
 import java.awt.event.ActionEvent;
-	import java.awt.event.ActionListener;
+import java.awt.event.ActionListener;
 
-	import javax.swing.ImageIcon;
-	import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-	public class catalog extends JPanel implements ActionListener{
-		
-		private JButton catalogB;
-		private JLabel catalogL ;
-		private JPanel catalogP;
-		
-		
-		catalog(){
-			
-			
-			catalogP = new JPanel();
-			catalogP.setBounds(0, 250, 200, 70);
-			catalogP.setBackground(new Color(54, 33, 89)); 
-			
-			
-			catalogL = new JLabel();
-			catalogL.setText("Drone catalog      ");
-			catalogL.setForeground(Color.WHITE);
-			
-			
-			
-			ImageIcon icon5 = new ImageIcon("src/main/java/GUI/src/Resources/list.png");
-			catalogB = new JButton();
-			catalogB.setBounds(10, 300, 50, 50);
-			catalogB.setFocusable(false);
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
-			catalogB.setIcon(icon5);
-			catalogB.addActionListener(this);
-			catalogB.setBackground(new Color(54, 33, 89));
-	        catalogB.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
-			
-			catalogP.add(catalogB);
-			catalogP.add(catalogL);
-			
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("catalog button clicked ! ");
-			new Catalogue();
-			
-		}
-
-		public JPanel getCatalogPanel() {
-			return catalogP;
-		}
-
+public class catalog extends JButton implements ActionListener{
+	
+	private JButton catalogButton;
+	
+	catalog(){		
+		ImageIcon icon5 = new ImageIcon("src/main/java/GUI/src/Resources/list.png");
+		catalogButton = new JButton();
+		catalogButton.setBounds(0, 250, 200, 50);
+		catalogButton.setFocusable(false);
+		catalogButton.setIcon(icon5);
+		catalogButton.setText("  Drone  Catalog    ");
+		catalogButton.setForeground(Color.WHITE);
+		catalogButton.setHorizontalTextPosition(JButton.RIGHT);
+		catalogButton.setIconTextGap(20);;
+		catalogButton.addActionListener(this);
+		catalogButton.setBackground(new Color(54, 33, 89));
+        catalogButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("started button clicked ! ");
+		Catalogue.main(null);
+
+
+		new Thread(() -> {
+	   try {
+		   // Warte für 3 Sekunden (3000 Millisekunden)
+		   Thread.sleep(1000);
+	   } catch (InterruptedException ex) {
+		   ex.printStackTrace();
+	   }
+
+	   flightDynamics.dispose();
+	   Home.dispose();
+
+
+   }).start();
+
+	}
+
+	public JButton getCatalogButton() {
+		return catalogButton;
+	}
+
+
+}
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 

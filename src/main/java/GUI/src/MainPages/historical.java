@@ -32,27 +32,12 @@ public class historical extends JButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("started button clicked ! ");
-		Home.main(null);
-
-
-		new Thread(() -> {
-	   try {
-		   // Warte für 3 Sekunden (3000 Millisekunden)
-		   Thread.sleep(1000);
-	   } catch (InterruptedException ex) {
-		   ex.printStackTrace();
-	   }
-
-	   flightDynamics.dispose();
-
-
-   }).start();
-
+		System.out.println("historicaled button clicked ! ");
+		
 	}
 
-	public JButton gethistoricalButton() {
-		return historicalButton;
+	public JPanel getHistoricalPanel() {
+		return historicalP;
 	}
 
 

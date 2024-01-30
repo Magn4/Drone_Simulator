@@ -167,7 +167,7 @@ public class Home {
 		mainPanel.add(startButton.getStartButton());
 		mainPanel.add(catalogButton.getCatalogButton());
 		mainPanel.add(dynamicsButton.getdynamicsButton());
-		mainPanel.add(historicalButton.gethistoricalButton());
+		mainPanel.add(historicalButton.getHistoricalButton());
 		mainPanel.add(topPanel);
 		mainPanel.add(sidePanel);
 		

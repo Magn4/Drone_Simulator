@@ -35,7 +35,7 @@ public class flightDynamics {
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Flight Dynamics");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1500, 1500);
+            frame.setSize(1800, 1500);
 
             // Create main panel:
             JPanel mainPanel = createMainPanel();
@@ -72,11 +72,11 @@ public class flightDynamics {
 
         JPanel sidePanel = new JPanel();
         sidePanel.setBackground(new Color(54, 33, 89));
-        sidePanel.setBounds(0, 80, 200, 800);
+        sidePanel.setBounds(0, 80, 220, 2000);
 
         JPanel topPanel = new JPanel();
         topPanel.setBackground(new Color(54, 33, 89));
-        topPanel.setBounds(0, 0, 2000, 80);
+        topPanel.setBounds(0, 0, 2000, 100);
 
         JPanel tableP = createTablePanel();
 
@@ -101,7 +101,7 @@ public class flightDynamics {
     private static JPanel createTablePanel() {
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(230, 200, 1020, 500);
+        tableP.setBounds(280, 200, 1200, 440);
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
@@ -170,7 +170,7 @@ public class flightDynamics {
     
         JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setPreferredSize(new Dimension(1020, 2000));
+        scroll.setPreferredSize(new Dimension(1200, 425));
         table.setEnabled(false);
         table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
         table.getColumnModel().getColumn(0).setPreferredWidth(5);

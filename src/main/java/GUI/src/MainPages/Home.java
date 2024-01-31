@@ -53,7 +53,7 @@ public class Home {
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-        mainPanel.setPreferredSize(new java.awt.Dimension(480, 2000)); 
+        mainPanel.setPreferredSize(new java.awt.Dimension(480, 2100)); 
 
 		
 		
@@ -120,10 +120,10 @@ public class Home {
 				
 				droneP.setBackground(new Color(79, 58, 114));
 				
-				droneP.setBounds(x , y , 250, 150);
+				droneP.setBounds(x , y , 300, 150);
 				droneP.add(label);
 				mainPanel.add(droneP);
-				x += 300;
+				x += 400;
 				j++;
 				}
 				x = 300;
@@ -153,10 +153,10 @@ public class Home {
 	
 					droneP.setBackground(new Color(79, 58, 114));
 				
-					droneP.setBounds(x , y , 250, 150);
+					droneP.setBounds(x , y , 300, 150);
 					droneP.add(label);
 					mainPanel.add(droneP);
-					x += 300;
+					x += 400;
 					j++;
 					}
 		}

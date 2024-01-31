@@ -151,7 +151,7 @@ public class flightDynamics {
             String result2 = apiFetcher.FetchAPI(URL, Token);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
-            System.out.println("Iteration "+index);
+            System.out.println("Iteration: "+index);
 
             data[index] = new Object[]{
                     ID,

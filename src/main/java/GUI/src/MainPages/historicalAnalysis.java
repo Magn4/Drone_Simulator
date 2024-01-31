@@ -213,7 +213,11 @@ public class historicalAnalysis extends JFrame {
         int offset = time * 25;
 
         String URL1 = getURL(offset);
-        String result = APIFetcher.FetchAPI(URL1);
+        String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+
+        APIFetcher apiFetcher = new APIFetcher();
+
+        String result = apiFetcher.FetchAPI(URL1, Token);
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
         return droneTypeList;
 
@@ -234,7 +238,11 @@ public class historicalAnalysis extends JFrame {
 
        for (int i = 0; i < 25; i++) {
             String URL = droneTypeList.get(i).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL);
+            String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+
+            APIFetcher apiFetcher = new APIFetcher();
+
+            String result2 = apiFetcher.FetchAPI(URL, Token);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
 			System.out.println("• ");

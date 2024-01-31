@@ -27,9 +27,10 @@ public class MainControler {
       //  String UrlExt = "dronetypes/?format=json";
        // String UrlExt2 = "drones/?format=json";
        // String UrlExt3 = "dronedynamics/?format=json";
-       String FileExt = "Test.json";
-        
-       String result = APIFetcher.FetchAPI(UrlExt,FileExt);
+        String TOKEN = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        APIFetcher apiFetcher = new APIFetcher();
+
+       String result = apiFetcher.FetchAPI(UrlExt,TOKEN);
        // System.out.println(ReadDroneList(Test.json).get(3).getId());
     
         System.out.println(result);

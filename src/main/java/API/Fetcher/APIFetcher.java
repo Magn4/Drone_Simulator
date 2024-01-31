@@ -1,9 +1,3 @@
-/*
- * Must add a variable which shows us the user choice of type of infos he wants to get.
- * Must add the possibiity of changing the API fetcher URL based on the users choice
- * Must chan
- */
-
 package API.Fetcher;
 
 import java.io.BufferedReader;
@@ -12,58 +6,56 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
-
 public class APIFetcher {
 
-    public static String FetchAPI(String URLext) {
-        try {
-            final String TOKEN = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
-            
-            // Still need to add changable link, based on User request 
-        // Done.
-            // final URL url = new URL("https://dronesim.facets-labs.com/api/drones/?format=json");
+    private int responseCode;
+    private String responseContent;
 
-            // String URLext = "51/dynamics";
-            // String Path = "Test.json";
-            final URL url = new URL(/* "https://dronesim.facets-labs.com/api/" + */URLext);
+    public String FetchAPI(String URL, String TOKEN) {
+        try {
+
+            // 6ffe7e815e07b6ede78cade7617454eeb944d168
+            // String TOKEN = "Token " + TOKENext;
+
+            final URL url = new URL(URL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             con.setRequestProperty("Authorization", TOKEN);
-            // to check later
-            // con.setRequestProperty("Content-Type", "application/json");
             con.setRequestMethod("GET");
 
-           // int responseCode = con.getResponseCode();
-            //System.out.println("Response Code: " + responseCode);
+            // Get the response code
+            responseCode = con.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            StringBuilder responseContent = new StringBuilder();
+            StringBuilder responseContentBuilder = new StringBuilder();
             String line;
 
             while ((line = reader.readLine()) != null) {
-                responseContent.append(line);
+                responseContentBuilder.append(line);
             }
 
             reader.close();
-           
-            // System.out.println("\n\n" + "Response Content: " + responseContent.toString());
-            
-            // System.out.println("\n\n" + "Changes have been writen to: " + Path + "\n\n");
-            // String filePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/" + Path;
-            
-            // String filePath = "src/main/java/Data/" + Path;
-           
-            //System.out.println("\n\n");
-           //  FileWriterUtil.writeToFile(responseContent.toString(), filePath);
-            //System.out.println("\n\n");
+
+            // Get the response content
+            responseContent = responseContentBuilder.toString();
+
             con.disconnect();
-            return responseContent.toString();
+            return responseContent;
 
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
-}
 
+    // Getter method for response code
+    public int getResponseCode() {
+        return responseCode;
+    }
+
+    // Getter method for response content
+    public String getResponseContent() {
+        return responseContent;
+    }
+}

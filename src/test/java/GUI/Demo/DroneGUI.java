@@ -21,7 +21,7 @@ public class DroneGUI extends JFrame {
        String UrlExt = "dronedynamics/?format=json";
        String FileExt = "Test.json";
         
-       String result = APIFetcher.FetchAPI(UrlExt,FileExt);
+       String result = APIFetcher.FetchAPI(UrlExt);
 
         List<DroneDynamics> droneList = JsonFormatter.ReadDroneList( 3, result);
 

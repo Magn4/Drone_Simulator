@@ -106,8 +106,10 @@ public class DroneCatalog extends JFrame {
         int selectedDroneId = droneComboBox.getItemAt(droneComboBox.getSelectedIndex());
 
         String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, 25);
+		String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        APIFetcher apiFetcher = new APIFetcher();
 
-        String result = APIFetcher.FetchAPI(urlExtension);
+        String result = apiFetcher.FetchAPI(urlExtension, Token);
 
         if (result != null && droneComboBox.getSelectedItem() instanceof Integer) {
             List<DroneType> droneTypeList = JsonFormatter.ReadDroneList(1, result);
@@ -138,8 +140,10 @@ public class DroneCatalog extends JFrame {
     private void displayDroneInfo(int selectedIndex) {
         int selectedDroneId = droneComboBox.getItemAt(droneComboBox.getSelectedIndex());
         String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, 25);
-        
-        String result = APIFetcher.FetchAPI(urlExtension);
+        String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        APIFetcher apiFetcher = new APIFetcher();
+
+        String result = apiFetcher.FetchAPI(urlExtension, Token);
         if (result != null && droneComboBox.getSelectedItem() instanceof Integer) {
             List<DroneType> droneTypeList = JsonFormatter.ReadDroneList(1, result);
             displayDroneInfo(droneTypeList.get(selectedIndex));

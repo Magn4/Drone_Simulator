@@ -42,7 +42,7 @@ public class SimpleGUI implements ActionListener {
         String urlExtension = "dronetypes/?format=json";
         String fileExtension = "YourNewGUI.json";
 
-        String result = apiFetcher.FetchAPI(urlExtension, fileExtension);
+        String result = apiFetcher.FetchAPI(urlExtension);
 
         JsonFormatter jsonFormatter = new JsonFormatter();
         List<DroneType> droneType1List = jsonFormatter.ReadDroneList(1, result);

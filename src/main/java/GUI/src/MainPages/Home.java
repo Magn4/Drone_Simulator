@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities;
 
 import Formatter.Drones.DroneType;
 import API.Fetcher.APIFetcher;
+import API.Fetcher.FileWriterUtil;
 import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
 
@@ -79,8 +80,16 @@ public class Home {
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");
 		
 
+		String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
 		String URL = URL_Maker.getUrlExtension("Drones", 0, 25);
-		String result1 = APIFetcher.FetchAPI(URL);
+		APIFetcher apiFetcher = new APIFetcher();
+
+		String result1 = apiFetcher.FetchAPI(URL, Token);
+		int responseCode = apiFetcher.getResponseCode();
+        System.out.println(responseCode);
+
+        String responseCodeString = String.valueOf(responseCode);
+        FileWriterUtil.writeToFile(responseCodeString, "response.md");
 		
 		List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result1);
 		// List<Drone> droneType2List = JsonFormatter.ReadDroneList(2, result2);

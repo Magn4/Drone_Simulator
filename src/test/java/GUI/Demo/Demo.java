@@ -1,4 +1,4 @@
-package GUI.Demo;
+/*package GUI.Demo;
 
 import Formatter.Drones.DroneType;
 import Formatter.Drones.Drone;
@@ -229,3 +229,4 @@ public class Demo extends JFrame {
         SwingUtilities.invokeLater(() -> new Demo());
     }
 }
+*/

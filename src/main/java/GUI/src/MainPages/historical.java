@@ -50,8 +50,6 @@ public class historical extends JButton implements ActionListener{
 
    }).start();
 
-		System.out.println("historicaled button clicked ! ");
-		
 	}
 
 	public JButton getHistoricalButton() {

@@ -58,19 +58,3 @@ public class catalog extends JButton implements ActionListener{
 
 
 }
-
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-

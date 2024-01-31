@@ -33,13 +33,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.16.0</version>
-        </dependency>
-    
-    
-      <dependency>
-        <groupId>com.google.cloud.sql</groupId>
-        <artifactId>jdbc-socket-factory-core</artifactId>
-        <version>1.14.1</version>
-      </dependency>
+        </dependency>  
     </dependencies>
 </project>

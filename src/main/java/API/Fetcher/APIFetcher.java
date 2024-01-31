@@ -16,7 +16,7 @@ import java.net.URL;
 
 public class APIFetcher {
 
-    public static String FetchAPI(String URLext, String Path) {
+    public static String FetchAPI(String URLext) {
         try {
             final String TOKEN = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
             
@@ -52,10 +52,10 @@ public class APIFetcher {
             // System.out.println("\n\n" + "Changes have been writen to: " + Path + "\n\n");
             // String filePath = "/Users/taha/Desktop/Uni/Java_Project/Drone_Simulator/src/main/java/API/Responses/" + Path;
             
-            String filePath = "src/main/java/Data/" + Path;
+            // String filePath = "src/main/java/Data/" + Path;
            
             //System.out.println("\n\n");
-            FileWriterUtil.writeToFile(responseContent.toString(), filePath);
+           //  FileWriterUtil.writeToFile(responseContent.toString(), filePath);
             //System.out.println("\n\n");
             con.disconnect();
             return responseContent.toString();

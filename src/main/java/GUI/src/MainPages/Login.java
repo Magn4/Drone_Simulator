@@ -1,9 +1,14 @@
 package GUI.src.MainPages;
 
 import javax.swing.*;
+
+import API.Fetcher.FileWriterUtil;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 
 public class Login extends JFrame {
 
@@ -85,6 +90,10 @@ public class Login extends JFrame {
     private void onLoginButtonClick() {
         String enteredToken = tokenField.getText();
         String Token= "6ffe7e815e07b6ede78cade7617454eeb944d168";
+        
+       
+        
+        FileWriterUtil.writeToFile("This is the entered token: " + enteredToken, "token.md");
         if (enteredToken.equals(Token)) {
             dispose();
             Home.main(new String[0]);

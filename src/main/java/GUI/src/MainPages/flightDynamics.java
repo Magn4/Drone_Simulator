@@ -3,6 +3,9 @@ package GUI.src.MainPages;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,14 +16,22 @@ import javax.swing.SwingUtilities;
 import Formatter.Drones.Drone;
 import Formatter.Drones.DroneDynamics;
 import API.Fetcher.APIFetcher;
+import API.Fetcher.FileWriterUtil;
 import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
 
 public class flightDynamics {
+    
+    
     private static JFrame frame;
 
-
+    private static long startTime;
+    private static long endTime;
+   
     public static void main(String[] args) {
+
+        startTime = System.currentTimeMillis();
+
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Flight Dynamics");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,6 +49,9 @@ public class flightDynamics {
 
             frame.setVisible(true);
         });
+      
+
+        
     }
 
     private static JPanel createMainPanel() {
@@ -69,7 +83,7 @@ public class flightDynamics {
         // Add components to mainPanel
 		mainPanel.add(backButton.getBackButton());
 		mainPanel.add(moveButton.getMoveButton());
-		mainPanel.add(refreshButton.getRefreshButton());
+		mainPanel.add(refreshButton.getRefreshButton());    
         mainPanel.add(startButton.getStartButton());
 		mainPanel.add(catalogButton.getCatalogButton());
 		mainPanel.add(dynamicsButton.getdynamicsButton());
@@ -78,6 +92,9 @@ public class flightDynamics {
 		mainPanel.add(sidePanel);
         mainPanel.add(tableP);
 
+        endTime = System.currentTimeMillis();
+        long runningTime = endTime - startTime;
+        System.out.println("Running Time: " + runningTime + " milliseconds");
         return mainPanel;
     }
 
@@ -88,16 +105,21 @@ public class flightDynamics {
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
-        String result = APIFetcher.FetchAPI(URL1, "Test.json");
+        String result = APIFetcher.FetchAPI(URL1);
+        
+        FileWriterUtil.writeToFile("Data is being Fetched from: " + URL1, "URLs.md");
+
 
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
 
         String[] columns = {"ID", "Timestamp", "Speed", "Alignment Roll", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
         Object[][] data = new Object[25][columns.length];
 
-        for (int i = 0; i < 25; i++) {
+   /*   // code Not needed anymore
+
+            for (int i = 0; i < 25; i++) {
             String URL = droneTypeList.get(i).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL, "Test.json");
+            String result2 = APIFetcher.FetchAPI(URL);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
 			System.out.println("• ");
@@ -110,7 +132,42 @@ public class flightDynamics {
                     droneTypeList.get(i).getStatus()
             };
         }
+ */ 
+    ExecutorService executor = Executors.newFixedThreadPool(25); // set  the number of threads 
 
+    CountDownLatch count  = new CountDownLatch(25); // count to wait for all threads to complete
+
+    for (int i = 0; i < 25; i++) {
+        final int index = i;
+        executor.execute(() -> {
+            String URL = droneTypeList.get(index).getDrone();
+            String result2 = APIFetcher.FetchAPI(URL);
+            List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
+            int ID = droneTypeList2.get(0).getId();
+            System.out.println("Iteration "+index);
+
+            data[index] = new Object[]{
+                    ID,
+                    droneTypeList.get(index).getTimestamp(), droneTypeList.get(index).getSpeed(),
+                    droneTypeList.get(index).getAlign_roll(), droneTypeList.get(index).getAlign_yaw(),
+                    droneTypeList.get(index).getLongitude(), droneTypeList.get(index).getLatitude(),
+                    droneTypeList.get(index).getBattery_status(), droneTypeList.get(index).getLast_seen(),
+                    droneTypeList.get(index).getStatus()
+            };
+
+            count.countDown(); // count= count-1   : Signal that the task is complete 
+        });
+    }
+
+    try {
+        count.await(); // Wait for all tasks to complete
+    } catch (InterruptedException e) {    //If the thread is interrupted while waiting
+        e.printStackTrace();
+    } finally {
+        executor.shutdown();
+    }
+    
+    
         JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
         scroll.setPreferredSize(new Dimension(1020, 2000));
@@ -128,6 +185,7 @@ public class flightDynamics {
         table.getColumnModel().getColumn(9).setPreferredWidth(20);
 
         tableP.add(scroll);
+       
 
         return tableP;
     }
@@ -135,6 +193,12 @@ public class flightDynamics {
     public static void dispose() {
 		if(frame != null){
 			frame.dispose();
+
 		}
+     
+         
+       
     }
+   
+
 }

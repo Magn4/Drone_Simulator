@@ -3,6 +3,7 @@ package GUI.src.MainPages;
 import javax.swing.*;
 
 import API.Fetcher.APIFetcher;
+import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
 import Formatter.JsonFormatter;
 import Formatter.Drones.Drone;
@@ -19,6 +20,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class historicalAnalysis extends JFrame {
 
@@ -31,9 +35,13 @@ public class historicalAnalysis extends JFrame {
     private int time;
     // private int offset;
 
+    private long startTime;
+    private long endTime;
    
 
     public historicalAnalysis() {
+        startTime = System.currentTimeMillis(); //record the start of the running time
+
         setTitle("Historical Analysis");
         setSize(1500, 1500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -187,15 +195,27 @@ public class historicalAnalysis extends JFrame {
         infoTextArea.setText("Displaying data for: " + formattedDateTime);
         //infoTextArea.setBounds(0, 0, 400, 20);
         infoTextArea.removeAll();
-        JLabel infos = new JLabel();
-        infos.setText("Displaying data for: " + formattedDateTime);
+        // JLabel infos = new JLabel();
+        // infos.setText("Displaying data for: " + formattedDateTime);
+        
+        FileWriterUtil.writeToFile("Data is being Fetched from this time: " + formattedDateTime, "HistoricalAnalysis.md");
+
+
         JPanel mainPanel = new JPanel();
-        mainPanel.add(infos);
+
         mainPanel.setLayout(null);
         mainPanel.setPreferredSize(new Dimension(480, 800));
 
         JPanel tableP = addTable();
         infoTextArea.add(tableP);
+        
+        endTime = System.currentTimeMillis();
+
+        // Calculate the running time in milliseconds
+        long runningTime = endTime - startTime;
+
+        // Print the running time in seconds
+        System.out.println("Running Time: " + runningTime + " miliseconds");
 
     }
 
@@ -208,7 +228,7 @@ public class historicalAnalysis extends JFrame {
         int offset = time * 25;
 
         String URL1 = getURL(offset);
-        String result = APIFetcher.FetchAPI(URL1, "Test.json");
+        String result = APIFetcher.FetchAPI(URL1);
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
         return droneTypeList;
 
@@ -227,12 +247,13 @@ public class historicalAnalysis extends JFrame {
         String[] columns = {"ID", "Timestamp", "Speed", "Alignment Roll", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
         Object[][] data = new Object[25][columns.length];
 
-       for (int i = 0; i < 25; i++) {
+       
+       /*  for (int i = 0; i < 25; i++) {
             String URL = droneTypeList.get(i).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL, "Test.json");
+            String result2 = APIFetcher.FetchAPI(URL);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
-			System.out.println("• ");
+			System.out.println(i);
 
             data[i] = new Object[]{
                     ID,
@@ -245,7 +266,45 @@ public class historicalAnalysis extends JFrame {
             
                    
         }
-        JTable table = new JTable(data, columns);
+        */
+
+    ExecutorService executor = Executors.newFixedThreadPool(25); // set  the number of threads 
+
+    CountDownLatch count  = new CountDownLatch(25); // count to wait for all threads to complete
+
+    for (int i = 0; i < 25; i++) {
+        final int index = i;
+        executor.execute(() -> {
+            String URL = droneTypeList.get(index).getDrone();
+            String result2 = APIFetcher.FetchAPI(URL);
+            List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
+            int ID = droneTypeList2.get(0).getId();
+            System.out.println(index);
+
+            data[index] = new Object[]{
+                    ID,
+                    droneTypeList.get(index).getTimestamp(), droneTypeList.get(index).getSpeed(),
+                    droneTypeList.get(index).getAlign_roll(), droneTypeList.get(index).getAlign_yaw(),
+                    droneTypeList.get(index).getLongitude(), droneTypeList.get(index).getLatitude(),
+                    droneTypeList.get(index).getBattery_status(), droneTypeList.get(index).getLast_seen(),
+                    droneTypeList.get(index).getStatus()
+            };
+
+            count.countDown(); // count= count-1   : Signal that the task is complete 
+        });
+    }
+
+    try {
+        count.await(); // Wait for all tasks to complete
+    } catch (InterruptedException e) {    //If the thread is interrupted while waiting
+        e.printStackTrace();
+    } finally {
+        executor.shutdown();
+    }
+    
+    
+    
+    JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
         scroll.setPreferredSize(new Dimension(1020, 2000));
         table.setEnabled(false);
@@ -268,6 +327,9 @@ public class historicalAnalysis extends JFrame {
     }
     
     public static void main(String[] args) {
+        
         SwingUtilities.invokeLater(historicalAnalysis::new);
+        
+
     }
 }

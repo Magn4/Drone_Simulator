@@ -2,8 +2,6 @@ package GUI.src.MainPages;
 
 import javax.swing.*;
 
-import org.checkerframework.checker.units.qual.s;
-
 import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
@@ -14,9 +12,6 @@ import Formatter.Drones.DroneDynamics;
 
 import java.util.List;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -126,7 +121,7 @@ public class historicalAnalysis extends JFrame {
 
 
 
-                JPanel infosP = new JPanel();
+        JPanel infosP = new JPanel();
         infosP.setBounds(200, 50, 200, 200);
         infosP.setBackground(new Color(54, 33, 89));
 
@@ -249,7 +244,7 @@ public class historicalAnalysis extends JFrame {
 
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(280, 200, 1200, 440);
+        tableP.setBounds(280, 200, 1200, 510);
 
         List <DroneDynamics> droneTypeList = getList();
 
@@ -327,7 +322,7 @@ public class historicalAnalysis extends JFrame {
     
     JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setPreferredSize(new Dimension(1200, 425));
+        scroll.setPreferredSize(new Dimension(1200, 500));
         table.setEnabled(false);
         table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
         table.getColumnModel().getColumn(0).setPreferredWidth(5);
@@ -340,7 +335,8 @@ public class historicalAnalysis extends JFrame {
         table.getColumnModel().getColumn(7).setPreferredWidth(70);
         table.getColumnModel().getColumn(8).setPreferredWidth(200);
         table.getColumnModel().getColumn(9).setPreferredWidth(20);
-
+        table.setIntercellSpacing(new Dimension(10, 10));
+        table.setRowHeight(30);
         tableP.add(scroll);
     
         return tableP; 

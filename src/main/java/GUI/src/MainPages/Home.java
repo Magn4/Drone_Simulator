@@ -28,9 +28,8 @@ public class Home {
 			
 			frame = new JFrame("Home");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			//frame.setSize(1500,700);
-			frame.setSize(1800, 1500);
-			
+			frame.setSize(1920, 1080);
+		
 			
 			
 			// Create main panel :
@@ -39,7 +38,7 @@ public class Home {
 			// Create JScrollPane  :
 			JScrollPane scrollPane = new JScrollPane(mainPanel);
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-
+			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
             
             // add  JScrollPane 
             frame.add(scrollPane);
@@ -54,7 +53,7 @@ public class Home {
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-        mainPanel.setPreferredSize(new java.awt.Dimension(480, 2100)); 
+        mainPanel.setPreferredSize(new java.awt.Dimension(1500, 2000)); 
 
 		
 		

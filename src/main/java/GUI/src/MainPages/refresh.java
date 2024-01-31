@@ -15,7 +15,7 @@ public class refresh extends JButton implements ActionListener{
 		
 		ImageIcon icon3 = new ImageIcon("src/main/java/GUI/src/Resources/refresh.png");
 		refresh = new JButton();
-		refresh.setBounds(1470, 10, 50, 50);
+		refresh.setBounds(1450, 10, 50, 50);
 		refresh.setIcon(icon3);
 		refresh.addActionListener(this);
 		refresh.setBackground(new Color(54, 33, 89));

@@ -2,6 +2,7 @@ package GUI.src.MainPages;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -35,7 +36,7 @@ public class flightDynamics {
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Flight Dynamics");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1800, 1500);
+            frame.setSize(1920, 1080);
 
             // Create main panel:
             JPanel mainPanel = createMainPanel();
@@ -43,6 +44,8 @@ public class flightDynamics {
             // Create JScrollPane:
             JScrollPane scrollPane = new JScrollPane(mainPanel);
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
 
             // Add JScrollPane
             frame.add(scrollPane);
@@ -57,7 +60,7 @@ public class flightDynamics {
     private static JPanel createMainPanel() {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
-        mainPanel.setPreferredSize(new Dimension(480, 800));
+        mainPanel.setPreferredSize(new Dimension(1500, 1100));
 
         // Create buttons and panels
      
@@ -101,7 +104,7 @@ public class flightDynamics {
     private static JPanel createTablePanel() {
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(280, 200, 1200, 440);
+        tableP.setBounds(280, 200, 1200, 510);
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
@@ -177,7 +180,7 @@ public class flightDynamics {
     
         JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setPreferredSize(new Dimension(1200, 425));
+        scroll.setPreferredSize(new Dimension(1200, 500));
         table.setEnabled(false);
         table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
         table.getColumnModel().getColumn(0).setPreferredWidth(5);
@@ -190,6 +193,13 @@ public class flightDynamics {
         table.getColumnModel().getColumn(7).setPreferredWidth(70);
         table.getColumnModel().getColumn(8).setPreferredWidth(200);
         table.getColumnModel().getColumn(9).setPreferredWidth(20);
+        //table.setBackground(new Color(154, 133, 189));
+        //table.setForeground(Color.black);
+        //table.setFont(new Font("Arial", Font.PLAIN, 12));
+        table.setIntercellSpacing(new Dimension(10, 10));
+        table.setRowHeight(30);
+
+
 
         tableP.add(scroll);
        

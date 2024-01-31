@@ -195,9 +195,9 @@ public class flightDynamics {
         table.getColumnModel().getColumn(9).setPreferredWidth(20);
         //table.setBackground(new Color(154, 133, 189));
         //table.setForeground(Color.black);
-        //table.setFont(new Font("Arial", Font.PLAIN, 12));
+        table.setFont(new Font("Arial", Font.PLAIN, 13));
         table.setIntercellSpacing(new Dimension(10, 10));
-        table.setRowHeight(30);
+        table.setRowHeight(40);
 
 
 

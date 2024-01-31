@@ -336,7 +336,9 @@ public class historicalAnalysis extends JFrame {
         table.getColumnModel().getColumn(8).setPreferredWidth(200);
         table.getColumnModel().getColumn(9).setPreferredWidth(20);
         table.setIntercellSpacing(new Dimension(10, 10));
-        table.setRowHeight(30);
+        table.setRowHeight(40);
+        table.setFont(new Font("Arial", Font.PLAIN, 13));
+
         tableP.add(scroll);
     
         return tableP; 

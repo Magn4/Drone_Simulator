@@ -179,9 +179,4 @@ public class Catalogue extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Catalogue::new);
     }
-<<<<<<< HEAD
 }
-=======
-    
-}
->>>>>>> 05e4115b249e25fa49b07a12f607bc8a7a970821

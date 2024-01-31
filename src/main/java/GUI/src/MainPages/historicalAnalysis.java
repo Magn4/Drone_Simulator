@@ -284,7 +284,10 @@ public class historicalAnalysis extends JFrame {
         final int index = i;
         executor.execute(() -> {
             String URL = droneTypeList.get(index).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL);
+            String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+            APIFetcher apiFetcher = new APIFetcher();
+
+            String result2 = apiFetcher.FetchAPI(URL, Token);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
             System.out.println(index);

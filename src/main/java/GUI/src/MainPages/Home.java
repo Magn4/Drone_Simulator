@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities;
 
 import Formatter.Drones.DroneType;
 import API.Fetcher.APIFetcher;
+import API.Fetcher.FileWriterUtil;
 import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
 
@@ -79,20 +80,26 @@ public class Home {
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");
 		
 
-		String URL = URL_Maker.getUrlExtension("Drones", 0, 25);
-		String result1 = APIFetcher.FetchAPI(URL);
+		String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+		String URL = URL_Maker.getUrlExtension("Drone Type", 0, 25);
+		APIFetcher apiFetcher = new APIFetcher();
+
+		String result = apiFetcher.FetchAPI(URL, Token);
+		int responseCode = apiFetcher.getResponseCode();
+        System.out.println(responseCode);
+
+        String responseCodeString = String.valueOf(responseCode);
+        FileWriterUtil.writeToFile(responseCodeString, "response.md");
 		
-		List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result1);
+		List<DroneType> droneType1List = JsonFormatter.ReadDroneList(1, result);
 		// List<Drone> droneType2List = JsonFormatter.ReadDroneList(2, result2);
 		// List<DroneDynamics> droneType3List = JsonFormatter.ReadDroneList(3, result3);
 
 
 
-		int n = 25;
+		int n = 20;
 		int m = n % 3;
 		n = n/3;
-
-		System.out.println("This is n:" + n);
 
 		int y = 200;
 		int j = 1;

@@ -105,7 +105,11 @@ public class flightDynamics {
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
-        String result = APIFetcher.FetchAPI(URL1);
+        String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+
+        APIFetcher apiFetcher = new APIFetcher();
+
+        String result = apiFetcher.FetchAPI(URL1, Token);
         
         FileWriterUtil.writeToFile("Data is being Fetched from: " + URL1, "URLs.md");
 
@@ -119,7 +123,9 @@ public class flightDynamics {
 
             for (int i = 0; i < 25; i++) {
             String URL = droneTypeList.get(i).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL);
+
+
+            String result2 = apiFetcher.FetchAPI(URL, Token);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
 			System.out.println("• ");
@@ -141,10 +147,11 @@ public class flightDynamics {
         final int index = i;
         executor.execute(() -> {
             String URL = droneTypeList.get(index).getDrone();
-            String result2 = APIFetcher.FetchAPI(URL);
+            
+            String result2 = apiFetcher.FetchAPI(URL, Token);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
-            System.out.println("Iteration "+index);
+            System.out.println("Iteration: "+index);
 
             data[index] = new Object[]{
                     ID,

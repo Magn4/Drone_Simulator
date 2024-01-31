@@ -2,7 +2,9 @@ package GUI.src.MainPages;
 
 import javax.swing.*;
 
+import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
+import API.Fetcher.URL_Maker;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -89,12 +91,30 @@ public class Login extends JFrame {
     
     private void onLoginButtonClick() {
         String enteredToken = tokenField.getText();
-        String Token= "6ffe7e815e07b6ede78cade7617454eeb944d168";
+    
+        // String Token= "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+
+        // String Token = "Token "  + enteredToken;
         
        
         
         FileWriterUtil.writeToFile("This is the entered token: " + enteredToken, "token.md");
-        if (enteredToken.equals(Token)) {
+        APIFetcher apiFetcher = new APIFetcher();
+        // String responseContent = apiFetcher.FetchAPI(apiUrl);
+
+        String URL = URL_Maker.getUrlExtension("Drones", 0, 25);
+
+        
+        String responseContent = apiFetcher.FetchAPI(URL, enteredToken);
+
+        int responseCode = apiFetcher.getResponseCode();
+        System.out.println(responseCode);
+        System.out.println(responseContent);
+
+        String responseCodeString = String.valueOf(responseCode);
+        FileWriterUtil.writeToFile(responseCodeString, "response.md");
+
+        if (responseCode == 200) {
             dispose();
             Home.main(new String[0]);
           //  JOptionPane.showMessageDialog(this, "Login Successful!");

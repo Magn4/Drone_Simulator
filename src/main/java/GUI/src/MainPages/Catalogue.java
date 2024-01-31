@@ -55,8 +55,10 @@ public class Catalogue extends JFrame {
     private void setDroneList() {
         String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, 20);
         
+		String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        APIFetcher apiFetcher = new APIFetcher();
 
-        String result = APIFetcher.FetchAPI(urlExtension);
+        String result = apiFetcher.FetchAPI(urlExtension, Token);
         dronesList = JsonFormatter.ReadDroneList(1, result);
         dronesList.sort((o1, o2) -> o1.getId() - o2.getId());
     }
@@ -177,9 +179,4 @@ public class Catalogue extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Catalogue::new);
     }
-<<<<<<< HEAD
 }
-=======
-    
-}
->>>>>>> 05e4115b249e25fa49b07a12f607bc8a7a970821

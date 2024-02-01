@@ -13,12 +13,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
-import Formatter.Drones.Drone;
-import Formatter.Drones.DroneDynamics;
 import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
-import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
+import API.Formatter.JsonFormatter;
+import API.Formatter.Drones.Drone;
+import API.Formatter.Drones.DroneDynamics;
 
 public class flightDynamics {
     

@@ -1,5 +1,5 @@
 
-package Formatter.Drones;
+package API.Formatter.Drones;
 
 public class DroneType {
     private int number;

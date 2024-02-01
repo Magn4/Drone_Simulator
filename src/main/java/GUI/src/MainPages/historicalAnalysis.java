@@ -5,10 +5,10 @@ import javax.swing.*;
 import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
-import Formatter.JsonFormatter;
-import Formatter.Drones.Drone;
-import Formatter.Drones.DroneType;
-import Formatter.Drones.DroneDynamics;
+import API.Formatter.JsonFormatter;
+import API.Formatter.Drones.Drone;
+import API.Formatter.Drones.DroneDynamics;
+import API.Formatter.Drones.DroneType;
 
 import java.util.List;
 

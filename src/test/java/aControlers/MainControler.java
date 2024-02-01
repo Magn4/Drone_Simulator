@@ -8,13 +8,9 @@
 
 package aControlers;
 
-import Formatter.JsonFormatter;
-// import Formatter.Drones.DroneType1;
-// import Formatter.Drones.DroneType2;
-import Formatter.Drones.DroneDynamics;
-
 import API.Fetcher.APIFetcher;
-
+import API.Formatter.JsonFormatter;
+import API.Formatter.Drones.DroneDynamics;
 
 import java.util.List;
 

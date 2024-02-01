@@ -1,9 +1,9 @@
 package GUI.src.MainPages;
 
 import API.Fetcher.APIFetcher;
-import Formatter.Drones.DroneType;
-import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
+import API.Formatter.JsonFormatter;
+import API.Formatter.Drones.DroneType;
 
 import javax.swing.*;
 import java.awt.*;

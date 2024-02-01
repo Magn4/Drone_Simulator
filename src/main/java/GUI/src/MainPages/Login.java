@@ -10,9 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-
 public class Login extends JFrame {
+
+    public static String Token;
 
     private JTextField tokenField;
     private JButton loginButton;
@@ -92,7 +92,7 @@ public class Login extends JFrame {
     private void onLoginButtonClick() {
         String enteredToken = tokenField.getText();
     
-        // String Token= "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        String Token = enteredToken;
 
         // String Token = "Token "  + enteredToken;
         

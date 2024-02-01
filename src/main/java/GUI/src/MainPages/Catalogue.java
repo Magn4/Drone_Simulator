@@ -27,7 +27,7 @@ public class Catalogue extends JFrame {
 
     public Catalogue() {
         setTitle("Drone Catalog");
-        setSize(800, 600);
+        setSize(1500, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
@@ -86,10 +86,11 @@ public class Catalogue extends JFrame {
         leftPanel.add(createMenuButton("Flight dynamics"));
         leftPanel.add(createMenuButton("Historical Analysis"));
         leftPanel.setPreferredSize(new Dimension(170, getHeight()));
+        leftPanel.setBackground(Color.decode("#ba000d"));
 
 
         JPanel topPanel = new JPanel(new FlowLayout());
-        topPanel.setBackground(Color.decode("#008e9b"));
+        topPanel.setBackground(Color.decode("#ba000d"));
         topPanel.setPreferredSize(new Dimension(getWidth(), 60));
 
         JLabel chooseDroneLabel = new JLabel("Choose Drone ID:");
@@ -106,7 +107,7 @@ public class Catalogue extends JFrame {
     private JButton createMenuButton(String buttonText) {
         JButton button = new JButton(buttonText);
         button.setFocusPainted(false);
-        button.setBackground(Color.decode("#008e9b"));
+        button.setBackground(Color.decode("#ba000d"));
         button.setForeground(Color.WHITE);
 
         int topPadding = 20;

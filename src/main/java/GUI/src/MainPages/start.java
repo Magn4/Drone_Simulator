@@ -51,7 +51,6 @@ public class start extends JButton implements ActionListener{
 			   ex.printStackTrace();
 		   }
 		flightDynamics.dispose();
-        historicalAnalysis.disposeFrame();
 	}
 
 	public JButton getStartButton() {

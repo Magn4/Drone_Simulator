@@ -4,7 +4,6 @@ import API.Fetcher.APIFetcher;
 import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.DroneType;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -64,27 +63,25 @@ public class Catalogue extends JFrame {
         dronesList.sort((o1, o2) -> o1.getId() - o2.getId());
     }
 
-
     private void addComponents() {
         setLayout(new BorderLayout());
 
-
         JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(null); // Set layout to null
+        leftPanel.setLayout(null); 
 
         JButton homeButton = createMenuButton("Home");
-        homeButton.setBounds(0, 100, 200, 50); // Set bounds for the button
+        homeButton.setBounds(0, 100, 200, 50); 
         leftPanel.add(homeButton);
         JButton catalogueButton = createMenuButton("Drone Catalog");
-        catalogueButton.setBounds(0, 200, 200, 50); // Set bounds for the button
+        catalogueButton.setBounds(0, 200, 200, 50); 
         leftPanel.add(catalogueButton);
 
         JButton dynamicsButton = createMenuButton("Flight dynamics");
-        dynamicsButton.setBounds(0, 300, 200, 50); // Set bounds for the button
+        dynamicsButton.setBounds(0, 300, 200, 50); 
         leftPanel.add(dynamicsButton);
 
         JButton analysisButton = createMenuButton("Historical Analysis");
-        analysisButton.setBounds(0, 400, 200, 50); // Set bounds for the button
+        analysisButton.setBounds(0, 400, 200, 50); 
         leftPanel.add(analysisButton);
 
         leftPanel.add(createMenuButton("Home"));
@@ -93,7 +90,6 @@ public class Catalogue extends JFrame {
         leftPanel.add(createMenuButton("Historical Analysis"));
         leftPanel.setPreferredSize(new Dimension(220, getHeight()));
         leftPanel.setBackground(Color.decode("#164863"));
-
 
         JPanel topPanel = new JPanel(new FlowLayout());
         topPanel.setBackground(Color.decode("#164863"));
@@ -122,6 +118,7 @@ public class Catalogue extends JFrame {
         int bottomPadding = 5;
         int rightPadding = 5;
         button.setBorder(BorderFactory.createEmptyBorder(topPadding, leftPadding, bottomPadding, rightPadding));
+
         if (buttonText.equals("Home")) {
             ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/home.png");
             button.setIcon(icon4);
@@ -138,7 +135,6 @@ public class Catalogue extends JFrame {
             ImageIcon icon7 = new ImageIcon("src/main/java/GUI/src/Resources/kalender.png");
             button.setIcon(icon7);
         }
-        
 
         button.addActionListener(e -> handleMenuButtonClick(buttonText));
 
@@ -176,7 +172,8 @@ public class Catalogue extends JFrame {
         infoTextArea.setText(infoText.toString());
     }
     
-       
+
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Catalogue::new);
     }

@@ -25,6 +25,7 @@ public class Charts {
 
         for (int i = 0; i < 5; i++) {
             fxPanels[i] = new JFXPanel();
+        fxPanels[i].setPreferredSize(new Dimension(370, 250));
         }
 
         Platform.runLater(() -> {
@@ -51,6 +52,7 @@ public class Charts {
         NumberAxis yAxis = new NumberAxis();
         BarChart<String, Number> chart = new BarChart<>(xAxis, yAxis);
         chart.setTitle(chartTitle);
+        chart.setLegendVisible(false);
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (DroneType drone : dronesList) {

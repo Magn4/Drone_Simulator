@@ -74,11 +74,11 @@ public class flightDynamics {
 		historical historicalButton = new historical();
 
         JPanel sidePanel = new JPanel();
-        sidePanel.setBackground(new Color(54, 33, 89));
+        sidePanel.setBackground(new Color(22, 72, 99));
         sidePanel.setBounds(0, 80, 220, 2000);
 
         JPanel topPanel = new JPanel();
-        topPanel.setBackground(new Color(54, 33, 89));
+        topPanel.setBackground(new Color(22, 72, 99));
         topPanel.setBounds(0, 0, 2000, 100);
 
         JPanel tableP = createTablePanel();
@@ -103,7 +103,7 @@ public class flightDynamics {
 
     private static JPanel createTablePanel() {
         JPanel tableP = new JPanel();
-        tableP.setBackground(new Color(154, 133, 189));
+        tableP.setBackground(new Color(66, 125, 157));
         tableP.setBounds(280, 200, 1200, 510);
 
 

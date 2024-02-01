@@ -25,7 +25,7 @@ public class start extends JButton implements ActionListener{
 		startButton.setHorizontalTextPosition(JButton.RIGHT);
 		startButton.setIconTextGap(20);;
 		startButton.addActionListener(this);
-		startButton.setBackground(new Color(54, 33, 89));
+		startButton.setBackground(new Color(22, 72, 99));
         startButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}

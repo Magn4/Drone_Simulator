@@ -26,7 +26,7 @@ public class dynamics extends JButton implements ActionListener{
 		dynamicsButton.setHorizontalTextPosition(JButton.RIGHT);
 		dynamicsButton.setIconTextGap(20);;
 		dynamicsButton.addActionListener(this);
-		dynamicsButton.setBackground(new Color(54, 33, 89));
+		dynamicsButton.setBackground(new Color(22, 72, 99));
         dynamicsButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}

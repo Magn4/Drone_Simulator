@@ -25,7 +25,7 @@ public class catalog extends JButton implements ActionListener{
 		catalogButton.setHorizontalTextPosition(JButton.RIGHT);
 		catalogButton.setIconTextGap(20);;
 		catalogButton.addActionListener(this);
-		catalogButton.setBackground(new Color(54, 33, 89));
+		catalogButton.setBackground(new Color(22, 72, 99));
         catalogButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}

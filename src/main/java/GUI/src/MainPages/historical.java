@@ -25,7 +25,7 @@ public class historical extends JButton implements ActionListener{
 		historicalButton.setHorizontalTextPosition(JButton.RIGHT);
 		historicalButton.setIconTextGap(20);;
 		historicalButton.addActionListener(this);
-		historicalButton.setBackground(new Color(54, 33, 89));
+		historicalButton.setBackground(new Color(22, 72, 99));
         historicalButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 	}

@@ -8,7 +8,10 @@ import java.time.format.DateTimeFormatter;
 
 public class FileWriterUtil {
     public static void writeToFile(String content, String filePath) {
-        filePath = "src/main/java/Data/" + filePath;
+
+        filePath = "src/main/java/Logs/" + filePath;
+
+        // filePath = "./Logs/" + filePath;
 
         try (FileWriter fileWriter = new FileWriter(filePath, true)) {
         

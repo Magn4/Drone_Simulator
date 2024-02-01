@@ -231,6 +231,11 @@ public class Catalogue extends JFrame {
             fxPanel5.setScene(new Scene(chart5));
             //chart1.setLegendVisible(false); in JavaFX wird standardmäßig eine Legende angezeigt,
 
+            fxPanel1.setPreferredSize(new Dimension(400,200));
+            fxPanel2.setPreferredSize(new Dimension(400,200));
+            fxPanel3.setPreferredSize(new Dimension(400,200));
+            fxPanel4.setPreferredSize(new Dimension(400,200));
+            fxPanel5.setPreferredSize(new Dimension(400,200));
         });
     
         JPanel rightPanel = new JPanel(new GridLayout(2, 2)); // Grid layout to accommodate 5 charts

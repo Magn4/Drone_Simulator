@@ -194,7 +194,7 @@ public class historicalAnalysis extends JFrame {
         System.out.println(dateTime.format(formatter));
         String formattedDateTime = dateTime.format(formatter);
         // Update the infoTextArea with the formatted time
-        infoTextArea.setText("Displaying data for: " + formattedDateTime);
+        infoTextArea.setText("" + formattedDateTime);
         //infoTextArea.setBounds(0, 0, 400, 20);
         
         FileWriterUtil.writeToFile("Data is being Fetched from this time: " + formattedDateTime, "HistoricalAnalysis.md");

@@ -14,9 +14,6 @@ import java.util.List;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -43,7 +40,7 @@ public class historicalAnalysis extends JFrame {
         startTime = System.currentTimeMillis(); //record the start of the running time
 
         setTitle("Historical Analysis");
-        setSize(1500, 1500);
+        setSize(1800, 1100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
@@ -115,16 +112,16 @@ public class historicalAnalysis extends JFrame {
 
 		JPanel sidePanel = new JPanel() ;
 		sidePanel.setBackground(new Color(54, 33, 89));
-		sidePanel.setBounds(0, 80, 200, 2000);
+		sidePanel.setBounds(0, 80, 220, 2000);
 
 
 		JPanel topPanel = new JPanel() ;
 		topPanel.setBackground(new Color(54, 33, 89));
-		topPanel.setBounds(0, 0, 2000, 80);
+		topPanel.setBounds(0, 0, 2000, 100);
 
 
 
-                JPanel infosP = new JPanel();
+        JPanel infosP = new JPanel();
         infosP.setBounds(200, 50, 200, 200);
         infosP.setBackground(new Color(54, 33, 89));
 
@@ -136,6 +133,10 @@ public class historicalAnalysis extends JFrame {
 		catalog catalogButton = new catalog();
 		dynamics dynamicsButton = new dynamics();
 		historical historicalButton = new historical();
+        earlier5MinButton.setBounds(630, 30, 50, 30);
+        earlierButton.setBounds(695, 30, 50, 30);
+        laterButton.setBounds(770, 30, 50, 30);
+        later5MinButton.setBounds(835, 30, 50, 30);
 
 
 
@@ -143,10 +144,11 @@ public class historicalAnalysis extends JFrame {
 
 
 
-        topPanel.add(earlier5MinButton);
-        topPanel.add(earlierButton);
-        topPanel.add(laterButton);
-        topPanel.add(later5MinButton);
+
+        add(earlier5MinButton);
+        add(earlierButton);
+        add(laterButton);
+        add(later5MinButton);
 
 
         add(backButton.getBackButton());
@@ -242,7 +244,7 @@ public class historicalAnalysis extends JFrame {
 
         JPanel tableP = new JPanel();
         tableP.setBackground(new Color(154, 133, 189));
-        tableP.setBounds(230, 200, 1020, 500);
+        tableP.setBounds(280, 200, 1200, 510);
 
         List <DroneDynamics> droneTypeList = getList();
 
@@ -320,7 +322,7 @@ public class historicalAnalysis extends JFrame {
     
     JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setPreferredSize(new Dimension(1020, 2000));
+        scroll.setPreferredSize(new Dimension(1200, 500));
         table.setEnabled(false);
         table.getTableHeader().getColumnModel().getColumn(0).setPreferredWidth(100);
         table.getColumnModel().getColumn(0).setPreferredWidth(5);
@@ -333,6 +335,9 @@ public class historicalAnalysis extends JFrame {
         table.getColumnModel().getColumn(7).setPreferredWidth(70);
         table.getColumnModel().getColumn(8).setPreferredWidth(200);
         table.getColumnModel().getColumn(9).setPreferredWidth(20);
+        table.setIntercellSpacing(new Dimension(10, 10));
+        table.setRowHeight(40);
+        table.setFont(new Font("Arial", Font.PLAIN, 13));
 
         tableP.add(scroll);
     

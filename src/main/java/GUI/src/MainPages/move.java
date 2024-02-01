@@ -16,7 +16,7 @@ public class move extends JButton implements ActionListener{
 		
 		ImageIcon icon2 = new ImageIcon("src/main/java/GUI/src/Resources/pfeil-rechts.png");
 		move = new JButton();
-		move.setBounds(51, 0, 50, 50);
+		move.setBounds(51, 10, 50, 50);
 		move.setIcon(icon2);
 		move.addActionListener(this);
 		move.setBackground(new Color(54, 33, 89));

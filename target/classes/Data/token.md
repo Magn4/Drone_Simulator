@@ -14,6 +14,10 @@
 30-01-2024 19:22:09		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
 30-01-2024 19:23:08		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
 30-01-2024 19:25:48		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
+<<<<<<< HEAD
+31-01-2024 19:58:35		This is the entered token: vfr nzrh
+31-01-2024 19:58:55		This is the entered token: tgfgf
+=======
 31-01-2024 16:53:38		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
 31-01-2024 17:41:57		This is the entered token: kjh
 31-01-2024 17:42:04		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
@@ -56,5 +60,6 @@
 31-01-2024 19:39:31		This is the entered token: Token 6ffe7e815e07b6ede78cade7617454eeb944d168
 31-01-2024 19:39:36		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
 31-01-2024 19:39:59		This is the entered token: Token 6ffe7e815e07b6ede78cade7617454eeb944d168
+>>>>>>> 8347580d3401bcd90c3db2af64ba5459198a71f6
 01-02-2024 11:01:18		This is the entered token: lkjhasf
 01-02-2024 11:05:42		This is the entered token: Token 6ffe7e815e07b6ede78cade7617454eeb944d168

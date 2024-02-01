@@ -15,7 +15,7 @@ public class back extends JButton implements ActionListener{
 		
 		ImageIcon icon1 = new ImageIcon("src/main/java/GUI/src/Resources/pfeil-links.png");
 		back = new JButton();
-		back.setBounds(0, 0, 50, 50);
+		back.setBounds(0, 10, 50, 50);
 		back.setIcon(icon1);
 		back.addActionListener(this);
 		back.setBackground(new Color(54, 33, 89));

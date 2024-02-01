@@ -622,7 +622,7 @@
 01-02-2024 18:28:14		Data is being Fetched from this time: 2023-12-26 09:07:00
 =======
 >>>>>>> f3e961d15781c79c03017d241fc49b95166f39d1
-<<<<<<< HEAD:src/main/java/Data/HistoricalAnalysis.md
+<<<<<<< HEAD:target/classes/Data/HistoricalAnalysis.md
 01-02-2024 18:20:52		Data is being Fetched from this time: 2023-12-26 09:07:00
 01-02-2024 18:21:10		Data is being Fetched from this time: 2023-12-26 09:07:00
 01-02-2024 19:31:03		Data is being Fetched from this time: 2023-12-26 09:07:00
@@ -638,4 +638,10 @@
 01-02-2024 19:40:16		Data is being Fetched from this time: 2023-12-26 09:07:00
 =======
 >>>>>>> b28d063b0726c205ecaa39b53a36e2c0c0daf0e0:target/classes/Data/HistoricalAnalysis.md
->>>>>>> b0c8301a0d9f8c6501441f9206cdd2e84df8de42:target/classes/Logs/HistoricalAnalysis.md
+>>>>>>> b0c8301a0d9f8c6501441f9206cdd2e84df8de42:src/main/java/Logs/HistoricalAnalysis.md
+01-02-2024 19:45:08		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 19:45:11		Data is being Fetched from this time: 2023-12-26 09:08:00
+01-02-2024 19:45:13		Data is being Fetched from this time: 2023-12-26 09:09:00
+01-02-2024 19:46:29		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 19:46:40		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 19:46:50		Data is being Fetched from this time: 2023-12-26 09:07:00

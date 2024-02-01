@@ -489,6 +489,7 @@
 01-02-2024 13:20:29		Data is being Fetched from this time: 2023-12-26 09:10:00
 01-02-2024 13:20:31		Data is being Fetched from this time: 2023-12-26 09:11:00
 >>>>>>> 54a9bd2d544607879468a20b263c6e43b284d1af
+<<<<<<< HEAD
 01-02-2024 14:36:02		Data is being Fetched from this time: 2023-12-26 09:07:00
 01-02-2024 14:36:18		Data is being Fetched from this time: 2023-12-26 09:08:00
 01-02-2024 14:36:23		Data is being Fetched from this time: 2023-12-26 09:09:00
@@ -597,3 +598,20 @@
 01-02-2024 16:55:41		Data is being Fetched from this time: 2023-12-26 09:42:00
 01-02-2024 16:55:42		Data is being Fetched from this time: 2023-12-26 09:43:00
 01-02-2024 16:55:43		Data is being Fetched from this time: 2023-12-26 09:44:00
+=======
+01-02-2024 14:37:55		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 14:38:40		Data is being Fetched from this time: 2023-12-26 09:08:00
+01-02-2024 14:38:41		Data is being Fetched from this time: 2023-12-26 09:09:00
+01-02-2024 14:38:42		Data is being Fetched from this time: 2023-12-26 09:10:00
+01-02-2024 14:38:42		Data is being Fetched from this time: 2023-12-26 09:09:00
+01-02-2024 14:38:43		Data is being Fetched from this time: 2023-12-26 09:08:00
+01-02-2024 14:38:44		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 14:38:44		Data is being Fetched from this time: 2023-12-26 09:06:00
+01-02-2024 14:38:45		Data is being Fetched from this time: 2023-12-26 09:05:00
+01-02-2024 14:38:46		Data is being Fetched from this time: 2023-12-26 09:06:00
+01-02-2024 14:38:47		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 14:38:48		Data is being Fetched from this time: 2023-12-26 09:08:00
+01-02-2024 14:39:27		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 14:40:31		Data is being Fetched from this time: 2023-12-26 09:07:00
+01-02-2024 14:41:30		Data is being Fetched from this time: 2023-12-26 09:07:00
+>>>>>>> f3e961d15781c79c03017d241fc49b95166f39d1

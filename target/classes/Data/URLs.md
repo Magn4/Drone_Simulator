@@ -137,3 +137,12 @@
 01-02-2024 14:39:34		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
 01-02-2024 14:40:36		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
 >>>>>>> f3e961d15781c79c03017d241fc49b95166f39d1
+01-02-2024 17:03:21		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 17:11:29		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 17:25:15		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 17:43:36		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 19:06:10		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 19:07:33		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 19:09:40		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 19:10:17		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25
+01-02-2024 19:20:54		Data is being Fetched from: https://dronesim.facets-labs.com/api/dronedynamics/?format=json&limit=25

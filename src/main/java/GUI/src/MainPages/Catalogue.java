@@ -4,13 +4,6 @@ import API.Fetcher.APIFetcher;
 import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.DroneType;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +20,7 @@ public class Catalogue extends JFrame {
 
     public Catalogue() {
         setTitle("Drone Catalog");
-        setSize(1500, 800);
+        setSize(1920, 1080);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
@@ -53,11 +46,9 @@ public class Catalogue extends JFrame {
         getInfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-  
-              displayDroneInfo();
-              drawBarCharts();
-
-
+                displayDroneInfo();
+                Charts charts = new Charts(dronesList);
+                charts.drawBarCharts(getContentPane());
             }
         });
     }
@@ -78,20 +69,35 @@ public class Catalogue extends JFrame {
         setLayout(new BorderLayout());
 
 
-        JPanel leftPanel = new JPanel(new GridLayout(0, 1));
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(null); // Set layout to null
 
+        JButton homeButton = createMenuButton("Home");
+        homeButton.setBounds(0, 100, 200, 50); // Set bounds for the button
+        leftPanel.add(homeButton);
+        JButton catalogueButton = createMenuButton("Drone Catalog");
+        catalogueButton.setBounds(0, 200, 200, 50); // Set bounds for the button
+        leftPanel.add(catalogueButton);
+
+        JButton dynamicsButton = createMenuButton("Flight dynamics");
+        dynamicsButton.setBounds(0, 300, 200, 50); // Set bounds for the button
+        leftPanel.add(dynamicsButton);
+
+        JButton analysisButton = createMenuButton("Historical Analysis");
+        analysisButton.setBounds(0, 400, 200, 50); // Set bounds for the button
+        leftPanel.add(analysisButton);
 
         leftPanel.add(createMenuButton("Home"));
         leftPanel.add(createMenuButton("Drone Catalog"));
         leftPanel.add(createMenuButton("Flight dynamics"));
         leftPanel.add(createMenuButton("Historical Analysis"));
-        leftPanel.setPreferredSize(new Dimension(170, getHeight()));
-        leftPanel.setBackground(Color.decode("#ba000d"));
+        leftPanel.setPreferredSize(new Dimension(220, getHeight()));
+        leftPanel.setBackground(Color.decode("#164863"));
 
 
         JPanel topPanel = new JPanel(new FlowLayout());
-        topPanel.setBackground(Color.decode("#ba000d"));
-        topPanel.setPreferredSize(new Dimension(getWidth(), 60));
+        topPanel.setBackground(Color.decode("#164863"));
+        topPanel.setPreferredSize(new Dimension(getWidth(), 100));
 
         JLabel chooseDroneLabel = new JLabel("Choose Drone ID:");
         chooseDroneLabel.setForeground(Color.WHITE);
@@ -107,14 +113,32 @@ public class Catalogue extends JFrame {
     private JButton createMenuButton(String buttonText) {
         JButton button = new JButton(buttonText);
         button.setFocusPainted(false);
-        button.setBackground(Color.decode("#ba000d"));
+        button.setBackground(Color.decode("#164863"));
         button.setForeground(Color.WHITE);
+        button.setPreferredSize(new Dimension(5, 2));
 
-        int topPadding = 20;
-        int leftPadding = 20;
-        int bottomPadding = 20;
-        int rightPadding = 20;
+        int topPadding = 5;
+        int leftPadding = 5;
+        int bottomPadding = 5;
+        int rightPadding = 5;
         button.setBorder(BorderFactory.createEmptyBorder(topPadding, leftPadding, bottomPadding, rightPadding));
+        if (buttonText.equals("Home")) {
+            ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/home.png");
+            button.setIcon(icon4);
+        }
+        else if (buttonText.equals("Drone Catalog")) {
+            ImageIcon icon5 = new ImageIcon("src/main/java/GUI/src/Resources/list.png");
+            button.setIcon(icon5);
+        }
+        else if (buttonText.equals("Flight dynamics")) {
+            ImageIcon icon6 = new ImageIcon("src/main/java/GUI/src/Resources/drone.png");
+            button.setIcon(icon6);
+        }
+        else if (buttonText.equals("Historical Analysis")) {
+            ImageIcon icon7 = new ImageIcon("src/main/java/GUI/src/Resources/kalender.png");
+            button.setIcon(icon7);
+        }
+        
 
         button.addActionListener(e -> handleMenuButtonClick(buttonText));
 
@@ -152,99 +176,7 @@ public class Catalogue extends JFrame {
         infoTextArea.setText(infoText.toString());
     }
     
-    private void drawBarCharts() {
-        JFXPanel fxPanel1 = new JFXPanel();
-        JFXPanel fxPanel2 = new JFXPanel();
-        JFXPanel fxPanel3 = new JFXPanel();
-        JFXPanel fxPanel4 = new JFXPanel();
-        JFXPanel fxPanel5 = new JFXPanel(); 
-    
-        Platform.runLater(() -> {
-            // Chart 1: Max Speed
-            CategoryAxis xAxis1 = new CategoryAxis(); 
-            NumberAxis yAxis1 = new NumberAxis(); 
-            BarChart<String, Number> chart1 = new BarChart<>(xAxis1, yAxis1);
-            chart1.setTitle("Max Speed");
-    
-            XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-            for (DroneType drone : dronesList) {
-                series1.getData().add(new XYChart.Data<>(String.valueOf(drone.getId()), drone.getMax_speed()));
-            }
-    
-            chart1.getData().add(series1);
-            fxPanel1.setScene(new Scene(chart1));
-    
-            // Chart 2: Battery Capacity
-            CategoryAxis xAxis2 = new CategoryAxis(); 
-            NumberAxis yAxis2 = new NumberAxis(); 
-            BarChart<String, Number> chart2 = new BarChart<>(xAxis2, yAxis2);
-            chart2.setTitle("Battery Capacity");
-    
-            XYChart.Series<String, Number> series2 = new XYChart.Series<>();
-            for (DroneType drone : dronesList) {
-                series2.getData().add(new XYChart.Data<>(String.valueOf(drone.getId()), drone.getBattery_capacity()));
-            }
-    
-            chart2.getData().add(series2);
-            fxPanel2.setScene(new Scene(chart2));
-    
-            // Chart 3: Control Range
-            CategoryAxis xAxis3 = new CategoryAxis(); 
-            NumberAxis yAxis3 = new NumberAxis(); 
-            BarChart<String, Number> chart3 = new BarChart<>(xAxis3, yAxis3);
-            chart3.setTitle("Control Range");
-    
-            XYChart.Series<String, Number> series3 = new XYChart.Series<>();
-            for (DroneType drone : dronesList) {
-                series3.getData().add(new XYChart.Data<>(String.valueOf(drone.getId()), drone.getControl_range()));
-            }
-    
-            chart3.getData().add(series3);
-            fxPanel3.setScene(new Scene(chart3));
-    
-            // Chart 4: Max Carriage
-            CategoryAxis xAxis4 = new CategoryAxis(); 
-            NumberAxis yAxis4 = new NumberAxis(); 
-            BarChart<String, Number> chart4 = new BarChart<>(xAxis4, yAxis4);
-            chart4.setTitle("Max Carriage");
-    
-            XYChart.Series<String, Number> series4 = new XYChart.Series<>();
-            for (DroneType drone : dronesList) {
-                series4.getData().add(new XYChart.Data<>(String.valueOf(drone.getId()), drone.getMax_carriage()));
-            }
-    
-            chart4.getData().add(series4);
-            fxPanel4.setScene(new Scene(chart4));
-    
-            // Chart 5: Weight
-            CategoryAxis xAxis5 = new CategoryAxis(); 
-            NumberAxis yAxis5 = new NumberAxis(); 
-            BarChart<String, Number> chart5 = new BarChart<>(xAxis5, yAxis5);
-            chart5.setTitle("Weight");
-    
-            XYChart.Series<String, Number> series5 = new XYChart.Series<>();
-            for (DroneType drone : dronesList) {
-                series5.getData().add(new XYChart.Data<>(String.valueOf(drone.getId()), drone.getWeight()));
-            }
-    
-            chart5.getData().add(series5);
-            fxPanel5.setScene(new Scene(chart5));
-            //chart1.setLegendVisible(false); in JavaFX wird standardmäßig eine Legende angezeigt,
-
-        });
-    
-        JPanel rightPanel = new JPanel(new GridLayout(2, 2)); // Grid layout to accommodate 5 charts
-        rightPanel.add(fxPanel1); 
-        rightPanel.add(fxPanel2); 
-        rightPanel.add(fxPanel3); 
-        rightPanel.add(fxPanel4); 
-        rightPanel.add(fxPanel5); 
-    
-        add(rightPanel, BorderLayout.EAST); // Add the right panel to the main frame
-    }
-    
-    
-    
+       
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Catalogue::new);
     }

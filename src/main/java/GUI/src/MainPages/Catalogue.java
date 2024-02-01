@@ -2,7 +2,8 @@ package GUI.src.MainPages;
 
 import API.Fetcher.APIFetcher;
 import API.Fetcher.URL_Maker;
-import Formatter.Drones.DroneType;
+import API.Formatter.JsonFormatter;
+import API.Formatter.Drones.DroneType;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
@@ -10,7 +11,6 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import Formatter.JsonFormatter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,9 +64,11 @@ public class Catalogue extends JFrame {
 
     private void setDroneList() {
         String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, 20);
-        String fileExtension = "Test.json";
+        
+		String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        APIFetcher apiFetcher = new APIFetcher();
 
-        String result = APIFetcher.FetchAPI(urlExtension, fileExtension);
+        String result = apiFetcher.FetchAPI(urlExtension, Token);
         dronesList = JsonFormatter.ReadDroneList(1, result);
         dronesList.sort((o1, o2) -> o1.getId() - o2.getId());
     }

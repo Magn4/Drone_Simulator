@@ -60,6 +60,9 @@
 31-01-2024 19:39:31		This is the entered token: Token 6ffe7e815e07b6ede78cade7617454eeb944d168
 31-01-2024 19:39:36		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
 31-01-2024 19:39:59		This is the entered token: Token 6ffe7e815e07b6ede78cade7617454eeb944d168
+<<<<<<< HEAD
 >>>>>>> 8347580d3401bcd90c3db2af64ba5459198a71f6
 01-02-2024 00:22:46		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
 01-02-2024 00:23:30		This is the entered token: 6ffe7e815e07b6ede78cade7617454eeb944d168
+=======
+>>>>>>> 54a9bd2d544607879468a20b263c6e43b284d1af

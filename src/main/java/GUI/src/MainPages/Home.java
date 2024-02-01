@@ -9,12 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
-import Formatter.Drones.DroneType;
 import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
-import Formatter.JsonFormatter;
 import API.Fetcher.URL_Maker;
-
+import API.Formatter.JsonFormatter;
+import API.Formatter.Drones.DroneType;
 
 import java.util.List;
 

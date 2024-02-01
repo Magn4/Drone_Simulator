@@ -196,9 +196,6 @@ public class historicalAnalysis extends JFrame {
         // Update the infoTextArea with the formatted time
         infoTextArea.setText("Displaying data for: " + formattedDateTime);
         //infoTextArea.setBounds(0, 0, 400, 20);
-        infoTextArea.removeAll();
-        // JLabel infos = new JLabel();
-        // infos.setText("Displaying data for: " + formattedDateTime);
         
         FileWriterUtil.writeToFile("Data is being Fetched from this time: " + formattedDateTime, "HistoricalAnalysis.md");
 
@@ -207,9 +204,25 @@ public class historicalAnalysis extends JFrame {
 
         mainPanel.setLayout(null);
         mainPanel.setPreferredSize(new Dimension(480, 800));
+        JPanel textPanel = new JPanel();
+        //textPanel.setBackground(new Color(255, 255, 255));
+        textPanel.setBounds(280, 150, 1200, 50); // Passen Sie die Position und Größe nach Bedarf an
+    
+        // Fügen Sie den Text zum Textpanel hinzu
+        JLabel textLabel = new JLabel("Displaying data for: " + formattedDateTime);
+        textLabel.setFont(new Font("Arial", Font.PLAIN, 30));
+
+        textPanel.add(textLabel);
+        infoTextArea.removeAll();
+        infoTextArea.add(textPanel);
+    
+        // JLabel infos = new JLabel();
+        // infos.setText("Displaying data for: " + formattedDateTime);
 
         JPanel tableP = addTable();
         infoTextArea.add(tableP);
+        //mainPanel.add(tableP);
+
         
         endTime = System.currentTimeMillis();
 

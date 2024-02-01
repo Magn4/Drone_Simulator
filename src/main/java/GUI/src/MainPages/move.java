@@ -19,7 +19,7 @@ public class move extends JButton implements ActionListener{
 		move.setBounds(51, 10, 50, 50);
 		move.setIcon(icon2);
 		move.addActionListener(this);
-		move.setBackground(new Color(54, 33, 89));
+		move.setBackground(new Color(22, 72, 99));
         move.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 

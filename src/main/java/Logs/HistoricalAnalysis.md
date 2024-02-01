@@ -615,16 +615,3 @@
 01-02-2024 14:40:31		Data is being Fetched from this time: 2023-12-26 09:07:00
 01-02-2024 14:41:30		Data is being Fetched from this time: 2023-12-26 09:07:00
 >>>>>>> f3e961d15781c79c03017d241fc49b95166f39d1
-01-02-2024 17:03:40		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 17:11:34		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 17:11:42		Data is being Fetched from this time: 2023-12-26 09:08:00
-01-02-2024 17:19:25		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 17:25:30		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 17:26:22		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 17:36:35		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 18:14:15		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 19:06:14		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 19:07:27		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 19:09:49		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 19:18:36		Data is being Fetched from this time: 2023-12-26 09:07:00
-01-02-2024 19:54:42		Data is being Fetched from this time: 2023-12-26 09:07:00

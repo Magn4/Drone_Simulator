@@ -18,7 +18,7 @@ public class back extends JButton implements ActionListener{
 		back.setBounds(0, 10, 50, 50);
 		back.setIcon(icon1);
 		back.addActionListener(this);
-		back.setBackground(new Color(54, 33, 89));
+		back.setBackground(new Color(22, 72, 99));
         back.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 

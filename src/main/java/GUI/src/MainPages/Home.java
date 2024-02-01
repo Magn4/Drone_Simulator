@@ -68,12 +68,12 @@ public class Home {
 		
 		
 		JPanel sidePanel = new JPanel() ;
-		sidePanel.setBackground(new Color(54, 33, 89));
+		sidePanel.setBackground(new Color(22, 72, 99));
 		sidePanel.setBounds(0, 80, 220, 2000);
 		
 		
 		JPanel topPanel = new JPanel() ;
-		topPanel.setBackground(new Color(54, 33, 89));
+		topPanel.setBackground(new Color(22, 72, 99));
 		topPanel.setBounds(0, 0, 2000, 100);
 		
 		
@@ -125,7 +125,8 @@ public class Home {
 				
 				JPanel droneP = new JPanel();
 				
-				droneP.setBackground(new Color(79, 58, 114));
+				droneP.setBackground(new Color(66, 125, 157));
+				//droneP.setBackground(new Color(86, 145, 177));
 				
 				droneP.setBounds(x , y , 300, 150);
 				droneP.add(label);
@@ -145,7 +146,7 @@ public class Home {
 					"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
 					"<br>" +
 					"<br>Manufacturer: " +  droneType1List.get(j-1).getManufacturer() +
-					"<br>" +
+					"<br>" + 
 					"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
 					);
 					label.setForeground(Color.WHITE);
@@ -159,7 +160,7 @@ public class Home {
 					
 					JPanel droneP = new JPanel();
 	
-					droneP.setBackground(new Color(79, 58, 114));
+					droneP.setBackground(new Color(66, 125, 157));
 				
 					droneP.setBounds(x , y , 300, 150);
 					droneP.add(label);

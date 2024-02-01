@@ -18,7 +18,7 @@ public class refresh extends JButton implements ActionListener{
 		refresh.setBounds(1450, 10, 50, 50);
 		refresh.setIcon(icon3);
 		refresh.addActionListener(this);
-		refresh.setBackground(new Color(54, 33, 89));
+		refresh.setBackground(new Color(22, 72, 99));
         refresh.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
 
 

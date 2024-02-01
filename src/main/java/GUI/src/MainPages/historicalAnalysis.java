@@ -111,19 +111,19 @@ public class historicalAnalysis extends JFrame {
         setLayout(new BorderLayout());
 
 		JPanel sidePanel = new JPanel() ;
-		sidePanel.setBackground(new Color(54, 33, 89));
+		sidePanel.setBackground(new Color(22, 72, 99));
 		sidePanel.setBounds(0, 80, 220, 2000);
 
 
 		JPanel topPanel = new JPanel() ;
-		topPanel.setBackground(new Color(54, 33, 89));
+		topPanel.setBackground(new Color(22, 72, 99));
 		topPanel.setBounds(0, 0, 2000, 100);
 
 
 
         JPanel infosP = new JPanel();
         infosP.setBounds(200, 50, 200, 200);
-        infosP.setBackground(new Color(54, 33, 89));
+        infosP.setBackground(new Color(66, 125, 157));
 
 
         back backButton = new back();
@@ -194,7 +194,7 @@ public class historicalAnalysis extends JFrame {
         System.out.println(dateTime.format(formatter));
         String formattedDateTime = dateTime.format(formatter);
         // Update the infoTextArea with the formatted time
-        infoTextArea.setText("Displaying data for: " + formattedDateTime);
+        infoTextArea.setText("" + formattedDateTime);
         //infoTextArea.setBounds(0, 0, 400, 20);
         
         FileWriterUtil.writeToFile("Data is being Fetched from this time: " + formattedDateTime, "HistoricalAnalysis.md");
@@ -206,11 +206,11 @@ public class historicalAnalysis extends JFrame {
         mainPanel.setPreferredSize(new Dimension(480, 800));
         JPanel textPanel = new JPanel();
         //textPanel.setBackground(new Color(255, 255, 255));
-        textPanel.setBounds(280, 150, 1200, 50); // Passen Sie die Position und Größe nach Bedarf an
+        textPanel.setBounds(280, 130, 1200, 50); // Passen Sie die Position und Größe nach Bedarf an
     
         // Fügen Sie den Text zum Textpanel hinzu
         JLabel textLabel = new JLabel("Displaying data for: " + formattedDateTime);
-        textLabel.setFont(new Font("Arial", Font.PLAIN, 30));
+        textLabel.setFont(new Font("Arial", Font.PLAIN, 25));
 
         textPanel.add(textLabel);
         infoTextArea.removeAll();
@@ -256,7 +256,7 @@ public class historicalAnalysis extends JFrame {
     private JPanel addTable() {
 
         JPanel tableP = new JPanel();
-        tableP.setBackground(new Color(154, 133, 189));
+        tableP.setBackground(new Color(66, 125, 157));
         tableP.setBounds(280, 200, 1200, 510);
 
         List <DroneDynamics> droneTypeList = getList();

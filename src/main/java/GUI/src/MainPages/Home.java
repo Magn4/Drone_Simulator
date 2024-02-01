@@ -1,6 +1,7 @@
 package GUI.src.MainPages;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -55,7 +56,6 @@ public class Home {
         mainPanel.setPreferredSize(new java.awt.Dimension(1500, 2000)); 
 
 		
-		
 		back backButton = new back();
 		move moveButton = new move();
 		refresh refreshButton = new refresh();
@@ -63,6 +63,8 @@ public class Home {
 		catalog catalogButton = new catalog();
 		dynamics dynamicsButton = new dynamics();
 		historical historicalButton = new historical();
+
+		
 		
 		
 		JPanel sidePanel = new JPanel() ;
@@ -147,6 +149,7 @@ public class Home {
 					"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
 					);
 					label.setForeground(Color.WHITE);
+					//label.setFont(new Font("Arial", Font.PLAIN, 16));
 	
 					label.setIcon(icon);
 				
@@ -175,10 +178,31 @@ public class Home {
 		mainPanel.add(historicalButton.getHistoricalButton());
 		mainPanel.add(topPanel);
 		mainPanel.add(sidePanel);
+		//mainPanel.add(refreshButton.getRefreshButton());
 		
 		return mainPanel ;
 		
 	}
+
+	public static void refreshPage() {
+        System.out.println("Refreshing Home page...");
+		Home.main(null);
+		new Thread(() -> {
+			try {
+				// Warte für 3 Sekunden (3000 Millisekunden)
+				Thread.sleep(1000);
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+	 
+			flightDynamics.dispose();
+			Home.dispose();
+	 
+	 
+		}).start();
+	 
+    }
+
 
 
 	public static void dispose() {

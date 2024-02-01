@@ -1,6 +1,7 @@
 # Drone_Simulator
 
-This Project is a Univesity Group project that Fetches Informations about Drones that the user Selects using a GUI, from a Restful API and display them back on the GUI. 
+This Project is a University Group project that Fetches Information about Drones that the user Selects using a GUI, from a Restful API, and displays them back on the GUI.
 
-![plot](./src/main/java/GUI/src/Resources/MainDrone.png)
-
+<div style="text-align:center">
+  <img src="./src/main/java/GUI/src/Resources/MainDrone.png" alt="Drone Image">
+</div>

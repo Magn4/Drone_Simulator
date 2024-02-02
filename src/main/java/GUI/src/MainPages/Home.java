@@ -1,7 +1,6 @@
 package GUI.src.MainPages;
 
 import java.awt.Color;
-import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -23,7 +22,7 @@ public class Home {
 
 	private static JFrame frame;
 	
-	public static void main(String[] args) {
+	public static void main(String Token) {
 		SwingUtilities.invokeLater(() -> {
 			
 			frame = new JFrame("Home");
@@ -33,7 +32,7 @@ public class Home {
 			
 			
 			// Create main panel :
-			JPanel mainPanel = createMainPanel();
+			JPanel mainPanel = createMainPanel(Token);
 			
 			// Create JScrollPane  :
 			JScrollPane scrollPane = new JScrollPane(mainPanel);
@@ -49,7 +48,7 @@ public class Home {
 	}
 
 	
-	private static JPanel createMainPanel() {
+	private static JPanel createMainPanel(String Token) {
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
@@ -80,7 +79,7 @@ public class Home {
 		ImageIcon icon = new ImageIcon("src/test/java/GUI/Dron/src/big-drone.png");
 		
 
-		String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+		// String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
 		String URL = URL_Maker.getUrlExtension("Drone Type", 0, 25);
 		APIFetcher apiFetcher = new APIFetcher();
 

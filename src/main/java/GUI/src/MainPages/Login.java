@@ -130,7 +130,7 @@ public class Login extends JFrame {
 
         if (responseCode == 200) {
             dispose();
-            Home.main(new String[0]);
+            Home.main(enteredToken);
           //  JOptionPane.showMessageDialog(this, "Login Successful!");
         } else {
             JOptionPane.showMessageDialog(this, "Please enter a valid token.");

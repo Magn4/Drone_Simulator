@@ -64,7 +64,7 @@ public class Login extends JFrame {
     photoPanel.setBackground(new Color(155, 190, 200));
 
     // Load the image
-    ImageIcon imageIcon = new ImageIcon("C:\\Users\\Test\\Downloads\\MainDrone.png"); // Adjust path as needed
+    ImageIcon imageIcon = new ImageIcon("src/main/java/GUI/src/Resources/MainDrone.png"); // Adjust path as needed
     JLabel imageLabel = new JLabel(imageIcon);
     imageLabel.setPreferredSize(new Dimension(510, 400)); // Set the preferred size of the image
     photoPanel.add(imageLabel, BorderLayout.CENTER);

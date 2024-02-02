@@ -4,6 +4,7 @@ import API.Fetcher.APIFetcher;
 import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.DroneType;
+import GUI.src.MainPages.Login;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,9 @@ public class Catalogue extends JFrame {
     private JButton getInfoButton;
     private JTextArea infoTextArea;
     private List<DroneType> dronesList;
+    private String Token = Login.getToken();
+
+
 
     public Catalogue() {
         setTitle("Drone Catalog");
@@ -55,7 +59,7 @@ public class Catalogue extends JFrame {
     private void setDroneList() {
         String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, 20);
         
-		String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+		// String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
         APIFetcher apiFetcher = new APIFetcher();
 
         String result = apiFetcher.FetchAPI(urlExtension, Token);
@@ -145,7 +149,7 @@ public class Catalogue extends JFrame {
         if (buttonText.equals("Home")) {
             dispose();
             new Home();
-            Home.main(null);
+            Home.main();
         } else if (buttonText.equals("Flight dynamics")) {
             dispose();
             flightDynamics.main(null);

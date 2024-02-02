@@ -30,6 +30,8 @@ public class historicalAnalysis extends JFrame {
     private JLabel infoTextArea;
     private LocalDateTime dateTime;
     private int time;
+    private String Token = Login.getToken();
+
     // private int offset;
 
     private long startTime;
@@ -243,7 +245,7 @@ public class historicalAnalysis extends JFrame {
         int offset = time * 25;
 
         String URL1 = getURL(offset);
-        String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        // String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
 
         APIFetcher apiFetcher = new APIFetcher();
 

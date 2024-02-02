@@ -28,6 +28,8 @@ public class flightDynamics {
 
     private static long startTime;
     private static long endTime;
+    private static String Token = Login.getToken();
+
    
     public static void main(String[] args) {
 
@@ -108,7 +110,7 @@ public class flightDynamics {
 
 
         String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
-        String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
+        //String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
 
         APIFetcher apiFetcher = new APIFetcher();
 
@@ -122,26 +124,7 @@ public class flightDynamics {
         String[] columns = {"ID", "Timestamp", "Speed", "Alignment Roll", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
         Object[][] data = new Object[25][columns.length];
 
-   /*   // code Not needed anymore
-
-            for (int i = 0; i < 25; i++) {
-            String URL = droneTypeList.get(i).getDrone();
-
-
-            String result2 = apiFetcher.FetchAPI(URL, Token);
-            List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
-            int ID = droneTypeList2.get(0).getId();
-			System.out.println("• ");
-
-            data[i] = new Object[]{
-                    ID,
-                    droneTypeList.get(i).getTimestamp(), droneTypeList.get(i).getSpeed(),
-                    droneTypeList.get(i).getAlign_roll(), droneTypeList.get(i).getAlign_yaw(), droneTypeList.get(i).getLongitude(),
-                    droneTypeList.get(i).getLatitude(), droneTypeList.get(i).getBattery_status(), droneTypeList.get(i).getLast_seen(),
-                    droneTypeList.get(i).getStatus()
-            };
-        }
- */ 
+   
     ExecutorService executor = Executors.newFixedThreadPool(25); // set  the number of threads 
 
     CountDownLatch count  = new CountDownLatch(25); // count to wait for all threads to complete

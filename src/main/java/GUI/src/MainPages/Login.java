@@ -19,7 +19,7 @@ public class Login extends JFrame {
 
     public Login() {
         setTitle("Login Page");
-        setSize(900, 555);
+        setSize(900, 540);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
@@ -103,11 +103,20 @@ public class Login extends JFrame {
     add(mainPanel, BorderLayout.CENTER); // Add mainPanel to the center of the frame
 }
 
+
+    public static void setToken(String newToken) {
+        Token = newToken;
+    }
+
+    public static String getToken() {
+        return Token;
+    }
+
+    // Action listener for login button
     private void onLoginButtonClick() {
         String enteredToken = tokenField.getText();
     
-        String Token = enteredToken;
-
+        setToken(enteredToken);
         // String Token = "Token "  + enteredToken;
         
        
@@ -130,7 +139,7 @@ public class Login extends JFrame {
 
         if (responseCode == 200) {
             dispose();
-            Home.main(enteredToken);
+            Home.main();
           //  JOptionPane.showMessageDialog(this, "Login Successful!");
         } else {
             JOptionPane.showMessageDialog(this, "Please enter a valid token.");

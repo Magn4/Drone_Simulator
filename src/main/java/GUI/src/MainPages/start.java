@@ -33,8 +33,7 @@ public class start extends JButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("started button clicked ! ");
-		Home.main(null);
-
+		Home.main();
 
 		new Thread(() -> extracted()).start();
 

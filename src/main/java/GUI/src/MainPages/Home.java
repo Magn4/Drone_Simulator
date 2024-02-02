@@ -21,8 +21,10 @@ import java.util.List;
 public class Home {
 
 	private static JFrame frame;
+	private static String Token = Login.getToken();
+
 	
-	public static void main(String Token) {
+	public static void main() {
 		SwingUtilities.invokeLater(() -> {
 			
 			frame = new JFrame("Home");
@@ -32,7 +34,7 @@ public class Home {
 			
 			
 			// Create main panel :
-			JPanel mainPanel = createMainPanel(Token);
+			JPanel mainPanel = createMainPanel();
 			
 			// Create JScrollPane  :
 			JScrollPane scrollPane = new JScrollPane(mainPanel);
@@ -48,7 +50,7 @@ public class Home {
 	}
 
 	
-	private static JPanel createMainPanel(String Token) {
+	private static JPanel createMainPanel() {
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
@@ -186,7 +188,7 @@ public class Home {
 
 	public static void refreshPage() {
         System.out.println("Refreshing Home page...");
-		Home.main(null);
+		Home.main();
 		new Thread(() -> {
 			try {
 				// Warte für 3 Sekunden (3000 Millisekunden)

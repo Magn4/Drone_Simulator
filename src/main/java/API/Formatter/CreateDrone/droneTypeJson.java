@@ -5,6 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import API.Formatter.Drones.DroneType;
 
+
+/**
+ *
+ * @author Taha
+ */
+
 public class droneTypeJson {
     
       public static DroneType DroneTypeFromJsonNode(JsonNode node, int number, ObjectMapper mapper) {

@@ -24,10 +24,16 @@ import API.Formatter.countFinder;
 import GUI.src.MainPages.Refresh.refresh;
 import GUI.src.MainPages.aLogin.Login;
 import GUI.src.MainPages.Catalogue.catalogueButton;
-import GUI.src.MainPages.Historical.historical;
+import GUI.src.MainPages.Historical.historicalButton;
 import GUI.src.MainPages.Home.homeButton;
 
-
+/**
+ *
+ * @author Nisrine 
+ * The GUI
+ * @author Mohamed
+ * Implementation of The API
+ */
 
 public class flightDynamics {
     
@@ -79,7 +85,7 @@ public class flightDynamics {
 		homeButton startButton = new homeButton();
 		catalogueButton catalogButton = new catalogueButton();
 		flightDynamicsButton dynamicsButton = new flightDynamicsButton();
-		historical historicalButton = new historical();
+		historicalButton historicalButton = new historicalButton();
 
         JPanel sidePanel = new JPanel();
         sidePanel.setBackground(new Color(22, 72, 99));

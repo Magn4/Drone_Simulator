@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ *
+ * @author Nisrine 
+ * 
+ */
 public class refresh extends JButton implements ActionListener{
 	
 	public JButton refresh;

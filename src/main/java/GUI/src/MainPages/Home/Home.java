@@ -19,11 +19,19 @@ import GUI.src.MainPages.Refresh.refresh;
 import GUI.src.MainPages.aLogin.Login;
 import GUI.src.MainPages.Catalogue.catalogueButton;
 import GUI.src.MainPages.FlightDynamics.flightDynamicsButton;
-import GUI.src.MainPages.Historical.historical;
+import GUI.src.MainPages.Historical.historicalButton;
 import GUI.src.MainPages.FlightDynamics.flightDynamics;
 
 import java.util.List;
 
+
+/**
+ *
+ * @author Nisrine 
+ * The GUI
+ * @author Mohamed
+ * Implementation of The API
+ */
 
 public class Home {
 
@@ -72,7 +80,7 @@ public class Home {
 		homeButton startButton = new homeButton();
 		catalogueButton catalogButton = new catalogueButton();
 		flightDynamicsButton dynamicsButton = new flightDynamicsButton();
-		historical historicalButton = new historical();
+		historicalButton historicalButton = new historicalButton();
 
 		
 		

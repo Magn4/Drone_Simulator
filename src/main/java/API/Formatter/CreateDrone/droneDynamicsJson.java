@@ -6,6 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import API.Formatter.Drones.DroneDynamics;
 
+
+/**
+ *
+ * @author Taha
+ */
+
 public class droneDynamicsJson{
 
 

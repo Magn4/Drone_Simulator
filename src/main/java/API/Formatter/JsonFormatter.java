@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ *
+ * @author Taha
+ */
+
+
 public class JsonFormatter {
 
     public static <T> List<T> ReadDroneList(int type, String jsonData) {

@@ -3,6 +3,12 @@ package API.Fetcher;
 public class URL_Maker {
     
 
+
+/**
+ *
+ * @author Taha
+ */
+
 public static String getUrlExtension(String Type, int Offset, int Limit) {
     String URL = "https://dronesim.facets-labs.com/api/";
     switch (Type) {

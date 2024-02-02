@@ -6,6 +6,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+/**
+ *
+ * @author Taha
+ */
 public class APIFetcher {
 
     private int responseCode;

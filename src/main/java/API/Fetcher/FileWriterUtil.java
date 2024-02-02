@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ *
+ * @author Taha
+ */
+
 public class FileWriterUtil {
     public static void writeToFile(String content, String filePath) {
 

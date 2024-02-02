@@ -26,6 +26,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ *
+ * @author Nisrine 
+ * The GUI
+ * @author Mohamed
+ * Implementation of The API
+ */
 public class historicalAnalysis extends JFrame {
 
     private JButton earlierButton;
@@ -141,7 +148,7 @@ public class historicalAnalysis extends JFrame {
 		homeButton startButton = new homeButton();
 		catalogueButton catalogButton = new catalogueButton();
 		flightDynamicsButton dynamicsButton = new flightDynamicsButton();
-		historical historicalButton = new historical();
+		historicalButton historicalButton = new historicalButton();
         earlier5MinButton.setBounds(630, 30, 50, 30);
         earlierButton.setBounds(695, 30, 50, 30);
         laterButton.setBounds(770, 30, 50, 30);

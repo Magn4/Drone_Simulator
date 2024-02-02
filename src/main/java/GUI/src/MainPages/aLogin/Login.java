@@ -12,6 +12,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ *
+ * @author Wiam 
+ * The GUI
+ * @author Mohamed
+ * Implementation of The API
+ */
 public class Login extends JFrame {
 
     public static String Token;

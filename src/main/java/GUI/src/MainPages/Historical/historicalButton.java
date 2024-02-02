@@ -12,12 +12,16 @@ import javax.swing.JButton;
 import GUI.src.MainPages.FlightDynamics.flightDynamics;
 import GUI.src.MainPages.Home.Home;
 
+/**
+ *
+ * @author Nisrine 
+ */
 
-public class historical extends JButton implements ActionListener{
+public class historicalButton extends JButton implements ActionListener{
 	
 	public JButton historicalButton;
 	
-	public historical(){		
+	public historicalButton(){		
 		//ImageIcon icon7 = new ImageIcon("src/main/java/GUI/src/Resources/kalender.png");
 		String imagePath = "/GUI/src/Resources/kalender.png";
 		java.net.URL imgURL = getClass().getResource(imagePath);

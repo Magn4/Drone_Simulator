@@ -18,6 +18,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
+/**
+ *
+ * @author Wiam 
+ * The GUI
+ * @author Mohamed
+ * Implementation of The API
+ */
 public class Catalogue extends JFrame {
 
     private JComboBox<Integer> droneComboBox;

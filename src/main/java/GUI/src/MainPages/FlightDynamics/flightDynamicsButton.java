@@ -12,6 +12,10 @@ import javax.swing.JButton;
 import GUI.src.MainPages.Home.Home;
 
 
+/**
+ *
+ * @author Nisrine 
+ */
 public class flightDynamicsButton extends JButton implements ActionListener{
 	
 	public JButton dynamicsButton;

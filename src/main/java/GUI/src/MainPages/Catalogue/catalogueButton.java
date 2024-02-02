@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Catalogue;
 
 
 import java.awt.Color;
@@ -9,13 +9,19 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import GUI.src.MainPages.FlightDynamics.flightDynamics;
+import GUI.src.MainPages.Home.Home;
 
-public class catalog extends JButton implements ActionListener{
+
+public class catalogueButton extends JButton implements ActionListener{
 	
-	private JButton catalogButton;
+	public static JButton catalogButton;
 	
-	catalog(){		
-		ImageIcon icon5 = new ImageIcon("src/main/java/GUI/src/Resources/list.png");
+	public catalogueButton(){		
+		// ImageIcon icon5 = new ImageIcon("src/main/java/GUI/src/Resources/list.png");
+		String imagePath = "/GUI/src/Resources/list.png";
+		java.net.URL imgURL = getClass().getResource(imagePath);
+		ImageIcon icon5 = new ImageIcon(imgURL);
 		catalogButton = new JButton();
 		catalogButton.setBounds(0, 250, 200, 50);
 		catalogButton.setFocusable(false);

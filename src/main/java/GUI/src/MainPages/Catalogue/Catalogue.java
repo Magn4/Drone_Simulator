@@ -1,10 +1,15 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Catalogue;
 
 import API.Fetcher.APIFetcher;
 import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.DroneType;
-import GUI.src.MainPages.Login;
+import GUI.src.MainPages.Login.Login;
+import GUI.src.MainPages.FlightDynamics.flightDynamics;
+import GUI.src.MainPages.Historical.Charts;
+import GUI.src.MainPages.Historical.historicalAnalysis;
+import GUI.src.MainPages.Home.Home;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

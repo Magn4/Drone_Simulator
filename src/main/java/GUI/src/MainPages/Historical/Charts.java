@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Historical;
 
 import API.Formatter.Drones.DroneType;
 import javafx.application.Platform;

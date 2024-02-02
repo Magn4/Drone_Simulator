@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Home;
 
 import java.awt.Color;
 
@@ -14,6 +14,12 @@ import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.DroneType;
+import GUI.src.MainPages.Login.Login;
+import GUI.src.MainPages.Refresh.refresh;
+import GUI.src.MainPages.Catalogue.catalogueButton;
+import GUI.src.MainPages.FlightDynamics.flightDynamicsButton;
+import GUI.src.MainPages.Historical.historical;
+import GUI.src.MainPages.FlightDynamics.flightDynamics;
 
 import java.util.List;
 
@@ -57,12 +63,11 @@ public class Home {
         mainPanel.setPreferredSize(new java.awt.Dimension(1500, 2000)); 
 
 		
-		back backButton = new back();
-		move moveButton = new move();
+	
 		refresh refreshButton = new refresh();
-		start startButton = new start();
-		catalog catalogButton = new catalog();
-		dynamics dynamicsButton = new dynamics();
+		homeButton startButton = new homeButton();
+		catalogueButton catalogButton = new catalogueButton();
+		flightDynamicsButton dynamicsButton = new flightDynamicsButton();
 		historical historicalButton = new historical();
 
 		
@@ -108,6 +113,9 @@ public class Home {
 			int x = 300;
 			
 			for(int z=0 ; z<=2 ; z++) {
+
+				// The HTML implementation was made with the help of AI.
+
 				JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
 				"<br>" +
 				"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
@@ -142,6 +150,9 @@ public class Home {
 			if (m != 0) {
 				int x = 300;
 				for(int z=0 ; z<m ; z++) {
+
+					// The HTML implementation was made with the help of AI.
+
 					JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
 					"<br>" +
 					"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
@@ -171,8 +182,7 @@ public class Home {
 					}
 		}
 	
-		mainPanel.add(backButton.getBackButton());
-		mainPanel.add(moveButton.getMoveButton());
+		
 		mainPanel.add(refreshButton.getRefreshButton());
 		mainPanel.add(startButton.getStartButton());
 		mainPanel.add(catalogButton.getCatalogButton());

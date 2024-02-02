@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Historical;
 
 import javax.swing.*;
 
@@ -8,7 +8,11 @@ import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.Drone;
 import API.Formatter.Drones.DroneDynamics;
-import API.Formatter.Drones.DroneType;
+import GUI.src.MainPages.Catalogue.catalogueButton;
+import GUI.src.MainPages.FlightDynamics.flightDynamicsButton;
+import GUI.src.MainPages.Home.homeButton;
+import GUI.src.MainPages.Login.Login;
+import GUI.src.MainPages.Refresh.refresh;
 
 import java.util.List;
 
@@ -56,6 +60,7 @@ public class historicalAnalysis extends JFrame {
     
 
     private void initComponents() {
+        @SuppressWarnings("unused")
         int offset = 0;
         earlierButton = new JButton("<");
         laterButton = new JButton(">");
@@ -128,12 +133,11 @@ public class historicalAnalysis extends JFrame {
         infosP.setBackground(new Color(66, 125, 157));
 
 
-        back backButton = new back();
-		move moveButton = new move();
+
 		refresh refreshButton = new refresh();
-		start startButton = new start();
-		catalog catalogButton = new catalog();
-		dynamics dynamicsButton = new dynamics();
+		homeButton startButton = new homeButton();
+		catalogueButton catalogButton = new catalogueButton();
+		flightDynamicsButton dynamicsButton = new flightDynamicsButton();
 		historical historicalButton = new historical();
         earlier5MinButton.setBounds(630, 30, 50, 30);
         earlierButton.setBounds(695, 30, 50, 30);
@@ -152,9 +156,6 @@ public class historicalAnalysis extends JFrame {
         add(laterButton);
         add(later5MinButton);
 
-
-        add(backButton.getBackButton());
-		add(moveButton.getMoveButton());
 		add(refreshButton.getRefreshButton());
 		add(startButton.getStartButton());
 		add(catalogButton.getCatalogButton());
@@ -170,23 +171,6 @@ public class historicalAnalysis extends JFrame {
         updateInfoTextArea(0); // Update infoTextArea initially
     }
 
-
-   /*  private JButton createMenuButton(String buttonText) {
-        JButton button = new JButton(buttonText);
-        button.setFocusPainted(false);
-        button.setBackground(Color.decode("#008e9b"));
-        button.setForeground(Color.WHITE);
-
-        int topPadding = 10;
-        int leftPadding = 20;
-        int bottomPadding = 10;
-        int rightPadding = 20;
-        button.setBorder(BorderFactory.createEmptyBorder(topPadding, leftPadding, bottomPadding, rightPadding));
-
-        button.setBorderPainted(false);
-
-        return button;
-    }*/
 
     private void updateInfoTextArea(int time) {
         
@@ -218,9 +202,7 @@ public class historicalAnalysis extends JFrame {
         infoTextArea.removeAll();
         infoTextArea.add(textPanel);
     
-        // JLabel infos = new JLabel();
-        // infos.setText("Displaying data for: " + formattedDateTime);
-
+   
         JPanel tableP = addTable();
         infoTextArea.add(tableP);
         //mainPanel.add(tableP);
@@ -267,34 +249,6 @@ public class historicalAnalysis extends JFrame {
 
         String[] columns = {"ID", "Timestamp", "Speed", "Alignment Roll", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
         Object[][] data = new Object[25][columns.length];
-
-       
-       /* Not needed
-       
-       
-       for (int i = 0; i < 25; i++) {
-            String URL = droneTypeList.get(i).getDrone();
-            String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
-
-            APIFetcher apiFetcher = new APIFetcher();
-
-            String result2 = apiFetcher.FetchAPI(URL, Token);
-            List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
-            int ID = droneTypeList2.get(0).getId();
-			System.out.println(i);
-
-            data[i] = new Object[]{
-                    ID,
-                    droneTypeList.get(i).getTimestamp(), droneTypeList.get(i).getSpeed(),
-                    droneTypeList.get(i).getAlign_roll(), droneTypeList.get(i).getAlign_yaw(), droneTypeList.get(i).getLongitude(),
-                    droneTypeList.get(i).getLatitude(), droneTypeList.get(i).getBattery_status(), droneTypeList.get(i).getLast_seen(),
-                    droneTypeList.get(i).getStatus()
-            };
-
-            
-                   
-        }
-        */
 
     ExecutorService executor = Executors.newFixedThreadPool(25); // set  the number of threads 
 

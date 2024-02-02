@@ -28,6 +28,7 @@ public class JsonFormatter {
                         int number = 0;
                         for (JsonNode node : resultsNode) {
                             number++;
+                            @SuppressWarnings("unchecked")
                             T drone = (T) droneTypeJson.DroneTypeFromJsonNode(node, number, mapper);
                             droneList.add(drone);
                         }
@@ -39,6 +40,7 @@ public class JsonFormatter {
                         int number = 0;
                         for (JsonNode node : resultsNode) {
                             number++;
+                            @SuppressWarnings("unchecked")
                             T drone = (T) droneNode.DroneFromJsonNode(node, number, mapper);
                             droneList.add(drone);
                         }
@@ -50,6 +52,7 @@ public class JsonFormatter {
                         int number = 0;
                         for (JsonNode node : resultsNode) {
                             number++;
+                            @SuppressWarnings("unchecked")
                             T drone = (T) droneDynamicsJson.DroneDynamicsFromJsonNode(node, number, mapper);
                             droneList.add(drone);
                         }
@@ -57,11 +60,13 @@ public class JsonFormatter {
                     break;
 
                 case 4:
+                    @SuppressWarnings("unchecked") 
                     T drone = (T)  droneJson.DroneFromJsonData(jsonData, mapper);
                     droneList.add(drone);
                     break;
 
                 case 5:
+                    @SuppressWarnings("unchecked") 
                     T droneType = (T) droneTypeNode.DroneTypeFromJsonData(jsonData, mapper);
                     droneList.add(droneType);
                     break;

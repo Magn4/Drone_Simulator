@@ -1,10 +1,11 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Login;
 
 import javax.swing.*;
 
 import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
+import GUI.src.MainPages.Home.Home;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -63,12 +64,18 @@ public class Login extends JFrame {
     JPanel photoPanel = new JPanel(new BorderLayout());
     photoPanel.setBackground(new Color(155, 190, 200));
 
-    // Load the image
-    ImageIcon imageIcon = new ImageIcon("src/main/java/GUI/src/Resources/MainDrone.png"); // Adjust path as needed
-    JLabel imageLabel = new JLabel(imageIcon);
-    imageLabel.setPreferredSize(new Dimension(510, 400)); // Set the preferred size of the image
-    photoPanel.add(imageLabel, BorderLayout.CENTER);
+    String imagePath = "/GUI/src/Resources/MainDrone.png";
+    java.net.URL imageURL = getClass().getResource(imagePath);
 
+    if (imageURL != null) {
+        ImageIcon imageIcon = new ImageIcon(imageURL);
+        JLabel imageLabel = new JLabel(imageIcon);
+        imageLabel.setPreferredSize(new Dimension(510, 400)); 
+        photoPanel.add(imageLabel, BorderLayout.CENTER);
+    } else {
+        System.err.println("Image not found: " + imagePath);
+    }
+    
     mainPanel.add(photoPanel, BorderLayout.WEST); // Add photoPanel to the west of the main panel
 
     // Create inputPanel
@@ -78,7 +85,7 @@ public class Login extends JFrame {
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.insets = new Insets(8, 8, 8, 8);
 
-    JLabel enterTokenLabel = new JLabel("Enter Token:");
+    JLabel enterTokenLabel = new JLabel("Enter Token (Format: Token xxxxxxxxxxxxxxxx): ");
     gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.anchor = GridBagConstraints.WEST; // Align label to the left

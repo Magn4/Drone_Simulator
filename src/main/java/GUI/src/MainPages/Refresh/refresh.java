@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Refresh;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -9,11 +9,14 @@ import javax.swing.JButton;
 
 public class refresh extends JButton implements ActionListener{
 	
-	JButton refresh;
+	public JButton refresh;
 	
-	refresh(){
+	public refresh(){
 		
-		ImageIcon icon3 = new ImageIcon("src/main/java/GUI/src/Resources/refresh.png");
+		// ImageIcon icon3 = new ImageIcon("src/main/java/GUI/src/Resources/refresh.png");
+		String imagePath = "/GUI/src/Resources/refresh.png";
+		java.net.URL imgURL = getClass().getResource(imagePath);
+		ImageIcon icon3 = new ImageIcon(imgURL);
 		refresh = new JButton();
 		refresh.setBounds(1450, 10, 50, 50);
 		refresh.setIcon(icon3);

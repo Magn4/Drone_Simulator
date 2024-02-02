@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.FlightDynamics;
 
 
 import java.awt.Color;
@@ -9,13 +9,18 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import GUI.src.MainPages.Home.Home;
 
-public class dynamics extends JButton implements ActionListener{
+
+public class flightDynamicsButton extends JButton implements ActionListener{
 	
-	private JButton dynamicsButton;
+	public JButton dynamicsButton;
 	
-	dynamics(){		
-		ImageIcon icon6 = new ImageIcon("src/main/java/GUI/src/Resources/drone.png");
+	public flightDynamicsButton(){		
+		// ImageIcon icon6 = new ImageIcon("src/main/java/GUI/src/Resources/drone.png");
+		String imagePath = "/GUI/src/Resources/drone.png";
+		java.net.URL imgURL = getClass().getResource(imagePath);
+		ImageIcon icon6 = new ImageIcon(imgURL);
 		dynamicsButton = new JButton();
 		dynamicsButton.setBounds(0, 350, 200, 50);
 

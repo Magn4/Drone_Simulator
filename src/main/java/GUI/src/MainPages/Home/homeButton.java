@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Home;
 
 
 import java.awt.Color;
@@ -9,13 +9,18 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import GUI.src.MainPages.FlightDynamics.flightDynamics;
 
-public class start extends JButton implements ActionListener{
+
+public class homeButton extends JButton implements ActionListener{
 	
 	private JButton startButton;
 	
-	start(){		
-		ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/home.png");
+	public homeButton(){		
+		// ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/home.png");
+		String imagePath = "/GUI/src/Resources/home.png";
+		java.net.URL imgURL = getClass().getResource(imagePath);
+		ImageIcon icon4 = new ImageIcon(imgURL);
 		startButton = new JButton();
 		startButton.setBounds(0, 150, 200, 50);
 		startButton.setFocusable(false);

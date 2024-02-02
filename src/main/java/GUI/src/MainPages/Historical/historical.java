@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Historical;
 
 
 import java.awt.Color;
@@ -9,13 +9,19 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import GUI.src.MainPages.FlightDynamics.flightDynamics;
+import GUI.src.MainPages.Home.Home;
+
 
 public class historical extends JButton implements ActionListener{
 	
-	private JButton historicalButton;
+	public JButton historicalButton;
 	
-	historical(){		
-		ImageIcon icon7 = new ImageIcon("src/main/java/GUI/src/Resources/kalender.png");
+	public historical(){		
+		//ImageIcon icon7 = new ImageIcon("src/main/java/GUI/src/Resources/kalender.png");
+		String imagePath = "/GUI/src/Resources/kalender.png";
+		java.net.URL imgURL = getClass().getResource(imagePath);
+		ImageIcon icon7 = new ImageIcon(imgURL);
 		historicalButton = new JButton();
 		historicalButton.setBounds(0, 450, 200, 50);
 		historicalButton.setFocusable(false);

@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.FlightDynamics;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,6 +20,11 @@ import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.Drone;
 import API.Formatter.Drones.DroneDynamics;
+import GUI.src.MainPages.Login.Login;
+import GUI.src.MainPages.Refresh.refresh;
+import GUI.src.MainPages.Catalogue.catalogueButton;
+import GUI.src.MainPages.Historical.historical;
+import GUI.src.MainPages.Home.homeButton;
 
 public class flightDynamics {
     
@@ -67,12 +72,10 @@ public class flightDynamics {
         // Create buttons and panels
      
 
-		back backButton = new back();
-		move moveButton = new move();
 		refresh refreshButton = new refresh();
-		start startButton = new start();
-		catalog catalogButton = new catalog();
-		dynamics dynamicsButton = new dynamics();
+		homeButton startButton = new homeButton();
+		catalogueButton catalogButton = new catalogueButton();
+		flightDynamicsButton dynamicsButton = new flightDynamicsButton();
 		historical historicalButton = new historical();
 
         JPanel sidePanel = new JPanel();
@@ -86,8 +89,7 @@ public class flightDynamics {
         JPanel tableP = createTablePanel();
 
         // Add components to mainPanel
-		mainPanel.add(backButton.getBackButton());
-		mainPanel.add(moveButton.getMoveButton());
+
 		mainPanel.add(refreshButton.getRefreshButton());    
         mainPanel.add(startButton.getStartButton());
 		mainPanel.add(catalogButton.getCatalogButton());

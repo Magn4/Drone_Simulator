@@ -1,3 +1,4 @@
+
 package GUI.src.MainPages.Catalogue;
 
 import API.Fetcher.APIFetcher;
@@ -5,7 +6,6 @@ import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.DroneType;
 import GUI.src.MainPages.FlightDynamics.flightDynamics;
-import GUI.src.MainPages.Historical.Charts;
 import GUI.src.MainPages.Historical.historicalAnalysis;
 import GUI.src.MainPages.Home.Home;
 import GUI.src.MainPages.aLogin.Login;
@@ -25,8 +25,6 @@ public class Catalogue extends JFrame {
     private JTextArea infoTextArea;
     private List<DroneType> dronesList;
     private String Token = Login.getToken();
-
-
 
     public Catalogue() {
         setTitle("Drone Catalog");
@@ -63,20 +61,13 @@ public class Catalogue extends JFrame {
         });
     }
 
-
     private void setDroneList() {
        
-    	// private static String Token = Login.getToken();
         APIFetcher apiFetcher = new APIFetcher();
-
-        // This retrieves the number of drones for a more Dynamic Use.
 
         int count = countFinder.getCount("Drones");
 
         String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, count);
-        
-		// String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
-        // APIFetcher apiFetcher = new APIFetcher();
 
         String result = apiFetcher.FetchAPI(urlExtension, Token);
         dronesList = JsonFormatter.ReadDroneList(1, result);
@@ -89,7 +80,7 @@ public class Catalogue extends JFrame {
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(null); 
 
-        JButton homeButton = createMenuButton("Home");
+        JButton homeButton = createMenuButton("Drone Dashboard");
         homeButton.setBounds(0, 100, 200, 50); 
         leftPanel.add(homeButton);
         JButton catalogueButton = createMenuButton("Drone Catalog");
@@ -104,7 +95,7 @@ public class Catalogue extends JFrame {
         analysisButton.setBounds(0, 400, 200, 50); 
         leftPanel.add(analysisButton);
 
-        leftPanel.add(createMenuButton("Home"));
+        leftPanel.add(createMenuButton("Drone Dashboard"));
         leftPanel.add(createMenuButton("Drone Catalog"));
         leftPanel.add(createMenuButton("Flight dynamics"));
         leftPanel.add(createMenuButton("Historical Analysis"));
@@ -139,7 +130,7 @@ public class Catalogue extends JFrame {
         int rightPadding = 5;
         button.setBorder(BorderFactory.createEmptyBorder(topPadding, leftPadding, bottomPadding, rightPadding));
 
-        if (buttonText.equals("Home")) {
+        if (buttonText.equals("Drone Dashboard")) {
             ImageIcon icon4 = new ImageIcon("src/main/java/GUI/src/Resources/home.png");
             button.setIcon(icon4);
         }
@@ -191,8 +182,6 @@ public class Catalogue extends JFrame {
 
         infoTextArea.setText(infoText.toString());
     }
-    
-
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Catalogue::new);

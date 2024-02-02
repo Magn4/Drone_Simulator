@@ -1,4 +1,4 @@
-package GUI.src.MainPages.Historical;
+package GUI.src.MainPages.Catalogue;
 
 import API.Formatter.Drones.DroneType;
 import javafx.application.Platform;
@@ -29,7 +29,6 @@ public class Charts {
         }
 
         Platform.runLater(() -> {
-            // Draw charts
             drawChart(fxPanels[0], "Max Speed", "Max Speed", DroneType::getMax_speed);
             drawChart(fxPanels[1], "Battery Capacity", "Battery Capacity", DroneType::getBattery_capacity);
             drawChart(fxPanels[2], "Control Range", "Control Range", DroneType::getControl_range);

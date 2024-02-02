@@ -32,7 +32,7 @@ public class catalogueButton extends JButton implements ActionListener{
 		catalogButton.setIconTextGap(20);;
 		catalogButton.addActionListener(this);
 		catalogButton.setBackground(new Color(22, 72, 99));
-        catalogButton.setBorderPainted(false); // Setze den Rand des Buttons nicht sichtbar
+        catalogButton.setBorderPainted(false); 
 
 	}
 
@@ -44,7 +44,6 @@ public class catalogueButton extends JButton implements ActionListener{
 
 		new Thread(() -> {
 	   try {
-		   // Warte für 3 Sekunden (3000 Millisekunden)
 		   Thread.sleep(1000);
 	   } catch (InterruptedException ex) {
 		   ex.printStackTrace();
@@ -53,11 +52,9 @@ public class catalogueButton extends JButton implements ActionListener{
 	   flightDynamics.dispose();
 	   Home.dispose();
 
-
    }).start();
 
 	}
-
 	public JButton getCatalogButton() {
 		return catalogButton;
 	}

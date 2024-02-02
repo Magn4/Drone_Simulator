@@ -49,21 +49,18 @@ public class Login extends JFrame {
     }
 
     private void addComponents() {
-    setLayout(new BorderLayout()); // Use BorderLayout for the frame
+    setLayout(new BorderLayout()); 
 
-    // Create the main panel with BorderLayout
     JPanel mainPanel = new JPanel(new BorderLayout()) {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            // Create a gradient paint for the background
             GradientPaint gradient = new GradientPaint(0, 0, new Color(155, 190, 200), getWidth(), getHeight(), Color.ORANGE);
             ((Graphics2D) g).setPaint(gradient);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
     };
 
-    // Create the photoPanel
     JPanel photoPanel = new JPanel(new BorderLayout());
     photoPanel.setBackground(new Color(155, 190, 200));
 
@@ -79,9 +76,8 @@ public class Login extends JFrame {
         System.err.println("Image not found: " + imagePath);
     }
     
-    mainPanel.add(photoPanel, BorderLayout.WEST); // Add photoPanel to the west of the main panel
+    mainPanel.add(photoPanel, BorderLayout.WEST); 
 
-    // Create inputPanel
     JPanel inputPanel = new JPanel(new GridBagLayout());
     inputPanel.setBackground(new Color(155, 190, 200));
 
@@ -91,7 +87,7 @@ public class Login extends JFrame {
     JLabel enterTokenLabel = new JLabel("Enter Token (Format: Token xxxxxxxxxxxxxxxx): ");
     gbc.gridx = 0;
     gbc.gridy = 0;
-    gbc.anchor = GridBagConstraints.WEST; // Align label to the left
+    gbc.anchor = GridBagConstraints.WEST; 
     inputPanel.add(enterTokenLabel, gbc);
 
     gbc.gridx = 0;
@@ -104,16 +100,14 @@ public class Login extends JFrame {
     gbc.gridx = 0;
     gbc.gridy = 2;
     gbc.fill = GridBagConstraints.NONE;
-    gbc.weightx = 0.0; // Reset weight
+    gbc.weightx = 0.0; 
     loginButton.setPreferredSize(new Dimension(90, 30));
     inputPanel.add(loginButton, gbc);
 
-    mainPanel.add(inputPanel, BorderLayout.CENTER); // Add inputPanel to the center of the main panel
+    mainPanel.add(inputPanel, BorderLayout.CENTER); 
 
-    add(mainPanel, BorderLayout.CENTER); // Add mainPanel to the center of the frame
+    add(mainPanel, BorderLayout.CENTER); 
 }
-
-
     public static void setToken(String newToken) {
         Token = newToken;
     }
@@ -121,22 +115,16 @@ public class Login extends JFrame {
     public static String getToken() {
         return Token;
     }
-
     // Action listener for login button
     private void onLoginButtonClick() {
         String enteredToken = tokenField.getText();
     
         setToken(enteredToken);
-        // String Token = "Token "  + enteredToken;
-        
-       
         
         FileWriterUtil.writeToFile("This is the entered token: " + enteredToken, "token.md");
         APIFetcher apiFetcher = new APIFetcher();
-        // String responseContent = apiFetcher.FetchAPI(apiUrl);
 
         String URL = URL_Maker.getUrlExtension("Drones", 0, 25);
-
 
         String responseContent = apiFetcher.FetchAPI(URL, enteredToken);
 

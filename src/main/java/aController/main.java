@@ -1,7 +1,8 @@
 package aController;
 
-import GUI.src.MainPages.Login.Login;
 import javax.swing.*;
+
+import GUI.src.MainPages.aLogin.Login;
 
 public class main {
     public static void mainClass(String[] args) {

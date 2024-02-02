@@ -1,4 +1,4 @@
-package GUI.src.MainPages.Login;
+package GUI.src.MainPages.aLogin;
 
 import javax.swing.*;
 

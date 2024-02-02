@@ -19,11 +19,12 @@ public class Login extends JFrame {
 
     public Login() {
         setTitle("Login Page");
-        setSize(800, 400);
+        setSize(900, 555);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
         addComponents();
+        setResizable(false);
 
         setLocationRelativeTo(null);
         setVisible(true);
@@ -44,51 +45,64 @@ public class Login extends JFrame {
     }
 
     private void addComponents() {
-        setLayout(new BorderLayout());
+    setLayout(new BorderLayout()); // Use BorderLayout for the frame
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(Color.WHITE);
+    // Create the main panel with BorderLayout
+    JPanel mainPanel = new JPanel(new BorderLayout()) {
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            // Create a gradient paint for the background
+            GradientPaint gradient = new GradientPaint(0, 0, new Color(155, 190, 200), getWidth(), getHeight(), Color.ORANGE);
+            ((Graphics2D) g).setPaint(gradient);
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
+    };
 
-        JPanel bluePanel = createInputPanel();
-        mainPanel.add(bluePanel, BorderLayout.CENTER);
+    // Create the photoPanel
+    JPanel photoPanel = new JPanel(new BorderLayout());
+    photoPanel.setBackground(new Color(155, 190, 200));
 
-        add(mainPanel, BorderLayout.CENTER);
-    }
+    // Load the image
+    ImageIcon imageIcon = new ImageIcon("C:\\Users\\Test\\Downloads\\MainDrone.png"); // Adjust path as needed
+    JLabel imageLabel = new JLabel(imageIcon);
+    imageLabel.setPreferredSize(new Dimension(510, 400)); // Set the preferred size of the image
+    photoPanel.add(imageLabel, BorderLayout.CENTER);
 
-    private JPanel createInputPanel() {
-        JPanel panel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(8, 8, 8, 8);
+    mainPanel.add(photoPanel, BorderLayout.WEST); // Add photoPanel to the west of the main panel
 
-        JPanel innerPanel = new JPanel(new GridBagLayout());
-        innerPanel.setBackground(new Color(230, 212, 194)); 
-    
-        JLabel enterTokenLabel = new JLabel("Enter Token:");
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST; // Align label to the left
-        innerPanel.add(enterTokenLabel, gbc);
-    
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.weightx = 1.0; 
-        tokenField.setPreferredSize(new Dimension(200,30));
-        innerPanel.add(tokenField, gbc);
-    
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.weightx = 0.0; // Reset weight
-        loginButton.setPreferredSize(new Dimension(90, 30));
-        innerPanel.add(loginButton, gbc);
-    
-        innerPanel.setPreferredSize(new Dimension(600, 250));
-        panel.add(innerPanel,gbc);
-    
-        return panel;
-    }
-    
+    // Create inputPanel
+    JPanel inputPanel = new JPanel(new GridBagLayout());
+    inputPanel.setBackground(new Color(155, 190, 200));
+
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(8, 8, 8, 8);
+
+    JLabel enterTokenLabel = new JLabel("Enter Token:");
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.anchor = GridBagConstraints.WEST; // Align label to the left
+    inputPanel.add(enterTokenLabel, gbc);
+
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.weightx = 1.0;
+    tokenField.setPreferredSize(new Dimension(500, 20));
+    inputPanel.add(tokenField, gbc);
+
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.fill = GridBagConstraints.NONE;
+    gbc.weightx = 0.0; // Reset weight
+    loginButton.setPreferredSize(new Dimension(90, 30));
+    inputPanel.add(loginButton, gbc);
+
+    mainPanel.add(inputPanel, BorderLayout.CENTER); // Add inputPanel to the center of the main panel
+
+    add(mainPanel, BorderLayout.CENTER); // Add mainPanel to the center of the frame
+}
+
     private void onLoginButtonClick() {
         String enteredToken = tokenField.getText();
     
@@ -124,7 +138,7 @@ public class Login extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(OldLogin::new);
+        SwingUtilities.invokeLater(Login::new);
     }
 }
   

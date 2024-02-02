@@ -40,7 +40,7 @@ public class historicalAnalysis extends JFrame {
         startTime = System.currentTimeMillis(); //record the start of the running time
 
         setTitle("Historical Analysis");
-        setSize(1800, 1100);
+        setSize(1920, 1080);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();

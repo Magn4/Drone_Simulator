@@ -81,7 +81,7 @@ public class flightDynamics {
         // Create buttons and panels
      
 
-		refresh refreshButton = new refresh();
+		update updateButton = new update();
 		homeButton startButton = new homeButton();
 		catalogueButton catalogButton = new catalogueButton();
 		flightDynamicsButton dynamicsButton = new flightDynamicsButton();
@@ -99,7 +99,7 @@ public class flightDynamics {
 
         // Add components to mainPanel
 
-		mainPanel.add(refreshButton.getRefreshButton());    
+		mainPanel.add(updateButton.getupdateButton());    
         mainPanel.add(startButton.getStartButton());
 		mainPanel.add(catalogButton.getCatalogButton());
 		mainPanel.add(dynamicsButton.getdynamicsButton());

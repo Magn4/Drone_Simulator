@@ -1,6 +1,6 @@
 package aController;
 
-import GUI.src.MainPages.Login;
+import GUI.src.MainPages.OldLogin;
 import javax.swing.*;
 
 public class main {
@@ -8,7 +8,7 @@ public class main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Login();
+                new OldLogin();
             }
         });
     }

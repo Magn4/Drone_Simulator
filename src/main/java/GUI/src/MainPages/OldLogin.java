@@ -10,14 +10,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login extends JFrame {
+public class OldLogin extends JFrame {
 
     public static String Token;
 
     private JTextField tokenField;
     private JButton loginButton;
 
-    public Login() {
+    public OldLogin() {
         setTitle("Login Page");
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

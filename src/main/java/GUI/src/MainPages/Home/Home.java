@@ -131,12 +131,14 @@ public class Home {
 
 				JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
 				"<br>" +
-				"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
+				"<br>Weight : " +  droneType1List.get(j-1).getManufacturer() +
 				"<br>" +
-				"<br>Manufacturer: " +  droneType1List.get(j-1).getManufacturer() +
+				"<br>Manufacturer: " +  droneType1List.get(j-1).getBattery_capacity() +
 				"<br>" +
-				"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
+				"<br>Power Efficiency :" + String.format("%.2f", batteryToSpeedRatio) + 
+				"</html>"
 				);
+
 				label.setForeground(Color.WHITE);
 				
 				label.setIcon(icon);
@@ -168,11 +170,12 @@ public class Home {
 
 					JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
 					"<br>" +
-					"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
+					"<br>Weight : " +  droneType1List.get(j-1).getManufacturer() +
 					"<br>" +
-					"<br>Manufacturer: " +  droneType1List.get(j-1).getManufacturer() +
-					"<br>" + 
-					"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
+					"<br>Manufacturer: " +  droneType1List.get(j-1).getBattery_capacity() +
+					"<br>" +
+					"<br>Power Efficiency :" + String.format("%.2f", batteryToSpeedRatio) + 
+					"</html>"
 					);
 					label.setForeground(Color.WHITE);
 					//label.setFont(new Font("Arial", Font.PLAIN, 16));

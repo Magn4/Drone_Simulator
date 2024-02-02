@@ -1,4 +1,4 @@
-package GUI.src.MainPages;
+package GUI.src.MainPages.Refresh;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

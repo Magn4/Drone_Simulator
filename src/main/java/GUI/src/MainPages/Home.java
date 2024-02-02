@@ -108,13 +108,20 @@ public class Home {
 			int x = 300;
 			
 			for(int z=0 ; z<=2 ; z++) {
+				DroneType drone = droneType1List.get(j-1);
+        		// the ratio helps you understand how efficiently a drone uses its battery, especially when flying at its maximum speed.
+        		double batteryToSpeedRatio = (double) drone.getBattery_capacity() / drone.getMax_speed();
+
+
+
 				JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
 				"<br>" +
-				"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
+				"<br>Weight : " +  droneType1List.get(j-1).getManufacturer() +
 				"<br>" +
-				"<br>Manufacturer: " +  droneType1List.get(j-1).getManufacturer() +
+				"<br>Manufacturer: " +  droneType1List.get(j-1).getBattery_capacity() +
 				"<br>" +
-				"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
+				"<br>Power Efficiency :" + String.format("%.2f", batteryToSpeedRatio) + 
+				"</html>"
 				);
 				label.setForeground(Color.WHITE);
 				
@@ -142,13 +149,17 @@ public class Home {
 			if (m != 0) {
 				int x = 300;
 				for(int z=0 ; z<m ; z++) {
+					DroneType drone = droneType1List.get(j-1);
+					double batteryToSpeedRatio = (double) drone.getBattery_capacity() / drone.getMax_speed();
+	
 					JLabel label = new JLabel("<html>ID: " + "\n" + droneType1List.get(j-1).getId() + 
 					"<br>" +
-					"<br>Weight : " +  droneType1List.get(j-1).getWeight() +
+					"<br>Weight : " +  droneType1List.get(j-1).getManufacturer() +
 					"<br>" +
-					"<br>Manufacturer: " +  droneType1List.get(j-1).getManufacturer() +
-					"<br>" + 
-					"<br>Max Speed: " +  droneType1List.get(j-1).getMax_speed() + "</html>"
+					"<br>Manufacturer: " +  droneType1List.get(j-1).getBattery_capacity() +
+					"<br>" +
+					"<br>Power Efficiency :" + String.format("%.2f", batteryToSpeedRatio) + 
+					"</html>"
 					);
 					label.setForeground(Color.WHITE);
 					//label.setFont(new Font("Arial", Font.PLAIN, 16));

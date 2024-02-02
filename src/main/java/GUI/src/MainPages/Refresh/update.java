@@ -3,6 +3,8 @@ package GUI.src.MainPages.Refresh;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import GUI.src.MainPages.FlightDynamics.flightDynamics;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,7 +13,7 @@ public class update extends JButton implements ActionListener{
 	
 	JButton update;
 	
-	update(){
+	public update(){
 		
 		ImageIcon icon3 = new ImageIcon("src/main/java/GUI/src/Resources/refresh.png");
 		update = new JButton();

@@ -22,10 +22,12 @@ import API.Formatter.Drones.Drone;
 import API.Formatter.Drones.DroneDynamics;
 import API.Formatter.countFinder;
 import GUI.src.MainPages.Refresh.refresh;
+import GUI.src.MainPages.Refresh.update;
 import GUI.src.MainPages.aLogin.Login;
 import GUI.src.MainPages.Catalogue.catalogueButton;
 import GUI.src.MainPages.Historical.historicalButton;
 import GUI.src.MainPages.Home.homeButton;
+
 
 /**
  *
@@ -156,7 +158,6 @@ public class flightDynamics {
             String result2 = apiFetcher.FetchAPI(URL, Token);
             List<Drone> droneTypeList2 = JsonFormatter.ReadDroneList(4, result2);
             int ID = droneTypeList2.get(0).getId();
-            System.out.println("Iteration: "+index);
 
             data[index] = new Object[]{
                     ID,

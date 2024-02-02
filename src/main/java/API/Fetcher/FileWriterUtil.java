@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 public class FileWriterUtil {
     public static void writeToFile(String content, String filePath) {
 
-        filePath = "src/main/java/Logs/" + filePath;
+        filePath = "./" + filePath;
 
         // filePath = "./Logs/" + filePath;
 

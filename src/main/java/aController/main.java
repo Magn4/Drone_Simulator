@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import GUI.src.MainPages.aLogin.Login;
 
+
 public class main {
     public static void mainClass(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -11,6 +12,10 @@ public class main {
             public void run() {
                 new Login();
             }
+        
         });
+
+
+
     }
 }

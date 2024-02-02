@@ -21,4 +21,5 @@ public class droneTypeJson {
         return new DroneType(number, id, manufacturer, typename, weight, max_speed, battery_capacity, control_range, max_carriage);
 
     }
+    
 }

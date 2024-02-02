@@ -5,6 +5,7 @@ import javax.swing.*;
 import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
+
 import GUI.src.MainPages.Home.Home;
 
 import java.awt.*;
@@ -14,9 +15,11 @@ import java.awt.event.ActionListener;
 public class Login extends JFrame {
 
     public static String Token;
+    public static int DroneTypeCount;
 
     private JTextField tokenField;
     private JButton loginButton;
+
 
     public Login() {
         setTitle("Login Page");
@@ -134,7 +137,7 @@ public class Login extends JFrame {
 
         String URL = URL_Maker.getUrlExtension("Drones", 0, 25);
 
-        
+
         String responseContent = apiFetcher.FetchAPI(URL, enteredToken);
 
         int responseCode = apiFetcher.getResponseCode();

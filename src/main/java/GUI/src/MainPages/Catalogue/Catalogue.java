@@ -9,6 +9,8 @@ import GUI.src.MainPages.Historical.Charts;
 import GUI.src.MainPages.Historical.historicalAnalysis;
 import GUI.src.MainPages.Home.Home;
 import GUI.src.MainPages.aLogin.Login;
+import API.Formatter.countFinder;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,11 +63,20 @@ public class Catalogue extends JFrame {
         });
     }
 
+
     private void setDroneList() {
-        String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, 20);
+       
+    	// private static String Token = Login.getToken();
+        APIFetcher apiFetcher = new APIFetcher();
+
+        // This retrieves the number of drones for a more Dynamic Use.
+
+        int count = countFinder.getCount("Drones");
+
+        String urlExtension = URL_Maker.getUrlExtension("Drone Type", 0, count);
         
 		// String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
-        APIFetcher apiFetcher = new APIFetcher();
+        // APIFetcher apiFetcher = new APIFetcher();
 
         String result = apiFetcher.FetchAPI(urlExtension, Token);
         dronesList = JsonFormatter.ReadDroneList(1, result);

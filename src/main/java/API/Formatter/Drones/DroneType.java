@@ -18,7 +18,6 @@ public class DroneType {
     private int control_range;
     private int max_carriage;
 
-    // Still need to add getters and setters for each field
 
     public DroneType() {
         super();

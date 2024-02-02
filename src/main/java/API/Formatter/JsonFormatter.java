@@ -14,6 +14,7 @@ import java.util.List;
 
 
 public class JsonFormatter {
+
     public static <T> List<T> ReadDroneList(int type, String jsonData) {
         List<T> droneList = new ArrayList<>();
 
@@ -31,6 +32,7 @@ public class JsonFormatter {
                             @SuppressWarnings("unchecked")
                             T drone = (T) droneTypeJson.DroneTypeFromJsonNode(node, number, mapper);
                             droneList.add(drone);
+                            
                         }
                     }
                     break;
@@ -70,9 +72,10 @@ public class JsonFormatter {
                     T droneType = (T) droneTypeNode.DroneTypeFromJsonData(jsonData, mapper);
                     droneList.add(droneType);
                     break;
-
+                    
                 default:
                     break;
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,4 +83,5 @@ public class JsonFormatter {
         }
         return droneList;
     }  
+    
 }

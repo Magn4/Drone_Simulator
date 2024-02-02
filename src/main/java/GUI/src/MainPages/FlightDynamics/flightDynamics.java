@@ -20,11 +20,14 @@ import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
 import API.Formatter.Drones.Drone;
 import API.Formatter.Drones.DroneDynamics;
+import API.Formatter.countFinder;
 import GUI.src.MainPages.Refresh.refresh;
 import GUI.src.MainPages.aLogin.Login;
 import GUI.src.MainPages.Catalogue.catalogueButton;
 import GUI.src.MainPages.Historical.historical;
 import GUI.src.MainPages.Home.homeButton;
+
+
 
 public class flightDynamics {
     
@@ -110,11 +113,19 @@ public class flightDynamics {
         tableP.setBackground(new Color(66, 125, 157));
         tableP.setBounds(280, 200, 1200, 510);
 
+        APIFetcher apiFetcher = new APIFetcher();
 
-        String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, 25);
+        
+        // This retrieves the number of drones for a more Dynamic Use.
+        int count1 = countFinder.getCount("Drones");
+        
+
+        String URL1 = URL_Maker.getUrlExtension("Drone Dynamics", 0, count1);
+
+       // System.out.println("This is the count1: " + count1);
         //String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
 
-        APIFetcher apiFetcher = new APIFetcher();
+       
 
         String result = apiFetcher.FetchAPI(URL1, Token);
         
@@ -124,14 +135,14 @@ public class flightDynamics {
         List<DroneDynamics> droneTypeList = JsonFormatter.ReadDroneList(3, result);
 
         String[] columns = {"ID", "Timestamp", "Speed", "Alignment Roll", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
-        Object[][] data = new Object[25][columns.length];
+        Object[][] data = new Object[count1][columns.length];
 
    
-    ExecutorService executor = Executors.newFixedThreadPool(25); // set  the number of threads 
+    ExecutorService executor = Executors.newFixedThreadPool(count1); // set  the number of threads 
 
-    CountDownLatch count  = new CountDownLatch(25); // count to wait for all threads to complete
+    CountDownLatch count  = new CountDownLatch(count1); // count to wait for all threads to complete
 
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < count1; i++) {
         final int index = i;
         executor.execute(() -> {
             String URL = droneTypeList.get(index).getDrone();

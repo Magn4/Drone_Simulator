@@ -13,6 +13,7 @@ import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
+import API.Formatter.countFinder;
 import API.Formatter.Drones.DroneType;
 import GUI.src.MainPages.Refresh.refresh;
 import GUI.src.MainPages.aLogin.Login;
@@ -28,6 +29,9 @@ public class Home {
 
 	private static JFrame frame;
 	private static String Token = Login.getToken();
+	// This retrieves the number of drones for a more Dynamic Use.
+	private static int count = countFinder.getCount("Drones");
+	private static int count1 = countFinder.getCount("Drone Types");
 
 	
 	public static void main() {
@@ -87,7 +91,8 @@ public class Home {
 		
 
 		// String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
-		String URL = URL_Maker.getUrlExtension("Drone Type", 0, 25);
+		
+		String URL = URL_Maker.getUrlExtension("Drone Type", 0, count);
 		APIFetcher apiFetcher = new APIFetcher();
 
 		String result = apiFetcher.FetchAPI(URL, Token);
@@ -103,7 +108,7 @@ public class Home {
 
 
 
-		int n = 20;
+		int n = count1;
 		int m = n % 3;
 		n = n/3;
 

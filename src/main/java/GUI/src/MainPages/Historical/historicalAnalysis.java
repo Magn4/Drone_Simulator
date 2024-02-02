@@ -6,6 +6,7 @@ import API.Fetcher.APIFetcher;
 import API.Fetcher.FileWriterUtil;
 import API.Fetcher.URL_Maker;
 import API.Formatter.JsonFormatter;
+import API.Formatter.countFinder;
 import API.Formatter.Drones.Drone;
 import API.Formatter.Drones.DroneDynamics;
 import GUI.src.MainPages.Catalogue.catalogueButton;
@@ -40,6 +41,8 @@ public class historicalAnalysis extends JFrame {
 
     private long startTime;
     private long endTime;
+    // This retrieves the number of drones for a more Dynamic Use.
+    private int count = countFinder.getCount("Drones");
    
 
     public historicalAnalysis() {
@@ -70,7 +73,7 @@ public class historicalAnalysis extends JFrame {
         infoTextArea = new JLabel();
         dateTime = LocalDateTime.of(2023, 12, 26, 9, 7, 0, 618782);
         time = 0;
-        offset = time*25;
+        offset = time*count;
 
 
         earlier5MinButton.addActionListener(new ActionListener() {
@@ -219,12 +222,14 @@ public class historicalAnalysis extends JFrame {
     }
 
     private String getURL(int offset) {
-        return URL_Maker.getUrlExtension("Drone Dynamics", offset, 25);
+        
+
+        return URL_Maker.getUrlExtension("Drone Dynamics", offset, count);
     }
 
     private List<DroneDynamics> getList() {
 
-        int offset = time * 25;
+        int offset = time * count;
 
         String URL1 = getURL(offset);
         // String Token = "Token 6ffe7e815e07b6ede78cade7617454eeb944d168";
@@ -248,13 +253,13 @@ public class historicalAnalysis extends JFrame {
 
 
         String[] columns = {"ID", "Timestamp", "Speed", "Alignment Roll", "Alignment Yaw", "Longitude", "Latitude", "Battery Status", "Last Seen", "Status"};
-        Object[][] data = new Object[25][columns.length];
+        Object[][] data = new Object[count][columns.length];
 
     ExecutorService executor = Executors.newFixedThreadPool(25); // set  the number of threads 
 
-    CountDownLatch count  = new CountDownLatch(25); // count to wait for all threads to complete
+    CountDownLatch count1  = new CountDownLatch(25); // count to wait for all threads to complete
 
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < count; i++) {
         final int index = i;
         executor.execute(() -> {
             String URL = droneTypeList.get(index).getDrone();
@@ -275,12 +280,12 @@ public class historicalAnalysis extends JFrame {
                     droneTypeList.get(index).getStatus()
             };
 
-            count.countDown(); // count= count-1   : Signal that the task is complete 
+            count1.countDown(); // count= count-1   : Signal that the task is complete 
         });
     }
 
     try {
-        count.await(); // Wait for all tasks to complete
+        count1.await(); // Wait for all tasks to complete
     } catch (InterruptedException e) {    //If the thread is interrupted while waiting
         e.printStackTrace();
     } finally {
